@@ -3,16 +3,17 @@ import './LoginPage.css';
 
 const LoginPage = () => {
     return (
-        <div className="modern-login-container">
-            <div className="overlay"></div>
-            {/* Logo e slogan */}
-            <div className="login-card">
-                <div className="logo-section">
+        <div className="container">
+            {/* Lado esquerdo com logo e frase */}
+            <div className="left-side">
+                <div className="logo-container">
                     <img src="logo.png" alt="Logo da Empresa" className="logo" />
                     <h2>DoaFácil: Conectando Solidariedade</h2>
                 </div>
+            </div>
 
-                {/* Formulário de login */}
+            {/* Lado direito com formulário de login */}
+            <div className="right-side">
                 <div className="login-box">
                     <h2>Login</h2>
                     <form>
@@ -25,7 +26,7 @@ const LoginPage = () => {
                             <input type="password" id="password" name="password" required />
                         </div>
                         <div className="forgot-password">
-                            <a href="#">Esqueceu a senha?</a>
+                            <a href="#">Esqueceu a senha</a>
                         </div>
                         <div className="input-group">
                             <button type="submit">Entrar</button>
