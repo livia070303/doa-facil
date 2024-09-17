@@ -60,7 +60,7 @@ body {
 
 /* Estilo da coluna direita */
 .right-side {
-    background: linear-gradient(180deg, #2CBAE2 0%, #FC4638 100%);
+    background: linear-gradient(180deg, #2CBAE2, #FC4638 100%);
     padding: 40px;
     width: 50%;
     display: flex;
