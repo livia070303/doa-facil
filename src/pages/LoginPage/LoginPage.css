@@ -23,7 +23,7 @@ body {
 /* Container principal com layout em duas colunas */
 .container {
     display: flex;
-    width: 90%;
+    width: 100%;
     max-width: 1200px;
     background-color: #fff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -61,7 +61,7 @@ body {
 /* Estilo da coluna direita */
 .right-side {
     background: linear-gradient(180deg, #2CBAE2, #FC4638 100%);
-    padding: 40px;
+    padding: 40px 20px;
     width: 50%;
     display: flex;
     justify-content: center;
@@ -126,8 +126,8 @@ body {
 .input-group button {
     width: 100%;
     padding: 10px;
-    background-color: #2CBAE2;
-    color: #fff;
+    background-color: var(--primary-blue);
+    color: var(--primary-white);
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -136,7 +136,7 @@ body {
 }
 
 .input-group button:hover {
-    background-color: #2CBAE2;
+    background-color: var(--primary-blue-hover)
 }
 
 /* Registro */
@@ -164,11 +164,12 @@ body {
     .container {
         flex-direction: column;
         height: auto;
+        padding: 10px;
     }
 
     .left-side, .right-side {
         width: 100%;
-        padding: 20px;
+        padding: 62px;
     }
 
     .logo {

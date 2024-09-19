@@ -1,4 +1,3 @@
-import React from 'react';
 import './LoginPage.css';
 
 const LoginPage = () => {
@@ -7,7 +6,7 @@ const LoginPage = () => {
             {/* Lado esquerdo com logo e frase */}
             <div className="left-side">
                 <div className="logo-container">
-                    <img src="../public/logoRecortado.png" alt="Logo da Empresa" className="logo" />
+                    <img src="/logoRecortado.png" alt="Logo da Empresa" className="logo" />
                     <h2><strong>DoaFácil: </strong> Conectando Solidariedade</h2>
                 </div>
             </div>

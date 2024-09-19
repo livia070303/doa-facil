@@ -1,13 +1,35 @@
-import React from 'react';
-import './App.css';
-import LoginPage from './components/LoginPage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import { Navigate, Route, Routes} from 'react-router-dom';
+import { useAuth } from './hooks/useAuth';
 
-function App() {
-    return (
-        <div className="App">
-            <LoginPage />
-        </div>
-    );
+const PrivateRoute = (children) => {
+    
+    const { isAuthenticated, loading } = useAuth()
+
+    if(loading){
+        return(
+            <>
+            <div>Loading...</div>
+            </>
+        )
+    }
+    if(!isAuthenticated){
+        return <Navigate to="/login"/>
+    }
+
+    return children
 }
 
-export default App;
+export function App() {
+
+    // Padrão de criação de rota: <Route path="/ROTA" element={<COMPONENTEDAPAGINA/>}></Route>
+    // Padrão de criação de rota protegida: <Route path="/ROTA" element={<PrivateRoute><COMPONENTEDAPAGINA/></PrivateRoute>}></Route>
+    return (
+        <>
+        <Routes>
+            <Route path="/login" element={<LoginPage/>}></Route>
+            <Route path="/home" element={<PrivateRoute><div>Home</div></PrivateRoute>}></Route>
+        </Routes>
+        </>
+    );
+}
