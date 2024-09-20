@@ -1,6 +1,17 @@
 :root {
-    --primary-blue: #2CBAE2;
+
     --primary-blue-hover: #23a9cf;
+
+    --azul-escuro: #06333E;
+    --azul-médio: #0E87A9;
+    --azul-claro: #2CBAE2;
+
+    --bege: #E6D5B7;
+
+    --vermelho-claro: #FF594B;
+    --vermelho-médio: #FC4638;
+    --vermelho-escuro: #D13B2D;
+
 
     --primary-white: #fff;
 }
