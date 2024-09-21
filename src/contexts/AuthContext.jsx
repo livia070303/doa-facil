@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const isAuthenticated = false;
+  const isAuthenticated = true;
   const loading = true;
 
   return (

@@ -1,10 +1,10 @@
 :root {
-
-    --primary-blue-hover: #23a9cf;
-
     --azul-escuro: #06333E;
     --azul-médio: #0E87A9;
     --azul-claro: #2CBAE2;
+    --azul-claro-hover: #23a9cf;
+
+    --siteMap-degrade: linear-gradient(90deg, #2CBAE2 0%, #FC4638 80%);
 
     --bege: #E6D5B7;
 
@@ -15,3 +15,22 @@
 
     --primary-white: #fff;
 }
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo geral do body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+

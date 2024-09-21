@@ -2,7 +2,7 @@ import './LoginPage.css';
 
 const LoginPage = () => {
     return (
-        <div className="container">
+        <div className="loginContainer">
             {/* Lado esquerdo com logo e frase */}
             <div className="left-side">
                 <div className="logo-container">
