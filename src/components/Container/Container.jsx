@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
-import './Container.css';
 
 export function Container({ children }){
     return (
-        <div className="container">
+        <div className='w-screen min-h-screen'>
             {children}
         </div>
     )

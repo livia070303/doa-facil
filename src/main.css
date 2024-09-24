@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
     --azul-escuro: #06333E;
     --azul-médio: #0E87A9;
