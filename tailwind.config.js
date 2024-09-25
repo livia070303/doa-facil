@@ -6,12 +6,16 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'poppins': ['Poppins', 'sans-serif'],
+      },
       colors: {
         'azul-escuro': '#06333E',
         'azul-médio': '#0E87A9',
         'azul-claro': '#2CBAE2',
-        'azul-claro-hover': '#23a9cf',
+        'azul-claro-hover': '#00C6C6',
     
+        "texto-infor": "#A0A0A0",
     
         'bege': '#E6D5B7',
     
