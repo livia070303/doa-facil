@@ -5,14 +5,14 @@ import DonationItem from '../../components/DonationItem/DonationItem.jsx';
 
 const UserProfile = () => {
   return (
-    <div className="flex w-full min-h-screen">
+    <div className="flex flex-col md:flex-row min-h-screen w-full">
       {/* Sidebar */}
       <Sidebar />
 
       {/* Main Content */}
-      <main className="flex-1 bg-gray-100 p-8">
+      <main className="flex-1 bg-gray-100 p-10">
         {/* Seção de Informações do Usuário */}
-        <section className="bg-white p-6 rounded shadow-md">
+        <section className="flex-1 bg-white p-8 rounded shadow-md">
           {/* Informações do Usuário */}
           <div className="flex items-center mb-6">
             {/* Foto de Perfil */}
@@ -74,7 +74,7 @@ const UserProfile = () => {
         {/* Minhas Doações */}
         <section className="mt-8">
           <h2 className="text-xl font-semibold mb-4">Itens Doados</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {/* Exemplo de itens */}
             <DonationItem
               image="/path/to/item1.jpg"
@@ -91,13 +91,18 @@ const UserProfile = () => {
               title="Produto 3"
               description="Descrição do produto 3"
             />
+            <DonationItem
+              image="/path/to/item3.jpg"
+              title="Produto 4"
+              description="Descrição do produto 3"
+            />
           </div>
         </section>
 
         {/* Itens Recebidos */}
         <section className="mt-8">
           <h2 className="text-xl font-semibold mb-4">Itens Recebidos</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {/* Exemplo de itens */}
             <DonationItem
               image="/path/to/item4.jpg"
@@ -113,6 +118,11 @@ const UserProfile = () => {
               image="/path/to/item6.jpg"
               title="Produto 6"
               description="Descrição do produto 6"
+            />
+            <DonationItem
+              image="/path/to/item3.jpg"
+              title="Produto 7"
+              description="Descrição do produto 3"
             />
           </div>
         </section>
