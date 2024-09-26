@@ -2,6 +2,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import { Navigate, Route, Routes} from 'react-router-dom';
 import { useAuth } from './hooks/useAuth';
 import { HomePage } from './pages/HomePage/HomePage';
+import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 
 const PrivateRoute = (children) => {
     
@@ -31,6 +32,7 @@ export function App() {
             <Route path="/login" element={<LoginPage/>}></Route>
             <Route path="/home" element={<PrivateRoute><div>Home</div></PrivateRoute>}></Route>
             <Route path="/" element={<HomePage/>}></Route>
+            <Route path="*" element={<ErrorPage/>}></Route>
         </Routes>
         </>
     );

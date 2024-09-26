@@ -22,6 +22,9 @@ export default {
         'vermelho-claro': '#FF594B',
         'vermelho-médio': '#FC4638',
         'vermelho-escuro': '#D13B2D',
+
+        'orange': '#FA8232',
+        'orange-ring': '#FFE7D6',
       }
       
     },

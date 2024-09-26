@@ -2,6 +2,7 @@ import { FaSearch } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa6";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { CiMenuFries } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 export function Header(){
     return(
@@ -11,7 +12,9 @@ export function Header(){
         <CiMenuFries className="rotate-180  font-extrabold text-black" fontWeight="bold"/>
         </div>
         <div className='flex items-center md:w-full lg:w-[80%] justify-end md:justify-normal md:gap-2 lg:gap-4 xl:gap-12'>
+            <Link to="/">
             <img src="./logoRecortado.png" alt="Logo" className="hidden xl:ml-4 lg:ml-2 mt-2 md:flex w-20 h-[5.5rem]"/>
+            </Link>
             <div className="relative w-full">
             <input 
             placeholder='Pesquise algo...'
