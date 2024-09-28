@@ -1,11 +1,12 @@
 import { Container } from '../../components/Container/Container.jsx'
-import { Header } from '../../components/Header/Header.jsx';
 
 export function HomePage(){
     return(
         <>
         <Container>
-            <Header/>
+            <div className='min-h-[80vh]  w-full '>
+                <span>teste</span>
+            </div>
         </Container>
         </>
     )
