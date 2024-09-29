@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { HeaderAndFooter, HeaderAndFooterContainer } from '../../components/Layouts/HeaderAndFooter.jsx'
 import { Separator } from '../../components/Separator.jsx'
 import { LeftMenuFilters } from './components/LeftMenuFilters.jsx'
@@ -17,10 +18,18 @@ export function HomePage(){
                     <div className='flex flex-col'>
                         <SectionHeader label='Recentes' title="Mais buscados" key="recentes"/>
                         <div className='flex flex-col items-center gap-4 lg:grid lg:grid-cols-4'>
+                        <Link to="/product/1">
                         <MostSearchedItems/>
+                        </Link>
+                        <Link to="/product/2">
                         <MostSearchedItems/>
+                        </Link>
+                        <Link to="/product/3">
                         <MostSearchedItems/>
+                        </Link>
+                        <Link to="/product/4">
                         <MostSearchedItems/>
+                        </Link>
                         </div>
                         <div className='w-full flex items-center justify-center mt-12'>
                             <span className='cursor-pointer p-4 rounded-md bg-vermelho-escuro hover:bg-vermelho-médio transition-colors text-white font-poppins'>Ver Todos Produtos</span>

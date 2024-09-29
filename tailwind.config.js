@@ -14,8 +14,10 @@ export default {
         'azul-médio': '#0E87A9',
         'azul-claro': '#2CBAE2',
         'azul-claro-hover': '#00C6C6',
+        'azul-separator': '#158A8A',
     
         "texto-infor": "#A0A0A0",
+        "texto-label": "#313131",
     
         'bege': '#E6D5B7',
     

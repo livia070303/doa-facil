@@ -4,6 +4,7 @@ import { useAuth } from './hooks/useAuth';
 import { HomePage } from './pages/HomePage/HomePage';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 import UserProfile from './pages/UserProfile/UserProfile';
+import { ProductPage } from './pages/ProductPage/ProductPage';
 
 const PrivateRoute = (children) => {
     
@@ -34,6 +35,7 @@ export function App() {
             <Route path="/home" element={<PrivateRoute><div>Home</div></PrivateRoute>}></Route>
             <Route path="/" element={<HomePage/>}></Route>
             <Route path="/user" element={<UserProfile/>}></Route>
+            <Route path="product/:id" element={<ProductPage/>}></Route>
             <Route path="*" element={<ErrorPage/>}></Route>
         </Routes>
         </>
