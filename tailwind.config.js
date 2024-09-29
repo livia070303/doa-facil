@@ -26,6 +26,8 @@ export default {
         'orange': '#FA8232',
         'orange-ring': '#FFE7D6',
 
+        "low-gray": "#EDEDED",
+
       }
       
     },
