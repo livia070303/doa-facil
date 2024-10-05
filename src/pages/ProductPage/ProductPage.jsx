@@ -1,11 +1,12 @@
 import { CiHeart } from "react-icons/ci";
 import { HeaderAndFooter, HeaderAndFooterContainer } from "../../components/Layouts/HeaderAndFooter";
+import { useState } from "react";
 import { HiHeart } from "react-icons/hi2";
 
-
-
-
 export function ProductPage(){
+
+    const [favorite, setFavorite] = useState(false)
+
     return(
         <>
         <HeaderAndFooter>
@@ -27,9 +28,24 @@ export function ProductPage(){
                             <h2 className="font-poppins font-bold">CADEIRA DE MADEIRA</h2>
                             <p className="text-azul-claro underline text-xs">Saber mais</p>
                             </div>
-                            <CiHeart className="text-vermelho-escuro" size="48"/>
+                            {
+                                !favorite ? 
+                                (
 
-                            {/* <HiHeart className="text-vermelho-escuro" size="64"/> */}
+                            <button onClick={() => {
+                                setFavorite(true)
+                            }}>
+                            <CiHeart className="text-vermelho-escuro" size="48"/>
+                            </button>
+                            )
+                            : (
+                                <button onClick={() => {
+                                    setFavorite(false)
+                                }}>
+                             <HiHeart className="text-vermelho-escuro" size="48"/> 
+                                </button>
+                            )
+                            }
                         </section>
                         <div>
                             <span className="font-poppins text-2xl">Estado:</span>
@@ -45,7 +61,7 @@ export function ProductPage(){
             </div>
             <div className="lg:w-1/2">
                 <h1 className="text-azul-médio border-b border-azul-separator pb-4 mt-12">Informações</h1>
-                <span className="text-texto-infor font-poppins text-xs">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essenti  ally unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </span>
+                <span className="text-texto-infor font-poppins text-xs">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essenti  ally unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </span>
             </div>
 
             <div className="w-full mt-12">

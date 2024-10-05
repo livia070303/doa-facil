@@ -5,6 +5,7 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 import UserProfile from './pages/UserProfile/UserProfile';
 import { ProductPage } from './pages/ProductPage/ProductPage';
+import { CreateProductPage } from './pages/CreateProductPage/CreateProductPage';
 
 const PrivateRoute = (children) => {
     
@@ -36,6 +37,7 @@ export function App() {
             <Route path="/" element={<HomePage/>}></Route>
             <Route path="/user" element={<UserProfile/>}></Route>
             <Route path="product/:id" element={<ProductPage/>}></Route>
+            <Route path="/create" element={<CreateProductPage/>}></Route>
             <Route path="*" element={<ErrorPage/>}></Route>
         </Routes>
         </>

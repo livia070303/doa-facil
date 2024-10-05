@@ -3,6 +3,7 @@ import { FaRegHeart } from "react-icons/fa6";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { IoAddCircle, IoAddCircleOutline } from "react-icons/io5";
 
 export function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -48,6 +49,11 @@ export function Header() {
                                 >
                                     <FaHome className="mr-2 text-white" /> Home
                                 </Link>
+                            </li>
+                            <li className="border-t border-azul-escuro hover:bg-azul-médio">
+                                <a className="flex items-center px-4 py-2 text-white">
+                                    <IoAddCircle className="mr-2 text-white"/>
+                                </a>
                             </li>
                             <li className="border-t border-azul-escuro hover:bg-azul-médio">
                                 <a
@@ -129,7 +135,12 @@ export function Header() {
 
                 {/* Ícones e Avatar */}
                 <div className="hidden mr-5 md:flex justify-between md:w-[20%]">
-                    <div className="flex gap-8 items-center">
+                    <div className="flex gap-8 items-center flex-row-reverse">
+                        <Link to="/create">
+                    <div className="relative flex items-center h-fit ">
+                                <IoAddCircleOutline className="text-3xl"/>
+                            </div>
+                        </Link>
                         <div className="relative flex items-center h-fit">
                             <FaRegHeart className="text-2xl" />
                             <span className="absolute -right-3 -top-4 bg-vermelho-escuro text-white text-center w-6 h-6 rounded-full">

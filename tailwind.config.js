@@ -29,6 +29,7 @@ export default {
         'orange-ring': '#FFE7D6',
 
         "low-gray": "#EDEDED",
+        "pink": "#7B61FF",
 
       }
       
