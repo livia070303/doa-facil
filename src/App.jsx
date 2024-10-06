@@ -6,6 +6,7 @@ import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 import UserProfile from './pages/UserProfile/UserProfile';
 import { ProductPage } from './pages/ProductPage/ProductPage';
 import { CreateProductPage } from './pages/CreateProductPage/CreateProductPage';
+import { FAQPage } from './pages/FAQPage/FAQPage';
 
 const PrivateRoute = (children) => {
     
@@ -39,6 +40,7 @@ export function App() {
             <Route path="product/:id" element={<ProductPage/>}></Route>
             <Route path="/create" element={<CreateProductPage/>}></Route>
             <Route path="*" element={<ErrorPage/>}></Route>
+            <Route path="/faq" element={<FAQPage/>}></Route>
         </Routes>
         </>
     );
