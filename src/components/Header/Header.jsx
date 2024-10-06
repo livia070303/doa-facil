@@ -1,9 +1,9 @@
-import { FaBars, FaHeart, FaHome, FaInfoCircle, FaQuestionCircle, FaSearch, FaShoppingCart, FaTimes, FaUser, FaUserPlus } from "react-icons/fa";
+import { FaBars, FaHeart, FaHome, FaPlusCircle, FaInfoCircle, FaQuestionCircle, FaSearch, FaShoppingCart, FaTimes, FaUser, FaUserPlus } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa6";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { IoAddCircle, IoAddCircleOutline } from "react-icons/io5";
+import { IoAddCircleOutline } from "react-icons/io5";
 
 export function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -61,7 +61,7 @@ export function Header() {
                             </li>
                             <li className="border-t border-azul-escuro hover:bg-azul-médio">
                                 <a className="flex items-center px-4 py-2 text-white">
-                                    <IoAddCircle className="mr-2 text-white"/>
+                                    <FaPlusCircle className="mr-2 text-white"/>
                                 </a>
                             </li>
                             <li className="border-t border-azul-escuro hover:bg-azul-médio">
