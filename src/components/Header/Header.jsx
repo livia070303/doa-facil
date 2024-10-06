@@ -1,4 +1,4 @@
-import { FaBars, FaHeart, FaHome, FaInfoCircle, FaSearch, FaShoppingCart, FaTimes, FaUser, FaUserPlus } from "react-icons/fa";
+import { FaBars, FaHeart, FaHome, FaInfoCircle, FaQuestionCircle, FaSearch, FaShoppingCart, FaTimes, FaUser, FaUserPlus } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa6";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useState } from "react";
@@ -48,6 +48,15 @@ export function Header() {
                                     onClick={() => setMenuOpen(false)}
                                 >
                                     <FaHome className="mr-2 text-white" /> Home
+                                </Link>
+                            </li>
+                            <li className="border-t border-azul-escuro hover:bg-azul-médio">
+                                <Link
+                                    to="/faq"
+                                    className="flex items-center px-4 py-2 text-white"
+                                    onClick={() => setMenuOpen(false)}
+                                >
+                                    <FaQuestionCircle className="mr-2 text-white" /> Perguntas Frequentes
                                 </Link>
                             </li>
                             <li className="border-t border-azul-escuro hover:bg-azul-médio">
@@ -125,9 +134,9 @@ export function Header() {
                     <Link to="/" className="font-medium font-poppins">
                         Inicial
                     </Link>
-                    <a href="#" className="font-medium font-poppins">
-                        Contato
-                    </a>
+                    <Link to="/faq" className="font-medium font-poppins">
+                        FAQ
+                    </Link>
                     <a href="/#" className="font-medium font-poppins">
                         Sobre
                     </a>
