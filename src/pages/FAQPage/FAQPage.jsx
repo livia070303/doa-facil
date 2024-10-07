@@ -1,5 +1,4 @@
 // src/pages/FAQPage.jsx
-import React from 'react';
 import { HeaderAndFooter, HeaderAndFooterContainer } from '../../components/Layouts/HeaderAndFooter.jsx'
 import FAQSection from './components/FAQSection.jsx';
 import ContactForm from './components/ContactForm.jsx';

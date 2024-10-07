@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { BiMinus, BiPlus } from 'react-icons/bi';
 
 function NumberInput({ id, className, min = 0, max = 100, step = 1 }) {
     const [value, setValue] = useState(0);
@@ -28,23 +29,23 @@ function NumberInput({ id, className, min = 0, max = 100, step = 1 }) {
             <button
                 type="button"
                 onClick={handleDecrement}
-                className="p-2 border border-low-gray rounded-l-md"
+                className="p-3 border border-low-gray rounded-l-md"
             >
-                -
+                <BiMinus className='text-1xl'/>
             </button>
             <input
-                type="number"
+                type="text"
                 id={id}
                 value={value}
                 onChange={handleChange}
-                className="p-2 w-full text-center border-t border-b border-low-gray"
+                className="p-2 w-1/5 text-center border-t border-b border-low-gray"
             />
             <button
                 type="button"
                 onClick={handleIncrement}
-                className="p-2 border border-low-gray rounded-r-md"
+                className="p-2 border border-low-gray bg-azul-claro flex items-center juistify-center rounded-r-md"
             >
-                +
+                <BiPlus className='text-2xl text-white'/>
             </button>
         </div>
     );
