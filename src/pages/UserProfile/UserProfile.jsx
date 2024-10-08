@@ -2,7 +2,7 @@ import Sidebar from '../../components/Sidebar/Sidebar.jsx';
 import DonationItem from '../../components/DonationItem/DonationItem.jsx';
 import MobileHeader from '../../components/MobileHeader/MobileHeader.jsx';
 
-const UserProfile = () => {
+export const UserProfile = () => {
     return (
         <div className="min-h-screen flex">
             {/* Sidebar para telas grandes */}
@@ -138,4 +138,4 @@ const UserProfile = () => {
     );
 };
 
-export default UserProfile;
+
