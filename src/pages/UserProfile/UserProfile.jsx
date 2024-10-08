@@ -1,6 +1,6 @@
-import Sidebar from '../../components/Sidebar/Sidebar.jsx';
+import Sidebar from './components/Sidebar.jsx';
 import DonationItem from '../../components/DonationItem/DonationItem.jsx';
-import MobileHeader from '../../components/MobileHeader/MobileHeader.jsx';
+import MobileHeader from './components/MobileHeader.jsx';
 
 export const UserProfile = () => {
     return (
