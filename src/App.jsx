@@ -1,9 +1,10 @@
-import LoginPage from './pages/LoginPage/LoginPage';
+import { LoginPage } from './pages/LoginPage/LoginPage';
+import { ResetPasswordPage } from './pages/ResetPasswordPage/ResetPasswordPage'
 import { Navigate, Route, Routes} from 'react-router-dom';
 import { useAuth } from './hooks/useAuth';
 import { HomePage } from './pages/HomePage/HomePage';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
-import {UserProfile} from './pages/UserProfile/UserProfile';
+import { UserProfile } from './pages/UserProfile/UserProfile';
 import { ProductPage } from './pages/ProductPage/ProductPage';
 import { CreateProductPage } from './pages/CreateProductPage/CreateProductPage';
 import { FAQPage } from './pages/FAQPage/FAQPage';
@@ -35,6 +36,7 @@ export function App() {
         <>
         <Routes>
             <Route path="/login" element={<LoginPage/>}></Route>
+            <Route path="/reset-password" element={<ResetPasswordPage/>} />
             <Route path="/register" element={<RegisterPage/>}></Route>
             <Route path="/home" element={<PrivateRoute><div>Home</div></PrivateRoute>}></Route>
             <Route path="/" element={<HomePage/>}></Route>
