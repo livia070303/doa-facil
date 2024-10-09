@@ -1,27 +1,31 @@
 import Sidebar from './components/Sidebar.jsx';
 import DonationItem from '../../components/DonationItem/DonationItem.jsx';
 import MobileHeader from './components/MobileHeader.jsx';
+import Footer from '../../components/Footer/Footer.jsx';
 
 export const UserProfile = () => {
     return (
-        <div className="min-h-screen flex">
-            {/* Sidebar para telas grandes */}
-            <div className="hidden md:flex">
-                <Sidebar />
-            </div>
-
-            {/*Área do conteúdo principal*/}
-            <div className="flex-1 flex flex-col">
-
-                {/* Header para telas pequenas */}
-                <div className="md:hidden">
-                    <MobileHeader />
+        <>
+        <div className="min-h-screen flex flex-col">
+            {/* Container flex para Sidebar e Conteúdo Principal */}
+            <div className="flex flex-1">
+                {/* Sidebar para telas grandes */}
+                <div className="hidden md:flex">
+                    <Sidebar />
                 </div>
 
-                {/* Main Content */}
-                <main className="flex-1 bg-gray-100 p-10">
-                {/* Seção de Informações do Usuário */} 
-                <section className="flex-1 bg-white p-8 rounded shadow-md w-full max-w-3xl mx-auto">
+                {/*Área do conteúdo principal*/}
+                <div className="flex-1 flex flex-col">
+
+                    {/* Header para telas pequenas */}
+                    <div className="md:hidden">
+                        <MobileHeader />
+                    </div>
+
+                    {/* Main Content */}
+                    <main className="flex-1 bg-gray-100 p-10">
+                    {/* Seção de Informações do Usuário */} 
+                    <section className="flex-1 bg-white p-8 rounded shadow-md w-full max-w-3xl mx-auto">
                     {/* Informações do Usuário */}
 
                     <div className="flex flex-col sm:flex-row items-center mb-6">
@@ -133,8 +137,11 @@ export const UserProfile = () => {
                         </div>
                     </section>
                 </main>
-            </div>
-        </div>
+                </div>
+            </div>  
+            <Footer/>  
+        </div> 
+        </>
     );
 };
 
