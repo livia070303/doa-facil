@@ -13,7 +13,7 @@ export function UploadDocInput({ id, className, onChange, label }) {
     
 
     return (
-        <div className={`flex  flex-col ${className}`}>
+        <div className={`flex max-w-full flex-col ${className}`}>
            <label htmlFor="image" className="block text-sm font-medium text-gray-700">
                 {label}*
             </label>
@@ -23,16 +23,17 @@ export function UploadDocInput({ id, className, onChange, label }) {
                 id="image"
                 className="hidden"
                 />
-                <label htmlFor="image" className='items-center flex gap-4 p-2 rounded-tl-md rounded-bl-md border w-[300px] h-9'>
+                <label htmlFor="image" className='items-center flex gap-4 p-2 rounded-tl-md rounded-bl-md border w-full h-12'>
                     <GrAttachment className='text-2xl text-azul-claro'/>
-                    <span className='font-poppins font-thin text-texto-infor'>Arquivo</span>
+                    <span className='font-poppins font-light text-texto-infor'>Arquivo</span>
                 </label>
                 <label
                 htmlFor="image"
-                className="rounded-tr-md rounded-br-md flex items-center justify-center cursor-pointer bg-azul-claro text-white h-9 px-4 border border-azul-claro"
+                className="rounded-tr-md rounded-br-md flex items-center justify-center cursor-pointer bg-azul-claro text-white w-[150px] h-12 px-4 border border-azul-claro"
                 >
                 Ir
                 </label>
+                
             </div>
         </div>
     );

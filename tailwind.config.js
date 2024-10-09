@@ -20,6 +20,7 @@ export default {
         "texto-label": "#313131",
     
         'bege': '#E6D5B7',
+        'bege-100': '#F9F9F9',
     
         'vermelho-claro': '#FF594B',
         'vermelho-médio': '#FC4638',
@@ -29,6 +30,7 @@ export default {
         'orange-ring': '#FFE7D6',
 
         "low-gray": "#EDEDED",
+
         "pink": "#7B61FF",
 
       }

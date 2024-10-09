@@ -14,8 +14,8 @@ export function CreateProductPage(){
         <HeaderAndFooterContainer className="flex p-12 lg:p-24 flex-col gap-4"> 
             <h1 className="font-poppins text-3xl">Cadastro de produto</h1>
             <div className="flex gap-12 flex-col border border-dashed border-pink p-6 rounded-lg">
-                <div className="flex flex-col lg:flex-row justify-between w-full">
-                    <section className="flex flex-col gap-4">
+                <div className="flex flex-col gap-12 lg:flex-row justify-between w-full">
+                    <section className="flex flex-col gap-4 w-full">
                     <label htmlFor="name">Nome do produto*
                     <input type="text" id="name" className="p-2 w-full rounded-md border border-low-gray"/>
                     </label>
@@ -23,18 +23,19 @@ export function CreateProductPage(){
                     <input type="text" id="category" className="p-2 w-full rounded-md border border-low-gray"/>
                     </label>
                    </section>
-                   <section>
-                    <div className="flex">
+                   <section className="w-full">
+                    <div className="flex flex-col md:flex-row md:justify-between lg:justify-start w-full">
 
-                    <label htmlFor="quantity">Quantidade*
-                    <NumberInput id="quantity" className="p-2 w-full rounded-md "/>
+                    <label htmlFor="quantity" className=" flex flex-col items-center md:items-start">Quantidade*
+                    <NumberInput id="quantity" className="p-2  justify-center rounded-md md:items-start md:justify-start "/>
                     </label>
-                    <label htmlFor="footNum">Numeração (calçados)                
-                    <NumberInput id="footNum" className="p-2 w-full rounded-md "/>
+                    <label htmlFor="footNum" className=" flex flex-col items-center md:justify-end md:items-end lg:items-start">Numeração (calçados)                
+                    <NumberInput id="footNum" className="p-2 rounded-md justify-center md:justify-end lg:justify-start"/>
                     </label>
+                    
                     </div>
-                    <SelectInput id="size" className="p-2 w-full " options={options}/>
-                    <div className="flex w-full gap-4">
+                    <SelectInput id="size" className="p-2 w-full my-2" options={options}/>
+                    <div className="flex flex-col w-full gap-4 my-4">
                         <span>
                         Estado de conservação*:
                         </span>
@@ -53,13 +54,20 @@ export function CreateProductPage(){
                     </div>
                    </section>
                 </div>
-                <div className="w-full flex flex-col lg:grid lg:grid-cols-2">
+                <div className=" flex flex-col items-center gap-4 md:grid md:grid-cols-2">
                     <UploadDocInput id="image" label="Upload de fotos do produto" />
                     <UploadDocInput id="image" label="Upload de fotos do produto" />
                     <UploadDocInput id="image" label="Upload de fotos do produto" />
                     <UploadDocInput id="image" label="Upload de fotos do produto" />
                     <UploadDocInput id="image" label="Upload de fotos do produto" />
                     <UploadDocInput id="image" label="Upload de fotos do produto" />
+                </div>
+                <section className="flex flex-col gap-4 w-full">
+                    <textarea name="description" id="description" cols="30" rows="10" className="p-2 w-full rounded-md border bg-bege-100 border-low-gray resize-none"/>
+                </section>
+                <div className="w-full flex justify-end items-end gap-6">
+                    <button className="py-4 w-[150px] lg:w-[10%] bg-vermelho-médio text-white rounded-md">Cancelar</button>
+                    <button className="py-4 w-[150px] lg:w-[10%] bg-azul-claro text-white rounded-md">Salvar</button>
                 </div>
             </div>
         </HeaderAndFooterContainer>
