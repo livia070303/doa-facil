@@ -30,8 +30,11 @@ export default {
         'orange-ring': '#FFE7D6',
 
         "low-gray": "#EDEDED",
+        "low-gray-100": "#475156",
 
         "pink": "#7B61FF",
+
+        "green": "#2DB224"
 
       }
       
