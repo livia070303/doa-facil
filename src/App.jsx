@@ -10,6 +10,7 @@ import { CreateProductPage } from './pages/CreateProductPage/CreateProductPage';
 import { FAQPage } from './pages/FAQPage/FAQPage';
 import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 import { HistoryPage } from './pages/HistoryPage/HistoryPage';
+import { NeededProductsPage } from './pages/NeededProductsPage/NeededProductsPage';
 
 const PrivateRoute = (children) => {
     
@@ -36,15 +37,15 @@ export function App() {
     return (
         <>
         <Routes>
-            <Route path="/login" element={<LoginPage/>}></Route>
-            <Route path="/reset-password" element={<ResetPasswordPage/>} />
-            <Route path="/register" element={<RegisterPage/>}></Route>
-            <Route path="/home" element={<PrivateRoute><div>Home</div></PrivateRoute>}></Route>
             <Route path="/" element={<HomePage/>}></Route>
-            <Route path="/user" element={<UserProfile/>}></Route>
-            <Route path="product/:id" element={<ProductPage/>}></Route>
-            <Route path="/create" element={<CreateProductPage/>}></Route>
+            <Route path="/needed" element={<NeededProductsPage/>}/>
+            <Route path="/login" element={<LoginPage/>}></Route>
+            <Route path="/register" element={<RegisterPage/>}></Route>
+            <Route path="/reset-password" element={<ResetPasswordPage/>} />
+            <Route path="/user" element={<PrivateRoute><UserProfile/></PrivateRoute>}></Route>
             <Route path="/history" element={<HistoryPage/>}></Route>
+            <Route path="/create" element={<CreateProductPage/>}></Route>
+            <Route path="product/:id" element={<ProductPage/>}></Route>
             <Route path="/faq" element={<FAQPage/>}></Route>
             <Route path="*" element={<ErrorPage/>}></Route>
         </Routes>
