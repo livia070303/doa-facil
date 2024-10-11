@@ -10,6 +10,7 @@ import { CreateProductPage } from './pages/CreateProductPage/CreateProductPage';
 import { FAQPage } from './pages/FAQPage/FAQPage';
 import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 import { HistoryPage } from './pages/HistoryPage/HistoryPage';
+import { NeededProductsPage } from './pages/NeededProductsPage/NeededProductsPage';
 
 const PrivateRoute = (children) => {
     
@@ -46,6 +47,7 @@ export function App() {
             <Route path="/create" element={<CreateProductPage/>}></Route>
             <Route path="/history" element={<HistoryPage/>}></Route>
             <Route path="/faq" element={<FAQPage/>}></Route>
+            <Route path="/needed" element={<NeededProductsPage/>}/>
             <Route path="*" element={<ErrorPage/>}></Route>
         </Routes>
         </>
