@@ -17,6 +17,7 @@ const CheckoutPage = () => {
   };
 
   return (
+    <>
     <HeaderAndFooter>
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-8">
@@ -75,6 +76,7 @@ const CheckoutPage = () => {
         </div>
       </div>
     </HeaderAndFooter>
+    </>
   );
 };
 

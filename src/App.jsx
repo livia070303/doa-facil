@@ -54,7 +54,7 @@ export function App() {
             <Route path="/faq" element={<FAQPage/>}></Route>
             <Route path="*" element={<ErrorPage/>}></Route>
             <Route path="/cart" element={<CartPage />} />
-            <Route path="/checkout" element={<CheckOut />} />
+            <Route path="/checkout" element={<CheckOutPage />} />
             <Route path="/requirements-list" element={<RequirementsListPage />} />
         </Routes>
         </>
