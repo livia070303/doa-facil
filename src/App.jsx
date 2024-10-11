@@ -11,9 +11,9 @@ import { FAQPage } from './pages/FAQPage/FAQPage';
 import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 import { HistoryPage } from './pages/HistoryPage/HistoryPage';
 import { NeededProductsPage } from './pages/NeededProductsPage/NeededProductsPage';
-import { CartPage } from './pages/CartPage/CartPage';
-import { CheckOutPage } from './pages/CheckOutPage/CheckOutPage';
-import { RequirementsListPage } from './pages/RequirementsListPage/RequirementsListPage';
+import CartPage from './pages/CartPage/CartPage';
+import CheckOut from './pages/CheckOut/CheckOut';
+import RequirementsListPage from './pages/RequirementsListPage/RequirementsListPage';
 
 
 
@@ -54,7 +54,7 @@ export function App() {
             <Route path="/faq" element={<FAQPage/>}></Route>
             <Route path="*" element={<ErrorPage/>}></Route>
             <Route path="/cart" element={<CartPage />} />
-            <Route path="/checkout" element={<CheckOutPage />} />
+            <Route path="/checkout" element={<CheckOut />} />
             <Route path="/requirements-list" element={<RequirementsListPage />} />
         </Routes>
         </>
