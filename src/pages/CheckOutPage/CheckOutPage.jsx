@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { HeaderAndFooter, HeaderAndFooterContainer } from '../../components/Layouts/HeaderAndFooter.jsx';
+import { HeaderAndFooter } from '../../components/Layouts/HeaderAndFooter.jsx';
 
 const CheckoutPage = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +17,7 @@ const CheckoutPage = () => {
   };
 
   return (
-    <HeaderAndFooterContainer>
+    <HeaderAndFooter>
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-8">
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-800">Endereço de Retirada</h2>
@@ -74,7 +74,7 @@ const CheckoutPage = () => {
           </div>
         </div>
       </div>
-    </HeaderAndFooterContainer>
+    </HeaderAndFooter>
   );
 };
 

@@ -12,7 +12,7 @@ import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 import { HistoryPage } from './pages/HistoryPage/HistoryPage';
 import { NeededProductsPage } from './pages/NeededProductsPage/NeededProductsPage';
 import CartPage from './pages/CartPage/CartPage';
-import CheckOut from './pages/CheckOut/CheckOut';
+import CheckOutPage from './pages/CheckOutPage/CheckOutPage';
 import RequirementsListPage from './pages/RequirementsListPage/RequirementsListPage';
 
 
