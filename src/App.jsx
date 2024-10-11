@@ -11,6 +11,11 @@ import { FAQPage } from './pages/FAQPage/FAQPage';
 import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 import { HistoryPage } from './pages/HistoryPage/HistoryPage';
 import { NeededProductsPage } from './pages/NeededProductsPage/NeededProductsPage';
+import { CartPage } from './pages/CartPage/CartPage';
+import { CheckOutPage } from './pages/CheckOutPage/CheckOutPage';
+import { RequirementsListPage } from './pages/RequirementsListPage/RequirementsListPage';
+
+
 
 const PrivateRoute = (children) => {
     
@@ -48,6 +53,9 @@ export function App() {
             <Route path="product/:id" element={<ProductPage/>}></Route>
             <Route path="/faq" element={<FAQPage/>}></Route>
             <Route path="*" element={<ErrorPage/>}></Route>
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/checkout" element={<CheckOutPage />} />
+            <Route path="/requirements-list" element={<RequirementsListPage />} />
         </Routes>
         </>
     );
