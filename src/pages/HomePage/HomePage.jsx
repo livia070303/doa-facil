@@ -11,11 +11,16 @@ export function HomePage(){
         <HeaderAndFooter>
            <HeaderAndFooterContainer className="flex"> 
                 <LeftMenuFilters/>
-                <div className='flex flex-col p-20 gap-8 w-full h-fit-content border '>
-                    <div className='bg-neutral-600 w-full py-28 flex items-center justify-center'>
-                        <span className='text-4xl font-poppins text-texto-infor'>[ANUNCIO]</span>
-                    </div>
-                    <div className='flex flex-col'>
+                <div className='flex flex-col w-full h-fit-content border '>
+                     {/* Imagem do Anúncio */}
+                     <div className='w-full'>
+                            <img
+                                src='../public/conectandosolidariedade.jpg'
+                                alt='Descrição do anúncio'
+                                className='w-full h-auto object-cover'
+                            />
+                        </div>
+                    <div className='flex flex-col p-20 md:p-8 lg:p-20 gap-8'>
                         <SectionHeader label='Recentes' title="Mais buscados" key="recentes"/>
                         <div className='flex flex-col items-center gap-4 lg:grid lg:grid-cols-4'>
                         <Link to="/product/1">

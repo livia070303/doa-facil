@@ -61,7 +61,7 @@ export function Header() {
                             </li>
                             <li className="border-t border-azul-escuro hover:bg-azul-médio">
                                 <a className="flex items-center px-4 py-2 text-white">
-                                    <FaPlusCircle className="mr-2 text-white"/>
+                                    <FaPlusCircle className="mr-2 text-white"/>Cadastrar Doação
                                 </a>
                             </li>
                             <li className="border-t border-azul-escuro hover:bg-azul-médio">
