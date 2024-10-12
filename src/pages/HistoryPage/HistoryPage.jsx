@@ -1,31 +1,40 @@
-import { HeaderAndFooter, HeaderAndFooterContainer } from "../../components/Layouts/HeaderAndFooter";
-import { HistoryProduct } from "./HistoryProduct";
+import React from "react";
+import { HeaderAndFooter, HeaderAndFooterContainer } from "../../components/Layouts/HeaderAndFooter.jsx";
+import DonationProducts from "../../components/DonationProducts";  // Caminho atualizado para importar o componente DonationProducts
+import InterestProducts from "../../components/InterestProducts";  // Caminho atualizado para importar o componente InterestProducts
 
+const HistoryPage = () => {
+  // Produtos para Doação
+  const productsForDonation = [
+    { id: 1, name: 'Drone de brinquedo', status: 'DISPONÍVEL', imgSrc: '/drone.png' },
+    { id: 2, name: 'Fone de ouvido', status: 'DISPONÍVEL', imgSrc: '/headphones.png' },
+    { id: 3, name: 'Ar condicionado Inverter Midea', status: 'DISPONÍVEL', imgSrc: '/air-conditioner.png' },
+    { id: 4, name: 'Video Game PS', status: 'CEDIDO', imgSrc: '/video-game.png' },
+    { id: 5, name: 'Computador', status: 'CEDIDO', imgSrc: '/computer.png' },
+  ];
 
+  // Produtos de Interesse
+  const productsOfInterest = [
+    { id: 1, name: 'Monitor', imgSrc: '/lcd-monitor.png' },
+    { id: 2, name: 'Celular', imgSrc: '/cellphone.png' },
+    { id: 3, name: 'Controle remoto de PS4', imgSrc: '/h1-gamepad.png' },
+  ];
 
-export function HistoryPage(){
-    return(
-        <>
-        <HeaderAndFooter>
-            <HeaderAndFooterContainer className="flex p-6 lg:p-24 flex-col gap-4">
-                <div className="border border-low-gray p-2 md:p-0">
-                    <h1 className="font-poppins text-2xl p-6">Histórico de produtos</h1>
-                    <div className="flex md:flex-col items-center">
-                        <header className="hidden md:flex border w-full p-4 bg-low-gray text-low-gray-100">
-                            <span className="w-[60%]">PRODUTO</span>
-                            <span className="w-[30%]">DISPONIBILIDADE</span>
-                            <span className="w-[30%] flex items-end justify-end">AÇÃO</span>
-                        </header>
-                        <div className="flex flex-col md:hidden w-full bg-low-gray p-1 rounded-tl-md rounded-bl-md">
-                            <span className="text-sm text-low-gray-100 ">PRODUTO</span>
-                            <span className="text-sm text-low-gray-100 ">DISPONIBILIDADE</span>
-                            <span className="text-sm text-low-gray-100 h-12">AÇÃO</span>
-                        </div>
-                        <HistoryProduct product="Drone" availability="Disponível" actionType="Cancel"/>
-                    </div>
-                </div>
-            </HeaderAndFooterContainer>
-        </HeaderAndFooter>
-        </>
-    )
-}
+  return (
+    <HeaderAndFooterContainer>
+      <HeaderAndFooter>
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          {/* Histórico de Produtos para Doação */}
+          <h2 className="text-2xl md:text-4xl font-semibold text-gray-800 mb-8">Histórico de produtos para doação</h2>
+          <DonationProducts products={productsForDonation} />  {/* Chamando o componente DonationProducts */}
+
+          {/* Histórico de Produtos de Interesse */}
+          <h2 className="text-2xl md:text-4xl font-semibold text-gray-800 mt-12 mb-8">Histórico de produtos de interesse</h2>
+          <InterestProducts products={productsOfInterest} />  {/* Chamando o componente InterestProducts */}
+        </div>
+      </HeaderAndFooter>
+    </HeaderAndFooterContainer>
+  );
+};
+
+export default HistoryPage;

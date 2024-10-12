@@ -9,7 +9,7 @@ import { ProductPage } from './pages/ProductPage/ProductPage';
 import { CreateProductPage } from './pages/CreateProductPage/CreateProductPage';
 import { FAQPage } from './pages/FAQPage/FAQPage';
 import { RegisterPage } from './pages/RegisterPage/RegisterPage';
-import { HistoryPage } from './pages/HistoryPage/HistoryPage';
+import HistoryPage from './pages/HistoryPage/HistoryPage';
 import { NeededProductsPage } from './pages/NeededProductsPage/NeededProductsPage';
 import CartPage from './pages/CartPage/CartPage';
 import CheckOutPage from './pages/CheckOutPage/CheckOutPage';
