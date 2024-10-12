@@ -60,10 +60,10 @@ const CheckoutPage = () => {
             <div className="space-y-6">
               {[
                 { name: 'LCD Monitor', imgSrc: "/lcd-monitor.png" },
-                { name: 'H1 Gamepad', imgSrc: "//h1-gamepad.png" }
+                { name: 'H1 Gamepad', imgSrc: "/h1-gamepad.png" }
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-4">
-                  <img src={item.img} alt={item.name} className="w-12 h-12" />
+                  <img src={item.imgSrc} alt={item.name} className="w-12 h-12 sm:w-16 sm:h-16" />
                   <span className="flex-1 text-black">{item.name}</span>
                 </div>
               ))}

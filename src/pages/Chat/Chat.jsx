@@ -38,7 +38,7 @@ const ChatWindow = ({ isFullScreen }) => {
   ];
 
   return (
-    <div className={`bg-white shadow-lg rounded-lg ${isFullScreen ? 'w-full h-full' : 'w-[350px] h-[500px]'} overflow-hidden`}>
+    <div className={`bg-white shadow-lg rounded-lg ${isFullScreen ? 'w-full h-full' : 'w-64 sm:w-[350px] h-[400px] sm:h-[500px]'} overflow-hidden`}>
       {/* Chat Header */}
       <div className="bg-blue-500 text-white flex justify-between items-center p-4">
         <div className="flex items-center space-x-4">
@@ -53,7 +53,7 @@ const ChatWindow = ({ isFullScreen }) => {
         {messages.map((msg) => (
           <div key={msg.id} className="mb-4">
             <div className="flex items-center space-x-4">
-              <Avatar size="40" round={true} src={msg.avatar} />
+              <Avatar size="32" round={true} src={msg.avatar} />
               <div className="flex-1">
                 <h4 className="text-sm font-medium">{msg.name}</h4>
                 <p className="text-xs text-gray-500">{msg.message}</p>
