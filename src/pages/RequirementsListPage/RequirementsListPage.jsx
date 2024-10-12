@@ -1,6 +1,8 @@
-import { HeaderAndFooterContainer } from '../../components/Layouts/HeaderAndFooter.jsx';
+import React from "react";
+import { HeaderAndFooter, HeaderAndFooterContainer } from "../../components/Layouts/HeaderAndFooter.jsx";
 
 const RequirementsListPage = () => {
+  // A lista de produtos fica dentro da função do componente, fora do JSX.
   const products = [
     {
       id: 1,
@@ -31,34 +33,36 @@ const RequirementsListPage = () => {
 
   return (
     <HeaderAndFooterContainer>
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Título */}
-        <h2 className="text-2xl md:text-4xl font-semibold text-gray-800 mb-8">Produtos Necessitados</h2>
+      <HeaderAndFooter>
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          {/* Título */}
+          <h2 className="text-2xl md:text-4xl font-semibold text-gray-800 mb-8">Produtos Necessitados</h2>
 
-        {/* Lista de Produtos */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product) => (
-            <div key={product.id} className="bg-gray-100 rounded-lg p-4 relative overflow-hidden">
-              {product.discount && (
-                <div className="absolute top-4 left-4 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-md">
-                  {product.discount}
-                </div>
-              )}
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-40 object-contain mx-auto"
-              />
-              <div className="mt-4">
-                <h3 className="text-lg font-medium text-gray-800">{product.name}</h3>
-                <div className="text-red-500 font-medium mt-2">
-                  {product.size || product.quantity}
+          {/* Lista de Produtos */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.map((product) => (
+              <div key={product.id} className="bg-gray-100 rounded-lg p-4 relative overflow-hidden">
+                {product.discount && (
+                  <div className="absolute top-4 left-4 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-md">
+                    {product.discount}
+                  </div>
+                )}
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-40 object-contain mx-auto"
+                />
+                <div className="mt-4">
+                  <h3 className="text-lg font-medium text-gray-800">{product.name}</h3>
+                  <div className="text-red-500 font-medium mt-2">
+                    {product.size || product.quantity}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      </HeaderAndFooter>
     </HeaderAndFooterContainer>
   );
 };
