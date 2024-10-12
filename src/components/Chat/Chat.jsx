@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Avatar from 'react-avatar';
+import { useNavigate } from 'react-router-dom';
+import { HeaderAndFooter, HeaderAndFooterContainer } from "../../components/Layouts/HeaderAndFooter.jsx";
 
 // Componente de chat que será utilizado tanto na versão flutuante quanto na página completa
-const ChatWindow = ({ isFullScreen }) => {
+const ChatWindow = ({ isFullScreen, toggleChat }) => {
   const messages = [
     {
       id: 1,
@@ -45,6 +46,11 @@ const ChatWindow = ({ isFullScreen }) => {
           <Avatar size="40" round={true} src="https://via.placeholder.com/58x64" />
           <h3 className="text-lg font-semibold">Chat com Dayelle</h3>
         </div>
+        {isFullScreen ? null : (
+          <button onClick={toggleChat} className="text-white text-xl">
+            ×
+          </button>
+        )}
       </div>
 
       {/* Chat Body */}
@@ -86,6 +92,7 @@ const ChatWindow = ({ isFullScreen }) => {
   );
 };
 
+// Componente de chat com a opção de versão flutuante
 const Chat = () => {
   const [isChatOpen, setIsChatOpen] = useState(false); // Estado para controlar se o chat está aberto ou minimizado
   const navigate = useNavigate();
@@ -114,7 +121,7 @@ const Chat = () => {
       {/* Chat Suspenso */}
       {isChatOpen && (
         <div className="fixed bottom-16 right-4 z-40">
-          <ChatWindow isFullScreen={false} />
+          <ChatWindow isFullScreen={false} toggleChat={toggleChat} />
           {/* Link para ver o chat em tela cheia */}
           <div className="text-center mt-2">
             <button
@@ -130,19 +137,23 @@ const Chat = () => {
   );
 };
 
+// Página completa de chat com Header e Footer
 export const ChatFullScreenPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full h-screen flex flex-col">
-      <button
-        onClick={() => navigate(-1)}
-        className="bg-blue-500 text-white p-2 m-4 rounded-md"
-      >
-        Voltar
-      </button>
-      <ChatWindow isFullScreen={true} />
-    </div>
+    <HeaderAndFooterContainer>
+      {/* Conteúdo principal do chat em tela cheia */}
+      <div className="w-full h-screen flex flex-col">
+        <button
+          onClick={() => navigate(-1)}
+          className="bg-blue-500 text-white p-2 m-4 rounded-md"
+        >
+          Voltar
+        </button>
+        <ChatWindow isFullScreen={true} />
+      </div>
+    </HeaderAndFooterContainer>
   );
 };
 
