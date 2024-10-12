@@ -15,8 +15,8 @@ const CartPage = () => {
           {/* Lista de Produtos */}
           <div className="flex flex-col gap-6">
             {[
-              { name: "LCD Monitor", quantity: "01", imgSrc: "/images/lcd-monitor.png" },
-              { name: "H1 Gamepad", quantity: "02", imgSrc: "/images/h1-gamepad.png" },
+              { name: "LCD Monitor", quantity: "01", imgSrc: "/lcd-monitor.png" },
+              { name: "H1 Gamepad", quantity: "02", imgSrc: "/h1-gamepad.png" },
             ].map((product, index) => (
               <div key={index} className="flex justify-between items-center bg-white rounded shadow p-4">
                 <div className="flex items-center gap-4">

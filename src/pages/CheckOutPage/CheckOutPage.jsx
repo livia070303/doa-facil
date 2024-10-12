@@ -59,8 +59,8 @@ const CheckoutPage = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               {[
-                { name: 'LCD Monitor', img: '/img/lcd-monitor.png' },
-                { name: 'H1 Gamepad', img: '/img/h1-gamepad.png' }
+                { name: 'LCD Monitor', imgSrc: "/lcd-monitor.png" },
+                { name: 'H1 Gamepad', imgSrc: "//h1-gamepad.png" }
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-4">
                   <img src={item.img} alt={item.name} className="w-12 h-12" />

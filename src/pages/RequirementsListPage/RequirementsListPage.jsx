@@ -8,26 +8,25 @@ const RequirementsListPage = () => {
       id: 1,
       name: 'Casaco de frio',
       size: 'Tamanho M',
-      image: '/img/jacket.png',
+      imgSrc: "/jacket.png",
     },
     {
       id: 2,
       name: 'Bolsa de mão',
       size: 'Tamanho G',
-      image: '/img/handbag.png',
+      imgSrc: "/handbag.png",      
     },
     {
       id: 3,
-      name: 'Estrante de livros',
+      name: 'Estante de livros',
       size: 'Tamanho M',
-      image: '/img/book-shelf.png',
+      imgSrc: "/book-shelf.png",      
     },
     {
       id: 4,
       name: 'Cadeira',
       quantity: '4 unidades',
-      image: '/img/chair.png',
-      discount: '-25%',
+      imgSrc: "/chair.png",      
     },
   ];
 
@@ -42,13 +41,8 @@ const RequirementsListPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product) => (
               <div key={product.id} className="bg-gray-100 rounded-lg p-4 relative overflow-hidden">
-                {product.discount && (
-                  <div className="absolute top-4 left-4 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-md">
-                    {product.discount}
-                  </div>
-                )}
                 <img
-                  src={product.image}
+                  src={product.imgSrc}
                   alt={product.name}
                   className="w-full h-40 object-contain mx-auto"
                 />
