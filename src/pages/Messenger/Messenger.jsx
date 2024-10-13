@@ -10,7 +10,7 @@ const Messenger = () => {
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative', background: '#EDEDED', borderRadius: 20, overflow: 'hidden' }}>
       <div style={{ ...commonStyles, width: 445, height: 969, left: 49, top: 26, background: 'white', borderRadius: 10, border: '1px rgba(74, 74, 74, 0.51) solid' }} />
-      <img style={{ ...commonStyles, width: 58, height: 64, left: 75, top: 35, borderRadius: '50%' }} src="https://via.placeholder.com/58x64" alt="Profile" />
+      <img style={{ ...commonStyles, width: 58, height: 64, left: 75, top: 35, borderRadius: '50%' }} src="/avatardayelle.png" alt="Profile" />
       
       <div style={{ ...commonStyles, width: 222, height: 13, left: 145, top: 46, color: 'black', fontSize: 22, fontWeight: '700' }}>
         Dayelle Pessotti
@@ -58,16 +58,16 @@ const Messenger = () => {
         5s
       </div>
 
-      <img style={{ ...commonStyles, width: 80, height: 81, left: 84, top: 330, borderRadius: '50%' }} src="https://via.placeholder.com/80x81" alt="Avatar 1" />
-      <img style={{ ...commonStyles, width: 80, height: 81, left: 84, top: 467, borderRadius: '50%' }} src="https://via.placeholder.com/80x81" alt="Avatar 2" />
-      <img style={{ ...commonStyles, width: 80, height: 81, left: 84, top: 741, borderRadius: '50%' }} src="https://via.placeholder.com/80x81" alt="Avatar 3" />
-      <img style={{ ...commonStyles, width: 80, height: 81, left: 84, top: 878, borderRadius: '50%' }} src="https://via.placeholder.com/80x81" alt="Avatar 4" />
+      <img style={{ ...commonStyles, width: 80, height: 81, left: 84, top: 330, borderRadius: '50%' }} src="/avatarlivia" alt="Avatar 1" />
+      <img style={{ ...commonStyles, width: 80, height: 81, left: 84, top: 467, borderRadius: '50%' }} src="/avataremily" alt="Avatar 2" />
+      <img style={{ ...commonStyles, width: 80, height: 81, left: 84, top: 741, borderRadius: '50%' }} src="/avatarcaio" alt="Avatar 3" />
+      <img style={{ ...commonStyles, width: 80, height: 81, left: 84, top: 878, borderRadius: '50%' }} src="/avatarpaulo" alt="Avatar 4" />
 
       <div style={{ ...commonStyles, width: 422.06, height: 0, left: 48.97, top: 429.5, border: '1px rgba(0, 0, 0, 0.17) solid' }}></div>
       <div style={{ ...commonStyles, width: 422.06, height: 0, left: 49.06, top: 848, border: '1px rgba(0, 0, 0, 0.17) solid' }}></div>
 
       <div style={{ ...commonStyles, width: 421, height: 140, left: 49, top: 569, background: '#E9F7F8' }}></div>
-      <img style={{ ...commonStyles, width: 80, height: 81, left: 84, top: 598, borderRadius: '50%' }} src="https://via.placeholder.com/80x81" alt="Avatar 5" />
+      <img style={{ ...commonStyles, width: 80, height: 81, left: 84, top: 598, borderRadius: '50%' }} src="/avatarpatrícia" alt="Avatar 5" />
 
       <div style={{ ...commonStyles, width: 25, height: 24, left: 408, top: 367, background: '#FC4638', borderRadius: '50%' }} />
       <div style={{ ...commonStyles, width: 17, height: 19, left: 416, top: 371, color: 'white', fontSize: 15, fontWeight: '500' }}>
@@ -87,7 +87,7 @@ const Messenger = () => {
       </div>
 
       <div style={{ ...commonStyles, width: 487, height: 137, left: 544, top: 287 }}>
-        <img style={{ ...commonStyles, width: 71, height: 66, left: 0, top: 71, borderRadius: '50%' }} src="https://via.placeholder.com/71x66" alt="Avatar 7" />
+        <img style={{ ...commonStyles, width: 71, height: 66, left: 0, top: 71, borderRadius: '50%' }} src="avatarlivia" alt="Avatar 7" />
         <div style={{ ...commonStyles, width: 396, height: 100, left: 91, top: 0, background: 'white', borderRadius: 10 }} />
         <div style={{ ...commonStyles, width: 349, height: 65, left: 121, top: 15, color: 'black', fontSize: 20, fontWeight: '400' }}>
           Boa tarde. A calça jeans ainda está disponível para doação?
@@ -98,7 +98,7 @@ const Messenger = () => {
       </div>
 
       <div style={{ ...commonStyles, width: 487, height: 137, left: 530, top: 574 }}>
-        <img style={{ ...commonStyles, width: 71, height: 66, left: 0, top: 71, borderRadius: '50%' }} src="https://via.placeholder.com/71x66" alt="Avatar 8" />
+        <img style={{ ...commonStyles, width: 71, height: 66, left: 0, top: 71, borderRadius: '50%' }} src="avatarlivia" alt="Avatar 8" />
         <div style={{ ...commonStyles, width: 396, height: 100, left: 91, top: 0, background: 'white', borderRadius: 10 }} />
         <div style={{ ...commonStyles, width: 349, height: 65, left: 121, top: 15, color: 'black', fontSize: 20, fontWeight: '400' }}>
           Quero sim. Como faço para retirar? Posso pegar até que dia?
@@ -109,7 +109,7 @@ const Messenger = () => {
       </div>
 
       <div style={{ ...commonStyles, width: 470, height: 129, left: 945, top: 433 }}>
-        <img style={{ ...commonStyles, width: 58, height: 64, left: 412, top: 65, borderRadius: '50%' }} src="https://via.placeholder.com/58x64" alt="Avatar 9" />
+        <img style={{ ...commonStyles, width: 58, height: 64, left: 412, top: 65, borderRadius: '50%' }} src="avatardayelle" alt="Avatar 9" />
         <div style={{ ...commonStyles, width: 396, height: 100, left: 0, top: 0, background: '#2CBAE2', borderRadius: 10 }} />
         <div style={{ ...commonStyles, width: 371, height: 65, left: 15, top: 17, color: '#1E1E1E', fontSize: 20, fontWeight: '400' }}>
           Sim está! Vc tem interesse nela? Se tiver podemos marcar para vc retirá-la.
@@ -120,7 +120,7 @@ const Messenger = () => {
       </div>
 
       <div style={{ ...commonStyles, width: 470, height: 129, left: 945, top: 723 }}>
-        <img style={{ ...commonStyles, width: 58, height: 64, left: 412, top: 65, borderRadius: '50%' }} src="https://via.placeholder.com/58x64" alt="Avatar 10" />
+        <img style={{ ...commonStyles, width: 58, height: 64, left: 412, top: 65, borderRadius: '50%' }} src="/avatardayelle" alt="Avatar 10" />
         <div style={{ ...commonStyles, width: 396, height: 100, left: 0, top: 0, background: '#2CBAE2', borderRadius: 10 }} />
         <div style={{ ...commonStyles, width: 371, height: 65, left: 15, top: 17, color: 'black', fontSize: 20, fontWeight: '400' }}>
           Vou deixar na portaria do meu prédio com seu nome. Só passar e pegar até amanhã.
@@ -130,7 +130,7 @@ const Messenger = () => {
         </div>
       </div>
 
-      <img style={{ ...commonStyles, width: 27, height: 23, left: 973, top: 589 }} src="https://via.placeholder.com/27x23" alt="Icon 3" />
+      <img style={{ ...commonStyles, width: 27, height: 23, left: 973, top: 589 }} src="avatarlivia" alt="Icon 3" />
     </div>
   );
 };
