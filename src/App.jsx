@@ -16,7 +16,7 @@ import CheckOutPage from './pages/CheckOutPage/CheckOutPage';
 import RequirementsListPage from './pages/RequirementsListPage/RequirementsListPage';
 import Chat from './components/Chat/Chat';
 import { ChatFullScreenPage } from './components/Chat/Chat';
-import Messenger from './pages/Messenger/Messenger';
+import ChatPage from './pages/ChatPage/ChatPage';
 
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
@@ -51,7 +51,7 @@ export function App() {
         <Route path="/checkout" element={<CheckOutPage />} />
         <Route path="/requirements-list" element={<RequirementsListPage />} />
         <Route path="/chat-fullscreen" element={<ChatFullScreenPage />} />
-        <Route path="/messenger" element={<Messenger />} />
+        <Route path="/messenger" element={<ChatPage />} />
       </Routes>
 
       {/* O Chat é renderizado em todas as páginas */}

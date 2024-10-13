@@ -15,7 +15,7 @@ export function HomePage(){
                      {/* Imagem do Anúncio */}
                      <div className='w-full'>
                             <img
-                                src='../public/conectandosolidariedade.jpg'
+                                src='/conectandosolidariedade.jpg'
                                 alt='Descrição do anúncio'
                                 className='w-full h-auto object-cover'
                             />
