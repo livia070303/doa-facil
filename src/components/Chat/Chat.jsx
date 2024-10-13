@@ -142,7 +142,7 @@ export const ChatFullScreenPage = () => {
   const navigate = useNavigate();
 
   return (
-    <HeaderAndFooterContainer>
+    <HeaderAndFooter>
       {/* Conteúdo principal do chat em tela cheia */}
       <div className="w-full h-screen flex flex-col">
         <button
@@ -153,7 +153,7 @@ export const ChatFullScreenPage = () => {
         </button>
         <ChatWindow isFullScreen={true} />
       </div>
-    </HeaderAndFooterContainer>
+    </HeaderAndFooter>
   );
 };
 
