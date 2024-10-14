@@ -1,6 +1,6 @@
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import { ResetPasswordPage } from './pages/ResetPasswordPage/ResetPasswordPage';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { useAuth } from './hooks/useAuth';
 import { HomePage } from './pages/HomePage/HomePage';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
@@ -32,6 +32,41 @@ const PrivateRoute = ({ children }) => {
 };
 
 export function App() {
+  const location = useLocation();
+
+  // Definir os caminhos onde o chat não deve ser renderizado
+  const noChatPaths = ['/login', '/register', '/reset-password', '/chat'];
+
+  // Função para verificar se o caminho atual corresponde a uma rota específica ou a rota de erro
+  const shouldRenderChat = () => {
+    // Se o caminho atual está em `noChatPaths`, não renderiza o chat
+    if (noChatPaths.includes(location.pathname)) {
+      return false;
+    }
+
+    // Se nenhuma rota válida correspondeu, estamos na página de erro
+    const validPaths = [
+      '/',
+      '/needed',
+      '/user',
+      '/history',
+      '/create',
+      '/product/:id',
+      '/faq',
+      '/cart',
+      '/checkout',
+      '/requirements-list',
+    ];
+
+    const isValidPath = validPaths.some((path) => {
+      // Tratar rotas com parâmetros, como '/product/:id'
+      const regex = new RegExp('^' + path.replace(/:\w+/g, '\\w+') + '$');
+      return regex.test(location.pathname);
+    });
+
+    return isValidPath;
+  };
+
   return (
     <>
       <Routes>
@@ -52,8 +87,8 @@ export function App() {
         <Route path="/chat" element={<ChatPage />} />
       </Routes>
 
-      {/* O Chat é renderizado em todas as páginas */}
-      <Chat />
+      {/* Renderiza o Chat se `shouldRenderChat` retornar true */}
+      {shouldRenderChat() && <Chat />}
     </>
   );
 }
