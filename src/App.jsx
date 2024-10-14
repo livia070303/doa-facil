@@ -49,7 +49,7 @@ export function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckOutPage />} />
         <Route path="/requirements-list" element={<RequirementsListPage />} />
-        <Route path="/messenger" element={<ChatPage />} />
+        <Route path="/chat" element={<ChatPage />} />
       </Routes>
 
       {/* O Chat é renderizado em todas as páginas */}

@@ -22,7 +22,7 @@ const Chat = () => {
   };
 
   const openFullScreenChat = () => {
-    navigate('/messenger');
+    navigate('/chat');
   };
 
   // Função para selecionar uma conversa
