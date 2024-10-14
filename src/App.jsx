@@ -15,7 +15,6 @@ import CartPage from './pages/CartPage/CartPage';
 import CheckOutPage from './pages/CheckOutPage/CheckOutPage';
 import RequirementsListPage from './pages/RequirementsListPage/RequirementsListPage';
 import Chat from './components/Chat/Chat';
-import { ChatFullScreenPage } from './components/Chat/Chat';
 import ChatPage from './pages/ChatPage/ChatPage';
 
 const PrivateRoute = ({ children }) => {
@@ -50,7 +49,6 @@ export function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckOutPage />} />
         <Route path="/requirements-list" element={<RequirementsListPage />} />
-        <Route path="/chat-fullscreen" element={<ChatFullScreenPage />} />
         <Route path="/messenger" element={<ChatPage />} />
       </Routes>
 

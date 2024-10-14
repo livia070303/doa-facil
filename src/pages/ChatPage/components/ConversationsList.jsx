@@ -3,12 +3,20 @@
 import React from 'react';
 import Avatar from 'react-avatar';
 
-const ConversationsList = ({ conversations, onSelectConversation }) => {
+const ConversationsList = ({ conversations, onSelectConversation, onMinimizeChat, isMinimized }) => {
   return (
-    <div className="h-full flex flex-col">
+    <div className={`h-full flex flex-col ${isMinimized ? '' : 'rounded-lg m-2 border border-gray-300'}`}>
       {/* Header da Lista de Conversas */}
-      <div className="bg-blue-500 text-white p-4">
-        <h3 className="text-lg font-semibold">Conversas</h3>
+      <div className="flex justify-between items-center p-4 border-b border-gray-300">
+        <h3 className="text-lg font-semibold">Mensagens</h3>
+        {!isMinimized && (
+          <button onClick={onMinimizeChat}>
+            {/* Ícone de seta para minimizar */}
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-600 hover:text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+        )}
       </div>
       {/* Lista de Conversas */}
       <div className="flex-1 overflow-y-auto">
