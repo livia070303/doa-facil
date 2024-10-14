@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Avatar from 'react-avatar';
+import { IoClose, IoChevronBackOutline, IoSend } from "react-icons/io5";
 
 const ChatWindow = ({ conversation, isFullScreen, toggleChat, onMinimizeChat, onBack }) => {
   const [messages, setMessages] = useState([]);
@@ -36,14 +37,12 @@ const ChatWindow = ({ conversation, isFullScreen, toggleChat, onMinimizeChat, on
   return (
     <div className={`bg-white ${isFullScreen ? 'h-full m-2 rounded-lg' : 'flex-1'} overflow-hidden flex flex-col`}>
       {/* Chat Header */}
-      <div className="bg-white flex justify-between items-center p-4 border-b border-gray-300">
+      <div className="bg-gradient-to-r from-vermelho-médio to-azul-claro flex justify-between items-center p-4 border-b border-gray-300">
         <div className="flex items-center space-x-4">
           {!isFullScreen && (
-            <button onClick={onBack} className="text-gray-600 hover:text-gray-800">
+            <button onClick={onBack} className="text-white hover:text-azul-escuro">
               {/* Ícone de seta para voltar */}
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
+              <IoChevronBackOutline className='text-2xl' />
             </button>
           )}
           <Avatar
@@ -51,13 +50,13 @@ const ChatWindow = ({ conversation, isFullScreen, toggleChat, onMinimizeChat, on
             round={true}
             src={conversation?.avatar || 'https://via.placeholder.com/58x64'}
           />
-          <h3 className="text-lg font-semibold">
-            Chat {conversation ? `com ${conversation.name}` : ''}
+          <h3 className="text-white text-lg font-semibold">
+            {conversation ? ` ${conversation.name}` : ''}
           </h3>
         </div>
         {!isFullScreen && (
-          <button onClick={toggleChat} className="text-gray-600 hover:text-gray-800 text-xl">
-            ×
+          <button onClick={toggleChat} className="text-white hover:text-azul-escuro text-xl">
+           <IoClose className='text-2xl'/>
           </button>
         )}
       </div>
@@ -98,10 +97,10 @@ const ChatWindow = ({ conversation, isFullScreen, toggleChat, onMinimizeChat, on
             }}
           />
           <button
-            className="ml-3 bg-blue-500 text-white p-3 rounded-full hover:bg-blue-400 transition-all duration-300"
+            className="ml-3 bg-azul-claro text-white p-3 rounded-full hover:bg-azul-médio transition-all duration-300"
             onClick={handleSendMessage}
           >
-            Enviar
+            <IoSend />
           </button>
         </div>
       </div>

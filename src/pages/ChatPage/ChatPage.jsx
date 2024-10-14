@@ -16,8 +16,7 @@ export const ChatPage = () => {
   };
 
   return (
-    <HeaderAndFooter>
-      <HeaderAndFooterContainer className="flex flex-col h-screen">
+      <div className="flex flex-col h-screen">
         <div className="flex flex-1">
           {/* Esquerda: Lista de Conversas */}
           <div className="w-full md:w-1/3 h-full">
@@ -42,8 +41,7 @@ export const ChatPage = () => {
             )}
           </div>
         </div>
-      </HeaderAndFooterContainer>
-    </HeaderAndFooter>
+      </div>
   );
 };
 

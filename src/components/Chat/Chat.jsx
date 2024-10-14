@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import ChatWindow from '../../pages/ChatPage/components/ChatWindow';
 import ConversationsList from '../../pages/ChatPage/components/ConversationsList';
 import { conversations } from '../../pages/ChatPage/data'; // Importe seus dados de conversas
+import { BsChatLeftText } from "react-icons/bs";
 
 const Chat = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -22,6 +23,7 @@ const Chat = () => {
   };
 
   const openFullScreenChat = () => {
+    setIsChatOpen(false); // Minimiza o chat flutuante
     navigate('/chat');
   };
 
@@ -39,15 +41,18 @@ const Chat = () => {
 
   return (
     <>
-      {/* Botão flutuante para abrir/minimizar o chat */}
-      <div className="fixed bottom-4 right-4 z-50">
-        <button
-          onClick={toggleChat}
-          className="bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-400 transition-all duration-300"
-        >
-          {isChatOpen ? 'Minimizar' : 'Chat'}
-        </button>
-      </div>
+      {/* Botão flutuante para abrir o chat */}
+      {!isChatOpen && (
+        <div className="fixed bottom-4 rounded-full right-4 z-50">
+          <button
+            onClick={toggleChat}
+            className="bg-azul-claro text-white p-6 rounded-full shadow-lg hover:bg-vermelho-médio transform transition-transform duration-300 hover:-translate-y-1"
+          >
+            <BsChatLeftText className="text-3xl" />
+          </button>
+        </div>
+)}
+
 
       {/* Chat Suspenso */}
       {isChatOpen && (
@@ -59,6 +64,7 @@ const Chat = () => {
                 conversations={conversations}
                 onSelectConversation={handleSelectConversation}
                 isMinimized={true}
+                toggleChat={toggleChat} 
               />
             ) : (
               // Exibir a janela de chat da conversa selecionada
@@ -73,7 +79,7 @@ const Chat = () => {
             <div className="text-center mt-2">
               <button
                 onClick={openFullScreenChat}
-                className="text-blue-500 underline text-sm"
+                className="text-white font-bold rounded-md shadow-lg bg-azul-claro hover:bg-azul-médio  p-2 px-6 mb-2 border"
               >
                 Ver em tela cheia
               </button>
@@ -82,7 +88,7 @@ const Chat = () => {
         </div>
       )}
     </>
-  );
+  ); 
 };
 
 export default Chat;
