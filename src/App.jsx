@@ -17,6 +17,8 @@ import RequirementsListPage from './pages/RequirementsListPage/RequirementsListP
 import Chat from './components/Chat/Chat';
 import ChatPage from './pages/ChatPage/ChatPage';
 import ProductSelectionPage from './pages/ProductSelectionPage/ProductSelectionPage';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { AuthProvider } from './contexts/AuthContext';  
 
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
@@ -68,29 +70,38 @@ export function App() {
     return isValidPath;
   };
 
+  // Crie uma instância do QueryClient
+  const queryClient = new QueryClient();
+
   return (
     <>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/needed" element={<NeededProductsPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/reset-password" element={<ResetPasswordPage />} />
-        <Route path="/user" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
-        <Route path="/history" element={<HistoryPage />} />
-        <Route path="/create" element={<CreateProductPage />} />
-        <Route path="/product/:id" element={<ProductPage />} />
-        <Route path="/faq" element={<FAQPage />} />
-        <Route path="*" element={<ErrorPage />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/checkout" element={<CheckOutPage />} />
-        <Route path="/requirements-list" element={<RequirementsListPage />} />
-        <Route path="/chat" element={<ChatPage />} />
-        <Route path="/product-selection" element={<ProductSelectionPage />} />
-      </Routes>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/needed" element={<NeededProductsPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
+            <Route path="/user" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
+            <Route path="/history" element={<HistoryPage />} />
+            <Route path="/create" element={<CreateProductPage />} />
+            <Route path="/product/:id" element={<ProductPage />} />
+            <Route path="/faq" element={<FAQPage />} />
+            <Route path="*" element={<ErrorPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/checkout" element={<CheckOutPage />} />
+            <Route path="/requirements-list" element={<RequirementsListPage />} />
+            <Route path="/chat" element={<ChatPage />} />
+            <Route path="/product-selection" element={<ProductSelectionPage />} />
+          </Routes>
 
-      {/* Renderiza o Chat se `shouldRenderChat` retornar true */}
-      {shouldRenderChat() && <Chat />}
+        {/* Renderiza o Chat se `shouldRenderChat` retornar true */}
+        {shouldRenderChat() && <Chat />}
+        
+      </AuthProvider>
+    </QueryClientProvider>
     </>
   );
 }
