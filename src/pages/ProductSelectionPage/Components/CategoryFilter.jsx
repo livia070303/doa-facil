@@ -28,7 +28,7 @@ const CategoryFilter = () => {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-lg font-bold">Category</h2>
+      <h2 className="text-lg font-bold">Categorias</h2>
       <ul className="space-y-2">
         {categories.map((category) => (
           <li

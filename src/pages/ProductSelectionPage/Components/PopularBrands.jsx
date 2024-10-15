@@ -25,7 +25,7 @@ const PopularBrands = () => {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-lg font-bold">Popular Brands</h2>
+      <h2 className="text-lg font-bold">Marcas Populares</h2>
       <ul className="space-y-2">
         {brands.map((brand) => (
           <li
