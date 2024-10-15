@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Avatar from 'react-avatar';
 import { IoClose, IoChevronBackOutline, IoSend } from "react-icons/io5";
 
-const ChatWindow = ({ conversation, isFullScreen, toggleChat, onMinimizeChat, onBack }) => {
+const ChatWindow = ({ conversation, isFullScreen, toggleChat, onMinimizeChat, onBack, isMobileView }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const currentUserId = 1; // ID do usuário atual
@@ -39,10 +39,11 @@ const ChatWindow = ({ conversation, isFullScreen, toggleChat, onMinimizeChat, on
       {/* Chat Header */}
       <div className="bg-gradient-to-r from-vermelho-médio to-azul-claro flex justify-between items-center p-4 border-b border-gray-300">
         <div className="flex items-center space-x-4">
-          {!isFullScreen && (
+          {/* Mostra o botão de voltar apenas no mobile e quando em tela cheia */}
+          {(!isFullScreen || (isMobileView && isFullScreen)) && (
             <button onClick={onBack} className="text-white hover:text-azul-escuro">
               {/* Ícone de seta para voltar */}
-              <IoChevronBackOutline className='text-2xl' />
+              <IoChevronBackOutline className="text-2xl" />
             </button>
           )}
           <Avatar
