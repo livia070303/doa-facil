@@ -53,14 +53,19 @@ const ConversationsList = ({
             className="flex items-center p-4 hover:bg-gray-100 cursor-pointer"
             onClick={() => onSelectConversation(conv)}
           >
-            <Avatar size="40" round={true} src={conv.avatar} />
-            <div className="ml-4 flex-1">
-              <h4 className="text-sm font-medium">{conv.name}</h4>
+            {/* Garantir que o avatar não fique disforme */}
+            <div className="flex-shrink-0">
+              <Avatar size="40" round={true} src={conv.avatar} />
+            </div>
+            <div className="ml-4 flex-1 min-w-0">
+              <h4 className="text-sm font-medium truncate">{conv.name}</h4>
               <p className="text-xs text-gray-500 truncate">
                 {conv.lastMessage}
               </p>
             </div>
-            <div className="text-xs text-gray-500">{conv.time}</div>
+            <div className="text-xs text-gray-500 flex-shrink-0">
+              {conv.time}
+            </div>
             {conv.unread && (
               <div className="ml-2 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center">
                 {conv.unread}
