@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { HeaderAndFooter, HeaderAndFooterContainer } from '../../components/Layouts/HeaderAndFooter.jsx';
 import { Separator } from '../../components/Separator.jsx';
-import { LeftMenuFilters } from './components/LeftMenuFilters.jsx';
 import { SectionHeader } from './components/SectionHeader.jsx';
 import { ProductList } from './components/ProductList'; // Componente de produtos
 import { CategoryList } from './components/CategoryList'; // Componente de categorias
@@ -11,14 +10,9 @@ export function HomePage() {
     <>
       <HeaderAndFooter>
         <HeaderAndFooterContainer className="flex flex-col lg:flex-row gap-8 lg:gap-4">
-          
-          {/* Filtro lateral - esconde em telas pequenas e aparece em telas grandes */}
-          <div className="hidden lg:block w-1/4">
-            <LeftMenuFilters />
-          </div>
 
-          {/* Conteúdo principal */}
-          <div className="flex flex-col w-full lg:w-3/4 h-fit-content bg-white border border-gray-200 rounded-lg shadow-md">
+          {/* Conteúdo principal sem o menu lateral */}
+          <div className="flex flex-col w-full h-fit-content bg-white border border-gray-200 rounded-lg shadow-md">
 
             {/* Imagem do Anúncio */}
             <div className="w-full">
