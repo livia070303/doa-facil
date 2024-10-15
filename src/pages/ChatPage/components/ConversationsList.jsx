@@ -17,7 +17,7 @@ const ConversationsList = ({
     >
       {/* Header da Lista de Conversas */}
       <div
-        className={`flex justify-between items-center p-4 border-b border-gray-300 ${
+        className={`flex justify-between items-center p-4 border-b border-gray-300 bg-white ${
           isMinimized ? 'bg-gradient-to-r from-vermelho-médio to-azul-claro' : ''
         }`}
       >
@@ -46,7 +46,7 @@ const ConversationsList = ({
         )}
       </div>
       {/* Lista de Conversas */}
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto bg-white">
         {conversations.map((conv) => (
           <div
             key={conv.id}

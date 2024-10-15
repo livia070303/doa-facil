@@ -16,10 +16,10 @@ export const ChatPage = () => {
   };
 
   return (
-      <div className="flex flex-col h-screen">
-        <div className="flex flex-1">
+      <div className="flex flex-col h-screen overflow-hidden bg-gray-100">
+        <div className="flex flex-1 overflow-hidden">
           {/* Esquerda: Lista de Conversas */}
-          <div className="w-full md:w-1/3 h-full">
+          <div className="w-full md:w-1/3 flex flex-col ">
             <ConversationsList
               conversations={conversations}
               onSelectConversation={setSelectedConversation}
@@ -27,7 +27,7 @@ export const ChatPage = () => {
             />
           </div>
           {/* Direita: Janela do Chat */}
-          <div className="w-full md:w-2/3 h-full">
+          <div className="w-full md:w-2/3 flex flex-col ">
             {selectedConversation ? (
               <ChatWindow
                 conversation={selectedConversation}
