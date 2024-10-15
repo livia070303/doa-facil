@@ -12,7 +12,7 @@ export function CreateProductPage(){
         <>
         <HeaderAndFooter>
         <HeaderAndFooterContainer className="flex p-12 lg:p-24 flex-col gap-4"> 
-            <h1 className="font-poppins text-3xl">Cadastro de produto</h1>
+            <h1 className="font-poppins text-3xl">Cadastro de produto para doação</h1>
             <div className="flex gap-12 flex-col border border-dashed border-pink p-6 rounded-lg">
                 <div className="flex flex-col gap-12 lg:flex-row justify-between w-full">
                     <section className="flex flex-col gap-4 w-full">

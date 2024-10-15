@@ -21,6 +21,9 @@ const dataFilters = [
     },
     {
         itemName: "Eletro"
+    },
+    {
+        itemName: "Informática"
     }
     
 ]
