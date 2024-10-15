@@ -10,7 +10,7 @@ import { CreateProductPage } from './pages/CreateProductPage/CreateProductPage';
 import { FAQPage } from './pages/FAQPage/FAQPage';
 import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 import HistoryPage from './pages/HistoryPage/HistoryPage';
-import { NeededProductsPage } from './pages/NeededProductsPage/NeededProductsPage';
+import { CreateNeededProductPage } from './pages/CreateNeededProductPage/CreateNeededProductPage';
 import CartPage from './pages/CartPage/CartPage';
 import CheckOutPage from './pages/CheckOutPage/CheckOutPage';
 import RequirementsListPage from './pages/RequirementsListPage/RequirementsListPage';
@@ -18,7 +18,7 @@ import Chat from './components/Chat/Chat';
 import ChatPage from './pages/ChatPage/ChatPage';
 import ProductSelectionPage from './pages/ProductSelectionPage/ProductSelectionPage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { AuthProvider } from './contexts/AuthContext';  
+import { AuthProvider } from './contexts/AuthContext';
 
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
@@ -50,10 +50,10 @@ export function App() {
     // Se nenhuma rota válida correspondeu, estamos na página de erro
     const validPaths = [
       '/',
-      '/needed',
       '/user',
       '/history',
       '/create',
+      '/create-needed',
       '/product/:id',
       '/faq',
       '/cart',
@@ -80,13 +80,13 @@ export function App() {
         
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/needed" element={<NeededProductsPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/reset-password" element={<ResetPasswordPage />} />
             <Route path="/user" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
             <Route path="/history" element={<HistoryPage />} />
             <Route path="/create" element={<CreateProductPage />} />
+            <Route path="/create-needed" element={<CreateNeededProductPage />} />
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="*" element={<ErrorPage />} />
