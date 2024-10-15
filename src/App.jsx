@@ -16,6 +16,7 @@ import CheckOutPage from './pages/CheckOutPage/CheckOutPage';
 import RequirementsListPage from './pages/RequirementsListPage/RequirementsListPage';
 import Chat from './components/Chat/Chat';
 import ChatPage from './pages/ChatPage/ChatPage';
+import ProductSelectionPage from './pages/ProductSelectionPage/ProductSelectionPage';
 
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
@@ -85,6 +86,7 @@ export function App() {
         <Route path="/checkout" element={<CheckOutPage />} />
         <Route path="/requirements-list" element={<RequirementsListPage />} />
         <Route path="/chat" element={<ChatPage />} />
+        <Route path="/product-selection" element={<ProductSelectionPage />} />
       </Routes>
 
       {/* Renderiza o Chat se `shouldRenderChat` retornar true */}

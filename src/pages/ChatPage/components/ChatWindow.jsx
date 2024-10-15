@@ -27,7 +27,7 @@ const ChatWindow = ({ conversation, isFullScreen, toggleChat, onMinimizeChat, on
       senderName: 'Você',
       message: newMessage,
       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      avatar: 'https://via.placeholder.com/80x81',
+      avatar: "/avatardayelle.png",
     };
 
     setMessages([...messages, message]);
