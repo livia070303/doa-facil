@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { RelatedProducts } from "./components/RelatedProducts";
 import { HeaderAndFooter, HeaderAndFooterContainer } from "../../components/Layouts/HeaderAndFooter.jsx";
+import { RelatedProducts } from './Components/RelatedProducts.jsx';
 
 export function ProductPage() {
   // Lista de imagens do produto
@@ -126,7 +126,7 @@ export function ProductPage() {
 
           {/* Produtos Relacionados */}
           <div className="mt-12">
-            <RelatedProducts />
+                <RelatedProducts/>
           </div>
         </div>
       </HeaderAndFooterContainer>
