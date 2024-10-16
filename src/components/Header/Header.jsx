@@ -4,6 +4,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoAddCircleOutline } from "react-icons/io5";
+import { AvatarDropDown } from "./Avatar-dropdown";
 
 export function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -164,11 +165,7 @@ export function Header() {
                         </div>
                     </div>
 
-                    <div className="hidden lg:flex md:ml-6 xl:mr-4">
-                        <div className="bg-white rounded-full h-10 w-10 flex items-center justify-center border-b border-b-rose-950">
-                            A
-                        </div>
-                    </div>
+                    <AvatarDropDown />
                 </div>
             </div>
         </>
