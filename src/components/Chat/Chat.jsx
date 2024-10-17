@@ -46,7 +46,7 @@ const Chat = () => {
         <div className="fixed bottom-4 rounded-full right-4 z-50">
           <button
             onClick={toggleChat}
-            className="bg-azul-claro text-white p-6 rounded-full shadow-lg hover:bg-vermelho-médio transform transition-transform duration-300 hover:-translate-y-1"
+            className="bg-vermelho-médio text-white p-6 rounded-full shadow-lg hover:bg-azul-claro transform transition-transform duration-300 hover:-translate-y-1"
           >
             <BsChatLeftText className="text-3xl" />
           </button>

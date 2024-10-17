@@ -116,7 +116,7 @@ export function Header() {
             </div>
 
             {/* Header para Telas Médias e Maiores */}
-            <div className="hidden md:flex justify-between bg-gradient-to-r from-vermelho-médio to-azul-claro p-2 items-center">
+            <div className="hidden md:flex justify-between bg-gradient-to-r from-vermelho-médio to-azul-claro p-0 items-center">
                 {/* Conteúdo Original do Header */}
                 {/* Logo e Campo de Busca */}
                 <div className="flex items-center md:w-full lg:w-[80%] justify-end md:justify-normal md:gap-2 lg:gap-4 xl:gap-12">

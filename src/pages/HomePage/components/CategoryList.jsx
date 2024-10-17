@@ -6,7 +6,7 @@ export function CategoryList() {
   const categories = [
     {
       id: 1,
-      imgSrc: "/iphone.png",
+      imgSrc: "/celular.png",
       categoryName: 'Eletrônicos',
     },
     {
@@ -16,8 +16,8 @@ export function CategoryList() {
     },
     {
       id: 3,
-      imgSrc: "/plants.png",
-      categoryName: 'Decoração',
+      imgSrc: "/roupas.png",
+      categoryName: 'Roupas',
     },
     {
       id: 4,

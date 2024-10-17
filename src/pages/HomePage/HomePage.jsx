@@ -12,14 +12,14 @@ export function HomePage() {
         <HeaderAndFooterContainer className="flex flex-col lg:flex-row gap-8 lg:gap-4">
 
           {/* Conteúdo principal sem o menu lateral */}
-          <div className="flex flex-col w-full h-fit-content bg-white border border-gray-200 rounded-lg shadow-md">
+          <div className="flex flex-col w-full h-fit-content bg-white shadow-md">
 
             {/* Imagem do Anúncio */}
             <div className="w-full">
               <img
                 src="/conectandosolidariedade.jpg"
                 alt="Descrição do anúncio"
-                className="w-full h-auto object-cover rounded-t-lg"
+                className="w-full h-auto object-cover "
               />
             </div>
 
