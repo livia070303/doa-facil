@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 const PopularBrands = () => {
   
   const [brands, setBrands] = useState([
-    { id: 1, label: 'Apple', selected: true },
-    { id: 2, label: 'Google', selected: true },
+    { id: 1, label: 'Apple', selected: false },
+    { id: 2, label: 'Google', selected: false },
     { id: 3, label: 'Microsoft', selected: false },
     { id: 4, label: 'Samsung', selected: false },
     { id: 5, label: 'Consul', selected: false },
