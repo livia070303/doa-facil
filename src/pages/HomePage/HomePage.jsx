@@ -33,7 +33,7 @@ export function HomePage() {
               {/* Botão Ver Todos Produtos */}
               <div className="w-full flex items-center justify-center mt-8">
                 <Link
-                  to="/products"
+                  to="/product-selection"
                   className="cursor-pointer p-4 rounded-md bg-vermelho-escuro hover:bg-vermelho-médio transition-colors text-white font-poppins"
                 >
                   Ver Todos Produtos

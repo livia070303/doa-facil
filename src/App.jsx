@@ -59,6 +59,7 @@ export function App() {
       '/cart',
       '/checkout',
       '/requirements-list',
+      '/product-selection',
     ];
 
     const isValidPath = validPaths.some((path) => {

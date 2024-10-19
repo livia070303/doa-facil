@@ -6,12 +6,12 @@ const CategoryFilter = () => {
     { id: 1, label: 'Eletrônicos', selected: true },
     { id: 2, label: 'Informática', selected: false },
     { id: 3, label: 'SmartPhone', selected: false },
-    { id: 3, label: 'Roupas Femininas', selected: false },
-    { id: 3, label: 'Roupas Masculinas', selected: false },
-    { id: 3, label: 'Roupas Infantis', selected: false },
-    { id: 3, label: 'Sapatos', selected: false },
-    { id: 3, label: 'Decoração', selected: false },
-    { id: 3, label: 'Móveis', selected: false },
+    { id: 4, label: 'Roupas Femininas', selected: false },
+    { id: 5, label: 'Roupas Masculinas', selected: false },
+    { id: 6, label: 'Roupas Infantis', selected: false },
+    { id: 7, label: 'Sapatos', selected: false },
+    { id: 8, label: 'Decoração', selected: false },
+    { id: 9, label: 'Móveis', selected: false },
     // Adicione mais categorias aqui
   ]);
 
