@@ -3,14 +3,16 @@ import React, { useState, useEffect } from 'react';
 const CategoryFilter = ({ initialCategory }) => {
   const [categories, setCategories] = useState([
     { id: 1, label: 'Eletrônicos', selected: false },
-    { id: 2, label: 'Eletrodomésticos', selected: false },
+    { id: 2, label: 'Móveis', selected: false },
     { id: 3, label: 'Roupas', selected: false },
     { id: 4, label: 'Roupas Femininas', selected: false },
     { id: 5, label: 'Roupas Masculinas', selected: false },
     { id: 6, label: 'Roupas Infantis', selected: false },
-    { id: 7, label: 'Sapatos', selected: false },
-    { id: 8, label: 'Decoração', selected: false },
-    { id: 9, label: 'Móveis', selected: false },
+    { id: 7, label: 'Eletrodomésticos', selected: false },
+    { id: 8, label: 'Alimentos', selected: false },
+    { id: 9, label: 'Sapatos', selected: false },
+    { id: 10, label: 'Decoração', selected: false },
+    
     // Adicione mais categorias aqui
   ]);
 

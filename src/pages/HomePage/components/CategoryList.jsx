@@ -10,7 +10,7 @@ export function CategoryList() {
     },
     {
       id: 2,
-      imgSrc: "/furniture.png",
+      imgSrc: "/poltrona.png",
       categoryName: 'Móveis',
     },
     {
@@ -20,8 +20,18 @@ export function CategoryList() {
     },
     {
       id: 4,
-      imgSrc: "/lavaeseca.png",
+      imgSrc: "/ferro.png",
       categoryName: 'Eletrodomésticos',
+    },
+    {
+      id: 5,
+      imgSrc: "/alimentos.png",
+      categoryName: 'Alimentos',
+    },
+    {
+      id: 6,
+      imgSrc: "/sapato.png",
+      categoryName: 'Sapatos',
     },
   ];
 
