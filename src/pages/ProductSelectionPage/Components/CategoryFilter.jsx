@@ -12,6 +12,7 @@ const CategoryFilter = ({ initialCategory }) => {
     { id: 8, label: 'Alimentos', selected: false },
     { id: 9, label: 'Sapatos', selected: false },
     { id: 10, label: 'Decoração', selected: false },
+    { id: 11, label: 'Educação', selected: false },
     
     // Adicione mais categorias aqui
   ]);

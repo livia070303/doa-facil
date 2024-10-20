@@ -33,10 +33,20 @@ export function CategoryList() {
       imgSrc: "/sapato.png",
       categoryName: 'Sapatos',
     },
+    {
+      id: 7,
+      imgSrc: "/vaso.png",
+      categoryName: 'Decoração',
+    },
+    {
+      id: 8,
+      imgSrc: "/livro.png",
+      categoryName: 'Educação',
+    },
   ];
 
   return (
-    <div className="flex flex-wrap justify-center gap-8 mt-8 mb-16">
+    <div className="flex flex-wrap justify-center gap-7 mt-8 mb-16">
       {categories.map((category) => (
         <CategoryItem
           key={category.id}

@@ -6,15 +6,16 @@ import { HeaderAndFooter, HeaderAndFooterContainer } from "../../components/Layo
 export function CreateNeededProductPage() { 
     const sizeOptions = ["PP", "P", "M", "G", "GG"];
     const categoryOptions = [
-        "Informática", 
+        "Eletrônicos",
+        "Móveis",
         "Roupas Femininas", 
         "Roupas Masculinas", 
         "Roupas Infantis", 
+        "Eletrodomésticos",
+        "Alimentos",  
         "Sapatos", 
-        "Decoração", 
-        "Móveis", 
-        "Eletrônicos", 
-        "Eletrodomésticos"
+        "Decoração",
+        
     ];
 
     const [size, setSize] = React.useState('');
