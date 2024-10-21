@@ -1,7 +1,9 @@
-import Sidebar from './components/Sidebar.jsx';
+import Sidebar from './components/Sidebar.jsx'; 
 import DonationItem from '../../components/DonationItem/DonationItem.jsx';
 import MobileHeader from './components/MobileHeader.jsx';
 import Footer from '../../components/Footer/Footer.jsx';
+import { SectionHeader } from '../HomePage/components/SectionHeader.jsx';
+import { Separator } from '../../components/Separator.jsx'; // Opcional
 
 export const UserProfile = () => {
     return (
@@ -31,7 +33,7 @@ export const UserProfile = () => {
                     <div className="flex flex-col sm:flex-row items-center mb-6">
                         {/* Foto de Perfil */}
                         <div className="w-24 h-24 rounded-full bg-gray-300 flex-shrink-0">
-                        <img src="/path/to/profile.jpg" alt="Foto de Perfil" className="w-full h-full rounded-full object-cover" />
+                        <img src="/avatardayelle.png" alt="Foto de Perfil" className="w-full h-full rounded-full object-cover" />
                         </div>
                         {/* Nome */}
                         <div className="mt-4 sm:mt-0 sm:ml-6 flex-1 w-full">
@@ -82,57 +84,59 @@ export const UserProfile = () => {
                     </div>
                 </section>
 
+                {/* Separador Opcional */}
+                <Separator className="my-8 h-0.5 bg-gray-200" />
+
+
                     {/* Minhas Doações */}
-                    <section className="mt-8">
-                        <h2 className="text-xl font-semibold mb-4">Itens Doados</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <section className="mt-12 mb-8">
+                            <SectionHeader label="Minhas Doações" title="Itens Doados" />
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
                             {/* Exemplo de itens */}
                             <DonationItem
-                                image="/path/to/item1.jpg"
-                                title="Produto 1"
-                                description="Descrição do produto 1"
+                                image="/video-game.png"
+                                title="Video Game PS"
+                                description="Vídeo game em bom estado."
                             />
                             <DonationItem
-                                image="/path/to/item2.jpg"
-                                title="Produto 2"
-                                description="Descrição do produto 2"
+                                image="/computer.png"
+                                title="Computador"
+                                description="Funcionando bem."
                             />
                             <DonationItem
-                                image="/path/to/item3.jpg"
-                                title="Produto 3"
+                                image="/air-conditioner.png"
+                                title="Ar condicionado Inverter Midea"
                                 description="Descrição do produto 3"
                             />
                             <DonationItem
-                                image="/path/to/item3.jpg"
-                                title="Produto 4"
+                                image="/headphones.png"
+                                title="Fone de ouvido"
                                 description="Descrição do produto 3"
                             />
                         </div>
                     </section>
+
+                    <Separator className="my-8 h-0.5 bg-gray-200" />
+
                     {/* Itens Recebidos */}
-                    <section className="mt-8">
-                        <h2 className="text-xl font-semibold mb-4">Itens Recebidos</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <section className="mt-12 mb-8">
+                            <SectionHeader label="Itens Recebidos" title="Itens Recebidos" />
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
                             {/* Exemplo de itens */}
                             <DonationItem
-                                image="/path/to/item4.jpg"
-                                title="Produto 4"
-                                description="Descrição do produto 4"
+                                image="/cellphone.png"
+                                title="Celular"
+                                description="Celular precisando de reparos."
                             />
                             <DonationItem
-                                image="/path/to/item5.jpg"
-                                title="Produto 5"
-                                description="Descrição do produto 5"
+                                image="/jacket.png"
+                                title="Casaco rosa"
+                                description="Casaco de frio em bom estado."
                             />
                             <DonationItem
-                                image="/path/to/item6.jpg"
-                                title="Produto 6"
-                                description="Descrição do produto 6"
-                            />
-                            <DonationItem
-                                image="/path/to/item3.jpg"
-                                title="Produto 7"
-                                description="Descrição do produto 3"
+                                image="/plantinhas.png"
+                                title="Planta Decorativa "
+                                description="Vasinhos de planta artificial para decoração (levemente desbotado)."
                             />
                         </div>
                     </section>

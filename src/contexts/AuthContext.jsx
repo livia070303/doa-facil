@@ -7,7 +7,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const isAuthenticated = true;
-  const loading = true;
+  const loading = false;
 
   const queryClient = useQueryClient()
 
