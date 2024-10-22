@@ -26,12 +26,8 @@ export const RegisterPage = () => {
   })
   
   const { 
-   createAccount 
+   handleRegister
   } = useContext(AuthContext)
-
-  const handleRegister = async (data) => {
-    await createAccount(data)
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-azul-claro to-vermelho-médio flex items-center justify-center">
@@ -42,7 +38,7 @@ export const RegisterPage = () => {
           <h1 className="text-2xl font-bold text-azul-escuro">Cadastre-se</h1>
         </div>
         {/* Formulário */}
-        <form onSubmit={handleSubmit(handleRegister)} encType="multipart/form-data">
+        <form onSubmit={handleSubmit(handleRegister)}>
           {/* Primeira Linha */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Nome */}

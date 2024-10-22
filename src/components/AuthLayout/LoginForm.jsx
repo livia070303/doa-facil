@@ -1,14 +1,30 @@
 // src/components/LoginForm.jsx
-import React, { useState } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as React from 'react';
+import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { z } from 'zod'   
+import { AuthContext } from '../../contexts/AuthContext';
+
+const loginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(6),
+})
 
 const LoginForm = () => {
-  const [showPassword, setShowPassword] = useState(false);
+
+  const { handleLogin } = React.useContext(AuthContext)
+
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const { handleSubmit, register } = useForm({
+    resolver: zodResolver(loginSchema),
+  })
 
   return (
     <>
       <h1 className="font-bold text-[32px] text-center text-white mb-5">Login</h1>
-      <form>
+      <form onSubmit={handleSubmit(handleLogin)}>
         <div className="mb-4">
           <label htmlFor="email" className="block text-[14px] mb-1 text-white">
             Usuário ou email
@@ -17,7 +33,7 @@ const LoginForm = () => {
             type="email"
             id="email"
             name="email"
-            required
+            {...register('email')}
             className="w-full p-2.5 border-b-2 border-b-white bg-transparent text-white text-[16px] focus:outline-none focus:border-b-azul-claro"
           />
         </div>
@@ -29,7 +45,7 @@ const LoginForm = () => {
             type={showPassword ? 'text' : 'password'}
             id="password"
             name="password"
-            required
+            {...register('password')}
             className="w-full p-2.5 border-b-2 border-b-white bg-transparent text-white text-[16px] focus:outline-none focus:border-b-azul-claro"
           />
           <button

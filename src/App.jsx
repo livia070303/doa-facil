@@ -21,9 +21,9 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider } from './contexts/AuthContext';
 
 const PrivateRoute = ({ children }) => {
-  const { isAuthenticated, loading } = useAuth();
+  const { isAuthenticated, isLoading } = useAuth();
 
-  if (loading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
@@ -70,12 +70,9 @@ export function App() {
     return isValidPath;
   };
 
-  // Crie uma instância do QueryClient
-  const queryClient = new QueryClient();
 
   return (
     <>
-    <QueryClientProvider client={queryClient}>
       <AuthProvider>
         
           <Routes>
@@ -101,7 +98,6 @@ export function App() {
         {shouldRenderChat() && <Chat />}
         
       </AuthProvider>
-    </QueryClientProvider>
     </>
   );
 }

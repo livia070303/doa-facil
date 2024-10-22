@@ -12,11 +12,11 @@ const queryClient = new QueryClient();
 createRoot(document.getElementById('root')).render(
   <StrictMode>
       <QueryClientProvider client={queryClient}>
-      <AuthProvider>
     <Router>
+      <AuthProvider>
     <App />
-    </Router>
       </AuthProvider>
+    </Router>
       </QueryClientProvider>
   </StrictMode>,
 )
