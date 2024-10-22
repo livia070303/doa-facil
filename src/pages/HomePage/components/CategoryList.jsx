@@ -2,7 +2,6 @@ import React from 'react';
 import { CategoryItem } from './CategoryItem';
 
 export function CategoryList() {
-  // Aqui você pode definir a lista de categorias como um array de objetos
   const categories = [
     {
       id: 1,
@@ -11,7 +10,7 @@ export function CategoryList() {
     },
     {
       id: 2,
-      imgSrc: "/furniture.png",
+      imgSrc: "/poltrona.png",
       categoryName: 'Móveis',
     },
     {
@@ -21,13 +20,33 @@ export function CategoryList() {
     },
     {
       id: 4,
-      imgSrc: "/lavaeseca.png",
+      imgSrc: "/ferro.png",
       categoryName: 'Eletrodomésticos',
+    },
+    {
+      id: 5,
+      imgSrc: "/alimentos.png",
+      categoryName: 'Alimentos',
+    },
+    {
+      id: 6,
+      imgSrc: "/sapato.png",
+      categoryName: 'Sapatos',
+    },
+    {
+      id: 7,
+      imgSrc: "/vaso.png",
+      categoryName: 'Decoração',
+    },
+    {
+      id: 8,
+      imgSrc: "/livro.png",
+      categoryName: 'Educação',
     },
   ];
 
   return (
-    <div className="flex flex-col items-center gap-4 lg:grid lg:grid-cols-4">
+    <div className="flex flex-wrap justify-center gap-7 mt-8 mb-16">
       {categories.map((category) => (
         <CategoryItem
           key={category.id}

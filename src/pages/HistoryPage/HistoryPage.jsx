@@ -6,7 +6,7 @@ import InterestProducts from "../../components/InterestProducts";  // Caminho at
 const HistoryPage = () => {
   // Produtos para Doação
   const productsForDonation = [
-    { id: 1, name: 'Drone de brinquedo', status: 'DISPONÍVEL', imgSrc: '/drone.png' },
+    { id: 1, name: 'Drone de brinquedo', status: 'DISPONÍVEL', imgSrc: '/Drone.png' },
     { id: 2, name: 'Fone de ouvido', status: 'DISPONÍVEL', imgSrc: '/headphones.png' },
     { id: 3, name: 'Ar condicionado Inverter Midea', status: 'DISPONÍVEL', imgSrc: '/air-conditioner.png' },
     { id: 4, name: 'Video Game PS', status: 'CEDIDO', imgSrc: '/video-game.png' },

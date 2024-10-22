@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 const PopularBrands = () => {
   
   const [brands, setBrands] = useState([
-    { id: 1, label: 'Apple', selected: true },
-    { id: 2, label: 'Google', selected: true },
+    { id: 1, label: 'Apple', selected: false },
+    { id: 2, label: 'Google', selected: false },
     { id: 3, label: 'Microsoft', selected: false },
-    { id: 3, label: 'Samsung', selected: false },
-    { id: 3, label: 'Consul', selected: false },
-    { id: 3, label: 'Brastemp', selected: false },
-    { id: 3, label: 'Dell', selected: false },
-    { id: 3, label: 'LG', selected: false },
+    { id: 4, label: 'Samsung', selected: false },
+    { id: 5, label: 'Consul', selected: false },
+    { id: 6, label: 'Brastemp', selected: false },
+    { id: 7, label: 'Dell', selected: false },
+    { id: 8, label: 'LG', selected: false },
     // Adicione mais marcas aqui
   ]);
 

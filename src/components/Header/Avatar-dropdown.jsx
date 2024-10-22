@@ -34,10 +34,22 @@ export function AvatarDropDown(){
                 <div ref={dropdownRef} className="absolute right-8 top-[4.6rem] bg-white rounded-md shadow-md">
                     <ul>
                         <li>
-                            <button className="w-full text-left px-4 py-2 hover:bg-gray-200">Perfil</button>
+                            <Link
+                                to="/user"
+                                className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                                onClick={() => setIsDropdownOpen(false)}
+                            >
+                                Perfil
+                            </Link>
                         </li>
                         <li>
-                            <button className="w-full text-left px-4 py-2 hover:bg-gray-200">Configurações</button>
+                            <Link
+                                to="/settings"
+                                className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                                onClick={() => setIsDropdownOpen(false)}
+                            >
+                                Configurações
+                            </Link>
                         </li>
                         <li>
                             <Link to="/login" className="">

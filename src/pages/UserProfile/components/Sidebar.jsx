@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'; 
 import { Link } from 'react-router-dom';
-import { FaHome, FaBell, FaEnvelope, FaSignOutAlt } from 'react-icons/fa';
+import { FaHome, FaHistory, FaEnvelope, FaSignOutAlt } from 'react-icons/fa';
 
 const Sidebar = () => {
     return (
@@ -12,21 +12,29 @@ const Sidebar = () => {
             {/* Menu */}
             <nav className="mt-10 flex-1">
                 <ul>
-                    <li className="flex items-center px-6 py-4 hover:bg-azul-médio">
-                        <FaHome />
-                        <Link to='/'className="ml-4">Home</Link>
+                    <li>
+                        <Link to='/' className="flex items-center px-6 py-4 hover:bg-azul-médio">
+                            <FaHome className="text-xl" />
+                            <span className="ml-4 text-lg">Home</span>
+                        </Link>
                     </li>
-                    <li className="flex items-center px-6 py-4 hover:bg-azul-médio">
-                        <FaBell />
-                        <a href="#" className="ml-4">Notificações</a>
+                    <li>
+                        <Link to='/history' className="flex items-center px-6 py-4 hover:bg-azul-médio">
+                            <FaHistory className="text-xl" />
+                            <span className="ml-4 text-lg">Histórico</span>
+                        </Link>
                     </li>
-                    <li className="flex items-center px-6 py-4 hover:bg-azul-médio">
-                        <FaEnvelope />
-                        <a href="#" className="ml-4">Mensagens</a>
+                    <li>
+                        <Link to='/chat' className="flex items-center px-6 py-4 hover:bg-azul-médio">
+                            <FaEnvelope className="text-xl" />
+                            <span className="ml-4 text-lg">Mensagens</span>
+                        </Link>
                     </li>
-                    <li className="flex items-center px-6 py-4 hover:bg-azul-médio">
-                        <FaSignOutAlt />
-                        <a href="#" className="ml-4">Sair</a>
+                    <li>
+                        <Link to='#' className="flex items-center px-6 py-4 hover:bg-azul-médio">
+                            <FaSignOutAlt className="text-xl" />
+                            <span className="ml-4 text-lg">Sair</span>
+                        </Link>
                     </li>
                 </ul>
             </nav>

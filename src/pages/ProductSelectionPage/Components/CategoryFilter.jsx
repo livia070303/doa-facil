@@ -1,21 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const CategoryFilter = () => {
-  // Estado inicial para as categorias
+const CategoryFilter = ({ initialCategory }) => {
   const [categories, setCategories] = useState([
-    { id: 1, label: 'Eletrônicos', selected: true },
-    { id: 2, label: 'Informática', selected: false },
-    { id: 3, label: 'SmartPhone', selected: false },
-    { id: 3, label: 'Roupas Femininas', selected: false },
-    { id: 3, label: 'Roupas Masculinas', selected: false },
-    { id: 3, label: 'Roupas Infantis', selected: false },
-    { id: 3, label: 'Sapatos', selected: false },
-    { id: 3, label: 'Decoração', selected: false },
-    { id: 3, label: 'Móveis', selected: false },
+    { id: 1, label: 'Eletrônicos', selected: false },
+    { id: 2, label: 'Móveis', selected: false },
+    { id: 3, label: 'Roupas', selected: false },
+    { id: 4, label: 'Roupas Femininas', selected: false },
+    { id: 5, label: 'Roupas Masculinas', selected: false },
+    { id: 6, label: 'Roupas Infantis', selected: false },
+    { id: 7, label: 'Eletrodomésticos', selected: false },
+    { id: 8, label: 'Alimentos', selected: false },
+    { id: 9, label: 'Sapatos', selected: false },
+    { id: 10, label: 'Decoração', selected: false },
+    { id: 11, label: 'Educação', selected: false },
+    
     // Adicione mais categorias aqui
   ]);
 
-  // Função para alternar a seleção de uma categoria
+  // Atualiza a seleção inicial com base na categoria passada
+  useEffect(() => {
+    if (initialCategory) {
+      setCategories((prevCategories) =>
+        prevCategories.map((category) =>
+          category.label === initialCategory
+            ? { ...category, selected: true }
+            : category
+        )
+      );
+    }
+  }, [initialCategory]);
+
   const toggleCategorySelection = (id) => {
     setCategories((prevCategories) =>
       prevCategories.map((category) =>
@@ -34,7 +48,7 @@ const CategoryFilter = () => {
           <li
             key={category.id}
             className="flex items-center cursor-pointer"
-            onClick={() => toggleCategorySelection(category.id)} // Permite a seleção por clique
+            onClick={() => toggleCategorySelection(category.id)}
           >
             <span
               className={`${

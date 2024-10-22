@@ -19,6 +19,7 @@ import ChatPage from './pages/ChatPage/ChatPage';
 import ProductSelectionPage from './pages/ProductSelectionPage/ProductSelectionPage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider } from './contexts/AuthContext';
+import ScrollToTop from './components/ScrollToTop';
 
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();
@@ -59,6 +60,7 @@ export function App() {
       '/cart',
       '/checkout',
       '/requirements-list',
+      '/product-selection',
     ];
 
     const isValidPath = validPaths.some((path) => {
@@ -74,7 +76,7 @@ export function App() {
   return (
     <>
       <AuthProvider>
-        
+          <ScrollToTop /> {/* Coloque o ScrollToTop aqui */}
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
@@ -96,7 +98,6 @@ export function App() {
 
         {/* Renderiza o Chat se `shouldRenderChat` retornar true */}
         {shouldRenderChat() && <Chat />}
-        
       </AuthProvider>
     </>
   );
