@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { api } from '../lib/api';
 import * as React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const AuthContext = createContext();
 
@@ -11,9 +11,11 @@ export const AuthProvider = ({ children }) => {
 
   const queryClient = useQueryClient()
   const navigate = useNavigate()
- 
+  const location = useLocation()
  const [isLoading, setIsLoading] = React.useState(true)
- const [isAuthenticated, setIsAuthenticated] = React.useState(false)
+ const [isAuthenticated, setIsAuthenticated] = React.useState('')
+  const [user, setUser] = React.useState('')
+ 
 
  const loginAccount = useMutation({
   mutationFn: async (credentials) => {
@@ -33,7 +35,7 @@ export const AuthProvider = ({ children }) => {
   onSuccess: () => {
     queryClient.invalidateQueries({ queryKey: ['user'] })
     setIsAuthenticated(true)  
-    console.log('Login realizado com sucesso!')
+    navigate('/')
   }
  })
 
@@ -74,9 +76,60 @@ export const AuthProvider = ({ children }) => {
     createAccount.mutate(data)
   };
 
+  const fetchAuthorization = useMutation({
+    mutationFn: async () => {
+      try{
+        const response = await api.get('/authorization')
+        console.log(response)
+        if(response.status === 200){
+          setIsAuthenticated(response.data.token)
+          setUser(response.data.sub)
+        }
+      }catch(err){
+        console.error(err)
+        return err.response.data
+      }
+    }
+  })
+
+  function handleAuthorization(){
+    fetchAuthorization.mutate()
+  }
+  
+  React.useEffect(() => {
+
+    if(!isAuthenticated && location.pathname !== '/login' && location.pathname !== '/register'){
+      handleAuthorization()
+    }
+
+    if(isAuthenticated){
+      api.defaults.headers.Authorization = `Bearer ${isAuthenticated}`
+    }
+  }, [])
+
+  const logoutAccount = useMutation({
+    mutationFn: async () => {
+      try{
+        await api.get('/logout')
+      }catch(err){
+        console.error(err)
+        return err.response.data
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['user'] })
+      setIsAuthenticated('')
+      setUser('')
+      navigate('/login')
+    }
+  })
+
+  const handleLogout = () => {
+    logoutAccount.mutate()
+  }
  
   return (
-    <AuthContext.Provider value={{ isAuthenticated, isLoading, handleRegister, handleLogin}}>
+    <AuthContext.Provider value={{ isAuthenticated: !!isAuthenticated, isLoading, handleRegister, handleLogin, handleLogout}}>
       {children}
     </AuthContext.Provider>
   );

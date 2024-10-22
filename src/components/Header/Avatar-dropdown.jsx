@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export function AvatarDropDown(){
 
@@ -27,6 +28,8 @@ export function AvatarDropDown(){
         };
       }, []);
 
+      const { handleLogout } = React.useContext(AuthContext)
+
     return(
         <>
         {
@@ -52,9 +55,10 @@ export function AvatarDropDown(){
                             </Link>
                         </li>
                         <li>
-                            <Link to="/login" className="">
-                            <button className="w-full text-left px-4 py-2 hover:bg-gray-200">Sair</button>
-                            </Link>
+                            <button onClick={() => {
+                                handleLogout()
+                                setIsDropdownOpen(false)
+                            }} className="w-full text-left px-4 py-2 hover:bg-gray-200">Sair</button>
                         </li>
                     </ul>
                 </div>
