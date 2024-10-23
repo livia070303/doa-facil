@@ -6,7 +6,7 @@ const FAQSection = () => {
   const faqData = [
     {
       question: 'Como posso criar uma conta?',
-      answer: 'Para criar uma conta, clique em Registrar no canto superior direito e preencha o formulário.',
+      answer: 'Para criar uma conta, clique em Cadastre-se no canto superior direito e preencha o formulário.',
     },
 
     {
