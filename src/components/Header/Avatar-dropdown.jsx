@@ -64,8 +64,8 @@ export function AvatarDropDown() {
                     </div>
                 )
             }
-            <button className="hidden lg:flex md:ml-6 xl:mr-4" onClick={() => handleOpenDropdown()}>
-                <div className="bg-white rounded-full h-10 w-10 flex items-center justify-center border-b border-b-rose-950">
+            <button className="hidden lg:flex md:ml-6 xl:mr-4 transition-all duration-200 ease-in-out transform hover:scale-105 group" onClick={() => handleOpenDropdown()}>
+                <div className="bg-white rounded-full h-10 w-10 flex items-center justify-center ring-2 ring-transparent group-hover:ring-white">
                     <img src="/avatardayelle.png" alt="Foto de Perfil" className="w-full h-full rounded-full object-cover" />
                 </div>
             </button>
