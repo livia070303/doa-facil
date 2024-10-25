@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { HeaderAndFooter, HeaderAndFooterContainer } from "../../components/Layouts/HeaderAndFooter.jsx";
 import DonationProducts from "../../components/DonationProducts";
 import InterestProducts from "../../components/InterestProducts";
-import FavoriteProducts from "../../components/FavoriteProducts";
+
 
 const HistoryPage = () => {
   // Estado para Produtos para Doação
@@ -21,12 +21,6 @@ const HistoryPage = () => {
     { id: 3, name: 'Controle remoto de PS4', imgSrc: '/h1-gamepad.png' },
   ];
 
-  // Produtos Favoritos
-  const favoriteProducts = [
-    { id: 1, name: 'Cadeira', imgSrc: '/chair.png' },
-    { id: 2, name: 'Notebook', imgSrc: '/macbookpro.png' },
-    { id: 3, name: 'TV', imgSrc: '/TVled.png' },
-  ];
 
   // Função para remover produtos disponíveis
   const removeAvailableProduct = (productId) => {
@@ -42,18 +36,15 @@ const HistoryPage = () => {
         <div className="max-w-7xl mx-auto px-4 py-8">
           {/* Histórico de Produtos para Doação */}
           <h2 className="text-2xl md:text-4xl font-semibold text-gray-800 mb-8">Histórico de produtos para doação</h2>
-          <DonationProducts 
-            products={productsForDonation} 
-            onRemove={removeAvailableProduct} 
+          <DonationProducts
+            products={productsForDonation}
+            onRemove={removeAvailableProduct}
           />
 
           {/* Histórico de Produtos de Interesse */}
           <h2 className="text-2xl md:text-4xl font-semibold text-gray-800 mt-12 mb-8">Histórico de produtos de interesse</h2>
           <InterestProducts products={productsOfInterest} />
 
-          {/* Histórico de Produtos Favoritos */}
-          <h2 className="text-2xl md:text-4xl font-semibold text-gray-800 mt-12 mb-8">Favoritos</h2>
-          <FavoriteProducts products={favoriteProducts} />
         </div>
       </HeaderAndFooter>
     </HeaderAndFooterContainer>

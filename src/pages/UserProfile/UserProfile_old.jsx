@@ -1,4 +1,3 @@
-import React from 'react';
 import Sidebar from './components/Sidebar.jsx';
 import DonationItem from '../../components/DonationItem/DonationItem.jsx';
 import MobileHeader from './components/MobileHeader.jsx';
@@ -30,6 +29,7 @@ export const UserProfile = () => {
                             {/* Seção de Informações do Usuário */}
                             <section className="flex-1 bg-white p-8 rounded shadow-md w-full max-w-3xl mx-auto">
                                 {/* Informações do Usuário */}
+
                                 <div className="flex flex-col sm:flex-row items-center mb-6">
                                     {/* Foto de Perfil */}
                                     <div className="w-24 h-24 rounded-full bg-gray-300 flex-shrink-0">
@@ -41,7 +41,6 @@ export const UserProfile = () => {
                                         <input type="text" className="mt-1 p-1 block w-full border border-gray-300 rounded-md" value="Nome do Usuário" readOnly />
                                     </div>
                                 </div>
-
                                 {/* Linha: Email e Telefone */}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                                     <div>
@@ -53,7 +52,6 @@ export const UserProfile = () => {
                                         <input type="tel" className="mt-1 p-1 block w-full border border-gray-300 rounded-md" value="(00) 00000-0000" readOnly />
                                     </div>
                                 </div>
-
                                 {/* Linha: Endereço e Cidade */}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                                     <div>
@@ -65,7 +63,6 @@ export const UserProfile = () => {
                                         <input type="text" className="mt-1 p-1 block w-full border border-gray-300 rounded-md" value="Cidade Exemplo" readOnly />
                                     </div>
                                 </div>
-
                                 {/* Linha: CEP, UF e Botão */}
                                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
                                     <div>
@@ -90,15 +87,32 @@ export const UserProfile = () => {
                             {/* Separador Opcional */}
                             <Separator className="my-8 h-0.5 bg-gray-200" />
 
+
                             {/* Minhas Doações */}
                             <section className="mt-12 mb-8">
                                 <SectionHeader label="Minhas Doações" title="Itens Doados" />
                                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
                                     {/* Exemplo de itens */}
-                                    <DonationItem image="/video-game.png" title="Video Game PS" description="Vídeo game em bom estado." />
-                                    <DonationItem image="/computer.png" title="Computador" description="Funcionando bem." />
-                                    <DonationItem image="/air-conditioner.png" title="Ar condicionado Inverter Midea" description="Descrição do produto 3" />
-                                    <DonationItem image="/headphones.png" title="Fone de ouvido" description="Descrição do produto 3" />
+                                    <DonationItem
+                                        image="/video-game.png"
+                                        title="Video Game PS"
+                                        description="Vídeo game em bom estado."
+                                    />
+                                    <DonationItem
+                                        image="/computer.png"
+                                        title="Computador"
+                                        description="Funcionando bem."
+                                    />
+                                    <DonationItem
+                                        image="/air-conditioner.png"
+                                        title="Ar condicionado Inverter Midea"
+                                        description="Descrição do produto 3"
+                                    />
+                                    <DonationItem
+                                        image="/headphones.png"
+                                        title="Fone de ouvido"
+                                        description="Descrição do produto 3"
+                                    />
                                 </div>
                             </section>
 
@@ -109,23 +123,21 @@ export const UserProfile = () => {
                                 <SectionHeader label="Itens Recebidos" title="Itens Recebidos" />
                                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
                                     {/* Exemplo de itens */}
-                                    <DonationItem image="/cellphone.png" title="Celular" description="Celular precisando de reparos." />
-                                    <DonationItem image="/jacket.png" title="Casaco rosa" description="Casaco de frio em bom estado." />
-                                    <DonationItem image="/plantinhas.png" title="Planta Decorativa " description="Vasinhos de planta artificial para decoração (levemente desbotado)." />
-                                </div>
-                            </section>
-
-                            <Separator className="my-8 h-0.5 bg-gray-200" />
-
-                            {/* Favoritos */}
-                            <section className="mt-12 mb-8">
-                                <SectionHeader label="Favoritos" title="Itens Favoritos" />
-                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
-                                    {/* Exemplo de itens favoritos (mesclados) */}
-                                    <DonationItem image="/computer.png" title="Computador" description="Computador em bom estado." />
-                                    <DonationItem image="/cellphone.png" title="Celular" description="Celular com tela trincada." />
-                                    <DonationItem image="/headphones.png" title="Fone de ouvido" description="Fone de ouvido de alta qualidade." />
-                                    <DonationItem image="/jacket.png" title="Casaco de frio" description="Casaco de lã para inverno." />
+                                    <DonationItem
+                                        image="/cellphone.png"
+                                        title="Celular"
+                                        description="Celular precisando de reparos."
+                                    />
+                                    <DonationItem
+                                        image="/jacket.png"
+                                        title="Casaco rosa"
+                                        description="Casaco de frio em bom estado."
+                                    />
+                                    <DonationItem
+                                        image="/plantinhas.png"
+                                        title="Planta Decorativa "
+                                        description="Vasinhos de planta artificial para decoração (levemente desbotado)."
+                                    />
                                 </div>
                             </section>
                         </main>
@@ -136,3 +148,5 @@ export const UserProfile = () => {
         </>
     );
 };
+
+
