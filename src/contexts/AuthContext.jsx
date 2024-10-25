@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
   const queryClient = useQueryClient()
   const navigate = useNavigate()
   const location = useLocation()
- const [isLoading, setIsLoading] = React.useState(false)
+ const [isLoading, setIsLoading] = React.useState()
  const [isAuthenticated, setIsAuthenticated] = React.useState('true')
   const [user, setUser] = React.useState('')
  

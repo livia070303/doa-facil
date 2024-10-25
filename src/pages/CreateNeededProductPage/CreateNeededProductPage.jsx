@@ -1,134 +1,108 @@
 import React from 'react';
+import CheckboxInput from "../../components/CheckboxInput"; 
+import { HeaderAndFooter, HeaderAndFooterContainer } from "../../components/Layouts/HeaderAndFooter";
+import NumberInput from "../../components/NumberInput";
+import SelectInput from "../../components/SelectInput";
+import { UploadDocInput } from "../../components/UploadDocInput";
 import {
   TextField,
-  Button,
-  Box,
-  Grid,
-  InputLabel,
-  MenuItem,
   FormControl,
+  InputLabel,
   Select,
-  Typography,
-  Paper,
+  MenuItem,
 } from '@mui/material';
-import { UploadDocInput } from '../../components/UploadDocInput';
-import { HeaderAndFooter, HeaderAndFooterContainer } from '../../components/Layouts/HeaderAndFooter';
 
-export function CreateNeededProductPage() {
-  const sizeOptions = ['PP', 'P', 'M', 'G', 'GG'];
-  const categoryOptions = [
-    'Eletrônicos',
-    'Móveis',
-    'Roupas Femininas',
-    'Roupas Masculinas',
-    'Roupas Infantis',
-    'Eletrodomésticos',
-    'Alimentos',
-    'Sapatos',
-    'Decoração',
-    'Educação',
-  ];
+export function CreateNeededProductPage(){
 
-  const [size, setSize] = React.useState('');
-  const [quantity, setQuantity] = React.useState('');
-  const [footNum, setFootNum] = React.useState('');
-  const [category, setCategory] = React.useState('');
+    const sizeOptions = ["PP", "P", "M", "G", "GG"];
+    const categoryOptions = [
+      'Eletrônicos',
+      'Móveis',
+      'Roupas Femininas',
+      'Roupas Masculinas',
+      'Roupas Infantis',
+      'Eletrodomésticos',
+      'Alimentos',
+      'Sapatos',
+      'Decoração',
+      'Educação',
+    ];
 
-  const handleSizeChange = (event) => {
-    setSize(event.target.value);
-  };
+    const [name, setName] = React.useState('');
+    const [category, setCategory] = React.useState('');
+    const [description, setDescription] = React.useState('');
 
-  const handleCategoryChange = (event) => {
-    setCategory(event.target.value);
-  };
-
-  return (
-    <HeaderAndFooter>
-      <HeaderAndFooterContainer>
-        <Box sx={{ padding: { xs: 2, md: 4 }, maxWidth: '900px', margin: 'auto' }}>
-          <Typography variant="h4" align="center" gutterBottom>
-            Cadastro de Necessidade
-          </Typography>
-          <Paper elevation={3} sx={{ padding: { xs: 2, md: 4 } }}>
-            <form>
-              <Grid container spacing={3}>
-                {/* Informações do Produto */}
-                <Grid item xs={12}>
-                  <Typography variant="h6">Informações do Produto</Typography>
-                </Grid>
-                {/* Nome do produto */}
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    id="name"
-                    label="Nome do Produto*"
-                    variant="outlined"
-                  />
-                </Grid>
-                {/* Categoria do produto */}
-                <Grid item xs={12} sm={6}>
-                  <FormControl fullWidth>
-                    <InputLabel id="category-label">Categoria*</InputLabel>
-                    <Select
-                      labelId="category-label"
-                      id="category"
-                      value={category}
-                      label="Categoria*"
-                      onChange={handleCategoryChange}
-                    >
-                      {categoryOptions.map((option) => (
-                        <MenuItem key={option} value={option}>
-                          {option}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Grid>
-                {/* Quantidade */}
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    id="quantity"
-                    label="Quantidade*"
-                    type="number"
-                    variant="outlined"
-                    value={quantity}
-                    onChange={(e) => setQuantity(e.target.value)}
-                  />
-                </Grid>
-                {/* Numeração (calçados) */}
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    id="footNum"
-                    label="Numeração (calçados)"
-                    type="number"
-                    variant="outlined"
-                    value={footNum}
-                    onChange={(e) => setFootNum(e.target.value)}
-                  />
-                </Grid>
-                {/* Tamanho */}
-                <Grid item xs={12} sm={6}>
-                  <FormControl fullWidth>
-                    <InputLabel id="size-label">Tamanho</InputLabel>
-                    <Select
-                      labelId="size-label"
-                      id="size"
-                      value={size}
-                      label="Tamanho"
-                      onChange={handleSizeChange}
-                    >
-                      {sizeOptions.map((option) => (
-                        <MenuItem key={option} value={option}>
-                          {option}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Grid>
-                {/* Descrição / Informações Adicionais */}
-                <Grid item xs={12}>
+    return(
+        <>
+        <HeaderAndFooter>
+        <HeaderAndFooterContainer className="flex p-12 lg:p-24 flex-col gap-4"> 
+            <h1 className="font-poppins text-3xl">Cadastro de produto necessitado</h1>
+            <div className="flex gap-12 flex-col border border-dashed border-pink p-6 rounded-lg">
+                <div className="flex flex-col gap-12 lg:flex-row justify-between w-full">
+                    <section className="flex flex-col gap-4 w-full">
+                      {/* Nome do Produto */}
+                      <TextField
+                        fullWidth
+                        id="name"
+                        label="Nome do Produto*"
+                        variant="outlined"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                      {/* Categoria */}
+                      <FormControl fullWidth>
+                        <InputLabel id="category-label">Categoria*</InputLabel>
+                        <Select
+                          labelId="category-label"
+                          id="category"
+                          value={category}
+                          label="Categoria*"
+                          onChange={(e) => setCategory(e.target.value)}
+                        >
+                          {categoryOptions.map((option) => (
+                            <MenuItem key={option} value={option}>
+                              {option}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </section>
+                    <section className="w-full">
+                        <div className="flex flex-col md:flex-row md:justify-between lg:justify-start w-full">
+                          <label htmlFor="quantity" className="flex flex-col items-center md:items-start">
+                            Quantidade*
+                            <NumberInput id="quantity" className="p-2 justify-center rounded-md md:items-start md:justify-start "/>
+                          </label>
+                          <label htmlFor="footNum" className="flex flex-col items-center md:justify-end md:items-end lg:items-start">
+                            Numeração (calçados)
+                            <NumberInput id="footNum" className="p-2 rounded-md justify-center md:justify-end lg:justify-start"/>
+                          </label>
+                        </div>
+                        <SelectInput id="size" className="p-2 w-full my-2" options={sizeOptions}/>
+                        <div className="flex flex-col w-full gap-4 my-4">
+                            <span>Estado de conservação*:</span>
+                            <div className="flex flex-col">
+                              <label htmlFor="new" className="font-poppins flex items-center space-x-2">
+                                  <CheckboxInput label="Novo" id="new" />
+                              </label>
+                              <label htmlFor="used" className="font-poppins flex items-center space-x-2">
+                                  <CheckboxInput label="Usado" id="used" />
+                              </label>
+                              <label htmlFor="repair" className="font-poppins flex items-center space-x-2">
+                                  <CheckboxInput label="Necessita de reparo" id="repair" />
+                              </label>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div className="flex flex-col items-center gap-4 md:grid md:grid-cols-2">
+                    {/* Upload de Fotos */}
+                    {[...Array(6)].map((_, index) => (
+                      <UploadDocInput key={index} id={`image-${index}`} label={`Upload de fotos do produto ${index + 1}`} />
+                    ))}
+                </div>
+                <section className="flex flex-col gap-4 w-full">
+                  {/* Descrição do Produto */}
                   <TextField
                     fullWidth
                     id="description"
@@ -136,35 +110,17 @@ export function CreateNeededProductPage() {
                     multiline
                     rows={5}
                     variant="outlined"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                   />
-                </Grid>
-                {/* Upload de fotos */}
-                <Grid item xs={12}>
-                  <Typography variant="h6">Imagens do Produto</Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Grid container spacing={2}>
-                    {[...Array(6)].map((_, index) => (
-                      <Grid item xs={12} sm={6} md={4} key={index}>
-                        <UploadDocInput id={`image-${index}`} label={`Imagem ${index + 1}`} />
-                      </Grid>
-                    ))}
-                  </Grid>
-                </Grid>
-                {/* Botões */}
-                <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
-                  <Button variant="outlined" color="error" sx={{ width: 150 }}>
-                    Cancelar
-                  </Button>
-                  <Button variant="contained" color="primary" sx={{ width: 150 }}>
-                    Salvar
-                  </Button>
-                </Grid>
-              </Grid>
-            </form>
-          </Paper>
-        </Box>
-      </HeaderAndFooterContainer>
-    </HeaderAndFooter>
-  );
+                </section>
+                <div className="w-full flex justify-end items-end gap-6">
+                    <button className="py-4 w-[150px] lg:w-[10%] bg-vermelho-médio text-white rounded-md">Cancelar</button>
+                    <button className="py-4 w-[150px] lg:w-[10%] bg-azul-claro text-white rounded-md">Salvar</button>
+                </div>
+            </div>
+        </HeaderAndFooterContainer>
+        </HeaderAndFooter>
+        </>
+    )
 }
