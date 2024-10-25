@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { HeaderAndFooter, HeaderAndFooterContainer } from "../../components/Layouts/HeaderAndFooter.jsx";
 import { RelatedProducts } from './Components/RelatedProducts.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 export function ProductPage() {
   // Lista de imagens do produto
@@ -18,6 +20,9 @@ export function ProductPage() {
   // Estado para o campo de condição do produto
   const [productCondition, setProductCondition] = useState('usado');
 
+  // Estado para o botão de favorito
+  const [isFavorited, setIsFavorited] = useState(false);
+
   // Função para atualizar a imagem principal ao clicar em uma miniatura
   const handleThumbnailClick = (image) => {
     setMainImage(image);
@@ -28,16 +33,21 @@ export function ProductPage() {
     setProductCondition(event.target.value);
   };
 
+  // Função para favoritar o item
+  const toggleFavorite = () => {
+    setIsFavorited(!isFavorited);
+  };
+
   return (
     <HeaderAndFooter>
       <HeaderAndFooterContainer>
         <div className="w-full max-w-6xl mx-auto p-4 sm:p-6 md:p-8 lg:p-12 bg-white shadow-lg">
           {/* Título do Produto */}
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800 mb-4 text-center">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800 mb-8 text-center">
             Cadeira em MDF Assento Estofado Bege e Encosto com Tela
           </h1>
 
-          <div className="flex flex-col md:flex-row gap-8">
+          <div className="flex flex-col md:flex-row gap-12">
             {/* Imagens do Produto */}
             <div className="flex flex-col items-center gap-4 w-full md:w-1/2">
               {/* Imagem Principal */}
@@ -63,8 +73,7 @@ export function ProductPage() {
 
             {/* Informações do Produto */}
             <div className="flex flex-col w-full md:w-1/2">
-              <h2 className="text-lg md:text-xl font-bold text-gray-800 mb-4">CADEIRA DE MADEIRA</h2>
-              <p className="text-sm md:text-base text-gray-600 mb-6">
+              <p className="text-sm md:text-base text-gray-600 mb-8">
                 Esta cadeira de jantar de madeira combina estilo e durabilidade. Feita com madeira de alta qualidade, 
                 ela oferece um assento estofado em tecido bege, garantindo conforto durante longos períodos à mesa. 
                 O encosto em tela proporciona uma sensação de leveza e elegância ao design, sendo perfeita para 
@@ -72,44 +81,57 @@ export function ProductPage() {
                 para quem busca um toque de charme e funcionalidade para a sua sala de jantar.
               </p>
 
-              <a href="#" className="text-sm text-teal-600 underline mb-4">Saber mais sobre o produto</a>
+              <a href="#" className="text-sm text-teal-600 underline mb-6">Saber mais sobre o produto</a>
 
-              {/* Estado do Produto */}
-              <p className="text-sm font-medium text-gray-800 mb-4">Condição:</p>
-              <div className="flex gap-4 md:gap-8">
-                <label className="flex items-center gap-2">
-                  <input
-                    type="radio"
-                    name="condition"
-                    value="novo"
-                    checked={productCondition === 'novo'}
-                    onChange={handleConditionChange}
-                    className="text-gray-800"
-                  />
-                  <span className="text-sm md:text-base text-gray-800">Novo</span>
-                </label>
-                <label className="flex items-center gap-2">
-                  <input
-                    type="radio"
-                    name="condition"
-                    value="usado"
-                    checked={productCondition === 'usado'}
-                    onChange={handleConditionChange}
-                    className="text-gray-800"
-                  />
-                  <span className="text-sm md:text-base text-gray-800">Usado</span>
-                </label>
-                <label className="flex items-center gap-2">
-                  <input
-                    type="radio"
-                    name="condition"
-                    value="com-defeito"
-                    checked={productCondition === 'com-defeito'}
-                    onChange={handleConditionChange}
-                    className="text-gray-800"
-                  />
-                  <span className="text-sm md:text-base text-gray-800">Com Defeito</span>
-                </label>
+              {/* Estado do Produto e Favoritar */}
+              <div className="flex items-center mb-6">
+                <p className="text-sm font-medium text-gray-800 mr-4">Condição:</p>
+                <div className="flex items-center gap-4 md:gap-8">
+                  <label className="flex items-center gap-2">
+                    <input
+                      type="radio"
+                      name="condition"
+                      value="novo"
+                      checked={productCondition === 'novo'}
+                      onChange={handleConditionChange}
+                      className="text-gray-800"
+                    />
+                    <span className="text-sm md:text-base text-gray-800">Novo</span>
+                  </label>
+                  <label className="flex items-center gap-2">
+                    <input
+                      type="radio"
+                      name="condition"
+                      value="usado"
+                      checked={productCondition === 'usado'}
+                      onChange={handleConditionChange}
+                      className="text-gray-800"
+                    />
+                    <span className="text-sm md:text-base text-gray-800">Usado</span>
+                  </label>
+                  <label className="flex items-center gap-2">
+                    <input
+                      type="radio"
+                      name="condition"
+                      value="com-defeito"
+                      checked={productCondition === 'com-defeito'}
+                      onChange={handleConditionChange}
+                      className="text-gray-800"
+                    />
+                    <span className="text-sm md:text-base text-gray-800">Com Defeito</span>
+                  </label>
+
+                  {/* Ícone de Favoritar */}
+                  <button 
+                    className="ml-4 focus:outline-none"
+                    onClick={toggleFavorite}
+                  >
+                    <FontAwesomeIcon 
+                      icon={faHeart} 
+                      className={`text-2xl md:text-3xl ${isFavorited ? 'text-red-500' : 'text-gray-400'}`} 
+                    />
+                  </button>
+                </div>
               </div>
 
               {/* Botões de Ação */}
@@ -126,7 +148,7 @@ export function ProductPage() {
 
           {/* Produtos Relacionados */}
           <div className="mt-12">
-                <RelatedProducts/>
+            <RelatedProducts/>
           </div>
         </div>
       </HeaderAndFooterContainer>
