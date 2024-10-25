@@ -52,7 +52,7 @@ export function App() {
     const validPaths = [
       '/',
       '/user',
-      '/history',
+      '/y',
       '/create',
       '/create-needed',
       '/product/:id',
