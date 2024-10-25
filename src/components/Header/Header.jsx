@@ -202,12 +202,14 @@ export function Header() {
                             </div>
 
                             {/* Ícone de Carrinho */}
-                            <div className="relative flex items-center h-fit">
-                                <AiOutlineShoppingCart className="text-2xl" />
-                                <span className="absolute -right-3 -top-4 bg-vermelho-escuro text-white text-center w-6 h-6 rounded-full">
-                                    0
-                                </span>
-                            </div>
+                            <Link to="/cart">
+                                <div className="relative flex items-center h-fit cursor-pointer">
+                                    <AiOutlineShoppingCart className="text-2xl" />
+                                    <span className="absolute -right-3 -top-4 bg-vermelho-escuro text-white text-center w-6 h-6 rounded-full">
+                                        0
+                                    </span>
+                                </div>
+                            </Link>
                         </div>
 
                         {/* Avatar do Usuário */}
