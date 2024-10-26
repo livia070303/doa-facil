@@ -1,10 +1,11 @@
-import { FaBars, FaHeart, FaHome, FaPlusCircle, FaInfoCircle, FaQuestionCircle, FaSearch, FaShoppingCart, FaTimes, FaUser, FaUserPlus, FaGift } from "react-icons/fa"; 
+import { FaBars, FaHeart, FaHome, FaPlusCircle, FaQuestionCircle, FaSearch, FaShoppingCart, FaTimes, FaUser, FaUserPlus, FaGift } from "react-icons/fa"; 
 import { FaRegHeart } from "react-icons/fa6";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AvatarDropDown } from "./Avatar-dropdown";
 import { AuthContext } from "../../contexts/AuthContext";
+import { HashLink } from "react-router-hash-link";
 
 export function Header() {
     const [menuOpen, setMenuOpen] = useState(false);

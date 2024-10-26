@@ -68,7 +68,7 @@ export function AvatarDropDown() {
         }
         <button className="hidden lg:flex md:ml-6 xl:mr-4" onClick={() => handleOpenDropdown()}>
             <div className="bg-white rounded-full h-10 w-10 flex items-center justify-center border-b border-b-rose-950">
-                {data?.cadastro_usuario.nomeCompleto?.split(' ').map((name) => name[0]).join('')}
+                {data?.user.nomeCompleto?.split(' ').map((name) => name[0]).join('')}
             </div>
         </button>
         </>
