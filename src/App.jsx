@@ -1,4 +1,4 @@
-import { LoginPage } from './pages/LoginPage/LoginPage';
+import { LoginPage } from './pages/LoginPage/LoginPage'; 
 import { ResetPasswordPage } from './pages/ResetPasswordPage/ResetPasswordPage';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { useAuth } from './hooks/useAuth';
@@ -17,32 +17,27 @@ import RequirementsListPage from './pages/RequirementsListPage/RequirementsListP
 import Chat from './components/Chat/Chat';
 import ChatPage from './pages/ChatPage/ChatPage';
 import ProductSelectionPage from './pages/ProductSelectionPage/ProductSelectionPage';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider } from './contexts/AuthContext';
 import ScrollToTop from './components/ScrollToTop';
 
-const PrivateRoute = ({ children }) => {
-  const { isAuthenticated, isLoading } = useAuth();
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!isAuthenticated) {
-    return <Navigate to="/login" />;
-  }
-
-  return children;
-};
-
 export function App() {
   const location = useLocation();
+  const { isAuthenticated, isLoading } = useAuth();
 
-  // Definir os caminhos onde o chat não deve ser renderizado
-  const noChatPaths = ['/login', '/register', '/reset-password', '/chat'];
-
-  // Função para verificar se o caminho atual corresponde a uma rota específica ou a rota de erro
   const shouldRenderChat = () => {
+    // Se ainda está carregando o estado de autenticação, não decide ainda
+    if (isLoading) {
+      return false;
+    }
+
+    // Se o usuário não estiver autenticado, não renderiza o chat
+    if (!isAuthenticated) {
+      return false;
+    }
+
+    // Definir os caminhos onde o chat não deve ser renderizado
+    const noChatPaths = ['/login', '/register', '/reset-password', '/chat'];
+
     // Se o caminho atual está em `noChatPaths`, não renderiza o chat
     if (noChatPaths.includes(location.pathname)) {
       return false;
@@ -52,7 +47,7 @@ export function App() {
     const validPaths = [
       '/',
       '/user',
-      '/y',
+      '/history',
       '/create',
       '/create-needed',
       '/product/:id',
@@ -72,29 +67,40 @@ export function App() {
     return isValidPath;
   };
 
+  const PrivateRoute = ({ children }) => {
+    if (isLoading) {
+      return <div>Loading...</div>;
+    }
+
+    if (!isAuthenticated) {
+      return <Navigate to="/login" />;
+    }
+
+    return children;
+  };
 
   return (
     <>
       <AuthProvider>
-          <ScrollToTop /> {/* Coloque o ScrollToTop aqui */}
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/reset-password" element={<ResetPasswordPage />} />
-            <Route path="/user" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
-            <Route path="/history" element={<HistoryPage />} />
-            <Route path="/create" element={<CreateProductPage />} />
-            <Route path="/create-needed" element={<CreateNeededProductPage />} />
-            <Route path="/product/:id" element={<ProductPage />} />
-            <Route path="/faq" element={<FAQPage />} />
-            <Route path="*" element={<ErrorPage />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/checkout" element={<CheckOutPage />} />
-            <Route path="/requirements-list" element={<RequirementsListPage />} />
-            <Route path="/chat" element={<ChatPage />} />
-            <Route path="/product-selection" element={<ProductSelectionPage />} />
-          </Routes>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/reset-password" element={<ResetPasswordPage />} />
+          <Route path="/user" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
+          <Route path="/history" element={<HistoryPage />} />
+          <Route path="/create" element={<CreateProductPage />} />
+          <Route path="/create-needed" element={<CreateNeededProductPage />} />
+          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="*" element={<ErrorPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout" element={<CheckOutPage />} />
+          <Route path="/requirements-list" element={<RequirementsListPage />} />
+          <Route path="/chat" element={<ChatPage />} />
+          <Route path="/product-selection" element={<ProductSelectionPage />} />
+        </Routes>
 
         {/* Renderiza o Chat se `shouldRenderChat` retornar true */}
         {shouldRenderChat() && <Chat />}
