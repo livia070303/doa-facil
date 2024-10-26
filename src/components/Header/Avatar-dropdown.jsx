@@ -1,9 +1,11 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
+import { useUser } from '../../hooks/useUser';
 
 export function AvatarDropDown(){
 
+    const { data } = useUser()
 
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
     const dropdownRef = React.useRef(null)
@@ -66,7 +68,7 @@ export function AvatarDropDown(){
         }
         <button className="hidden lg:flex md:ml-6 xl:mr-4" onClick={() => handleOpenDropdown()}>
             <div className="bg-white rounded-full h-10 w-10 flex items-center justify-center border-b border-b-rose-950">
-                P
+                {data?.cadastro_usuario.nomeCompleto?.split(' ').map((name) => name[0]).join('')}
             </div>
         </button>
         </>

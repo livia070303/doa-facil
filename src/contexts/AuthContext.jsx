@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 import PropTypes from 'prop-types';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { api } from '../lib/api';
 import * as React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -12,8 +12,7 @@ export const AuthProvider = ({ children }) => {
   const queryClient = useQueryClient()
   const navigate = useNavigate()
   const location = useLocation()
- const [isLoading, setIsLoading] = React.useState(true)
- const [isAuthenticated, setIsAuthenticated] = React.useState('')
+  const [isLoading, setIsLoading] = React.useState(true)
   const [user, setUser] = React.useState('')
  
 
@@ -32,9 +31,9 @@ export const AuthProvider = ({ children }) => {
     }
     
   },
-  onSuccess: () => {
+  onSuccess: (data) => {
     queryClient.invalidateQueries({ queryKey: ['user'] })
-    setIsAuthenticated(true)  
+    setUser(data)
     navigate('/')
   }
  })
@@ -42,7 +41,6 @@ export const AuthProvider = ({ children }) => {
  const handleLogin = async (data) => {
   loginAccount.mutate(data)
  }
-
 
   const createAccount = useMutation({
     mutationFn: async (newAccount) => {
@@ -76,36 +74,7 @@ export const AuthProvider = ({ children }) => {
     createAccount.mutate(data)
   };
 
-  const fetchAuthorization = useMutation({
-    mutationFn: async () => {
-      try{
-        const response = await api.get('/authorization')
-        console.log(response)
-        if(response.status === 200){
-          setIsAuthenticated(response.data.token)
-          setUser(response.data.sub)
-        }
-      }catch(err){
-        console.error(err)
-        return err.response.data
-      }
-    }
-  })
-
-  function handleAuthorization(){
-    fetchAuthorization.mutate()
-  }
   
-  React.useEffect(() => {
-
-    if(!isAuthenticated && location.pathname !== '/login' && location.pathname !== '/register'){
-      handleAuthorization()
-    }
-
-    if(isAuthenticated){
-      api.defaults.headers.Authorization = `Bearer ${isAuthenticated}`
-    }
-  }, [])
 
   const logoutAccount = useMutation({
     mutationFn: async () => {
@@ -118,7 +87,6 @@ export const AuthProvider = ({ children }) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['user'] })
-      setIsAuthenticated('')
       setUser('')
       navigate('/login')
     }
@@ -127,9 +95,30 @@ export const AuthProvider = ({ children }) => {
   const handleLogout = () => {
     logoutAccount.mutate()
   }
+
+  const { data } = useQuery({
+    queryKey: ['user'],
+    queryFn: async () => {
+      try{
+        const response = await api.get('/authorization')
+        return response.data
+      }catch(err){
+        console.error(err)
+        return err.response.data
+      }
+    },
+  })
  
+  React.useEffect(() => {
+    if (data && data.sub !== user) {
+      setUser(data.sub);
+      api.defaults.headers.Authorization = `Bearer ${data.sub}`;
+      setIsLoading(false);
+    }
+  }, [data, user]);
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated: !!isAuthenticated, isLoading, handleRegister, handleLogin, handleLogout}}>
+    <AuthContext.Provider value={{ isAuthenticated: !!user, user, isLoading, handleRegister, handleLogin, handleLogout }}>
       {children}
     </AuthContext.Provider>
   );
@@ -138,3 +127,4 @@ export const AuthProvider = ({ children }) => {
 AuthProvider.propTypes = {
     children: PropTypes.node.isRequired,
   }
+

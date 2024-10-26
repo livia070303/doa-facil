@@ -1,7 +1,7 @@
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import { ResetPasswordPage } from './pages/ResetPasswordPage/ResetPasswordPage';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
-import { useAuth } from './hooks/useAuth';
+import { AuthContext } from   './contexts/AuthContext';
 import { HomePage } from './pages/HomePage/HomePage';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 import { UserProfile } from './pages/UserProfile/UserProfile';
@@ -17,13 +17,15 @@ import RequirementsListPage from './pages/RequirementsListPage/RequirementsListP
 import Chat from './components/Chat/Chat';
 import ChatPage from './pages/ChatPage/ChatPage';
 import ProductSelectionPage from './pages/ProductSelectionPage/ProductSelectionPage';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider } from './contexts/AuthContext';
 import ScrollToTop from './components/ScrollToTop';
+import { useContext } from 'react';
+import { UserProvider } from './contexts/UserContext';
 
 const PrivateRoute = ({ children }) => {
-  const { isAuthenticated, isLoading } = useAuth();
+  const { isAuthenticated, isLoading } = useContext(AuthContext);
 
+  
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -75,7 +77,9 @@ export function App() {
 
   return (
     <>
-      <AuthProvider>
+    <AuthProvider>
+      <UserProvider>
+
           <ScrollToTop /> {/* Coloque o ScrollToTop aqui */}
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -98,7 +102,9 @@ export function App() {
 
         {/* Renderiza o Chat se `shouldRenderChat` retornar true */}
         {shouldRenderChat() && <Chat />}
-      </AuthProvider>
+      </UserProvider>
+
+    </AuthProvider>
     </>
   );
 }
