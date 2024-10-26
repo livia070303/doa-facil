@@ -5,8 +5,6 @@ import MobileHeader from './components/MobileHeader.jsx';
 import Footer from '../../components/Footer/Footer.jsx';
 import { SectionHeader } from '../HomePage/components/SectionHeader.jsx';
 import { Separator } from '../../components/Separator.jsx'
-import * as React from 'react';
-import { AuthContext } from '../../contexts/AuthContext.jsx';
 import { useUser } from '../../hooks/useUser.js';
 import * as z from 'zod'
 import { useForm } from 'react-hook-form';

@@ -30,13 +30,19 @@ const PrivateRoute = ({ children }) => {
     return <div>Loading...</div>;
   }
 
-    // Se o usuário não estiver autenticado, não renderiza o chat
-    if (!isAuthenticated) {
-      return false;
-    }
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
 
-    // Definir os caminhos onde o chat não deve ser renderizado
-    const noChatPaths = ['/login', '/register', '/reset-password', '/chat'];
+  return children;
+};
+
+export function App() {
+  const location = useLocation();
+
+  const noChatPaths = ['/login', '/register', '/reset-password', '/chat'];
+
+  const shouldRenderChat = () => {
 
     // Se o caminho atual está em `noChatPaths`, não renderiza o chat
     if (noChatPaths.includes(location.pathname)) {
@@ -67,17 +73,7 @@ const PrivateRoute = ({ children }) => {
     return isValidPath;
   };
 
-  const PrivateRoute = ({ children }) => {
-    if (isLoading) {
-      return <div>Loading...</div>;
-    }
 
-    if (!isAuthenticated) {
-      return <Navigate to="/login" />;
-    }
-
-    return children;
-  };
 
   return (
     <>

@@ -5,6 +5,7 @@ import InputMask from 'react-input-mask';
 
 import { z } from 'zod'
 import { AuthContext } from '../../contexts/AuthContext';
+import { useUser } from '../../hooks/useUser';
 
 const registerSchema = z.object({
   nome: z.string().min(3),
@@ -24,6 +25,8 @@ export const RegisterPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(registerSchema),
   })
+
+  const { regionOptions } = useUser()
   
   const { 
    handleRegister
@@ -165,34 +168,12 @@ export const RegisterPage = () => {
                 className="mt-1 w-full border border-gray-300 rounded-md p-2"
                 {...register('estado')}
               >
-                <option value="">Selecione</option>
-                <option value="AC">AC - Acre</option>
-                <option value="AL">AL - Alagoas</option>
-                <option value="AP">AP - Amapá</option>
-                <option value="AM">AM - Amazonas</option>
-                <option value="BA">BA - Bahia</option>
-                <option value="CE">CE - Ceará</option>
-                <option value="DF">DF - Distrito Federal</option>
-                <option value="ES">ES - Espírito Santo</option>
-                <option value="GO">GO - Goiás</option>
-                <option value="MA">MA - Maranhão</option>
-                <option value="MT">MT - Mato Grosso</option>
-                <option value="MS">MS - Mato Grosso do Sul</option>
-                <option value="MG">MG - Minas Gerais</option>
-                <option value="PA">PA - Pará</option>
-                <option value="PB">PB - Paraíba</option>
-                <option value="PR">PR - Paraná</option>
-                <option value="PE">PE - Pernambuco</option>
-                <option value="PI">PI - Piauí</option>
-                <option value="RJ">RJ - Rio de Janeiro</option>
-                <option value="RN">RN - Rio Grande do Norte</option>
-                <option value="RS">RS - Rio Grande do Sul</option>
-                <option value="RO">RO - Rondônia</option>
-                <option value="RR">RR - Roraima</option>
-                <option value="SC">SC - Santa Catarina</option>
-                <option value="SP">SP - São Paulo</option>
-                <option value="SE">SE - Sergipe</option>
-                <option value="TO">TO - Tocantins</option>
+                {regionOptions.map((region) => (
+                  <option key={region.value} value={region.value}>
+                  {region.label}
+                </option>
+                ))}
+                
               </select>
             </div>
             {/* CEP */}
