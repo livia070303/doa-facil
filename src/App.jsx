@@ -1,4 +1,4 @@
-import { LoginPage } from './pages/LoginPage/LoginPage';
+import { LoginPage } from './pages/LoginPage/LoginPage'; 
 import { ResetPasswordPage } from './pages/ResetPasswordPage/ResetPasswordPage';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { AuthContext } from   './contexts/AuthContext';
@@ -30,21 +30,14 @@ const PrivateRoute = ({ children }) => {
     return <div>Loading...</div>;
   }
 
-  if (!isAuthenticated) {
-    return <Navigate to="/login" />;
-  }
+    // Se o usuário não estiver autenticado, não renderiza o chat
+    if (!isAuthenticated) {
+      return false;
+    }
 
-  return children;
-};
+    // Definir os caminhos onde o chat não deve ser renderizado
+    const noChatPaths = ['/login', '/register', '/reset-password', '/chat'];
 
-export function App() {
-  const location = useLocation();
-
-  // Definir os caminhos onde o chat não deve ser renderizado
-  const noChatPaths = ['/login', '/register', '/reset-password', '/chat'];
-
-  // Função para verificar se o caminho atual corresponde a uma rota específica ou a rota de erro
-  const shouldRenderChat = () => {
     // Se o caminho atual está em `noChatPaths`, não renderiza o chat
     if (noChatPaths.includes(location.pathname)) {
       return false;
@@ -74,6 +67,17 @@ export function App() {
     return isValidPath;
   };
 
+  const PrivateRoute = ({ children }) => {
+    if (isLoading) {
+      return <div>Loading...</div>;
+    }
+
+    if (!isAuthenticated) {
+      return <Navigate to="/login" />;
+    }
+
+    return children;
+  };
 
   return (
     <>

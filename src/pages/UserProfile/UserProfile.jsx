@@ -1,4 +1,5 @@
-import Sidebar from './components/Sidebar.jsx'; 
+import React from 'react';
+import Sidebar from './components/Sidebar.jsx';
 import DonationItem from '../../components/DonationItem/DonationItem.jsx';
 import MobileHeader from './components/MobileHeader.jsx';
 import Footer from '../../components/Footer/Footer.jsx';
@@ -73,13 +74,13 @@ export const UserProfile = () => {
                     <Sidebar />
                 </div>
 
-                {/*Área do conteúdo principal*/}
-                <div className="flex-1 flex flex-col">
+                    {/*Área do conteúdo principal*/}
+                    <div className="flex-1 flex flex-col">
 
-                    {/* Header para telas pequenas */}
-                    <div className="md:hidden">
-                        <MobileHeader />
-                    </div>
+                        {/* Header para telas pequenas */}
+                        <div className="md:hidden">
+                            <MobileHeader />
+                        </div>
 
                     {/* Main Content */}
                     <main className="flex-1 bg-gray-100 p-10">
@@ -173,39 +174,22 @@ export const UserProfile = () => {
                     </div>
                 </form >
 
-                {/* Separador Opcional */}
-                <Separator className="my-8 h-0.5 bg-gray-200" />
+                            {/* Separador Opcional */}
+                            <Separator className="my-8 h-0.5 bg-gray-200" />
 
+                            {/* Minhas Doações */}
+                            <section className="mt-12 mb-8">
+                                <SectionHeader label="Minhas Doações" title="Itens Doados" />
+                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
+                                    {/* Exemplo de itens */}
+                                    <DonationItem image="/video-game.png" title="Video Game PS" description="Vídeo game em bom estado." />
+                                    <DonationItem image="/computer.png" title="Computador" description="Funcionando bem." />
+                                    <DonationItem image="/air-conditioner.png" title="Ar condicionado Inverter Midea" description="Descrição do produto 3" />
+                                    <DonationItem image="/headphones.png" title="Fone de ouvido" description="Descrição do produto 3" />
+                                </div>
+                            </section>
 
-                    {/* Minhas Doações */}
-                    <section className="mt-12 mb-8">
-                            <SectionHeader label="Minhas Doações" title="Itens Doados" />
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
-                            {/* Exemplo de itens */}
-                            <DonationItem
-                                image="/video-game.png"
-                                title="Video Game PS"
-                                description="Vídeo game em bom estado."
-                            />
-                            <DonationItem
-                                image="/computer.png"
-                                title="Computador"
-                                description="Funcionando bem."
-                            />
-                            <DonationItem
-                                image="/air-conditioner.png"
-                                title="Ar condicionado Inverter Midea"
-                                description="Descrição do produto 3"
-                            />
-                            <DonationItem
-                                image="/headphones.png"
-                                title="Fone de ouvido"
-                                description="Descrição do produto 3"
-                            />
-                        </div>
-                    </section>
-
-                    <Separator className="my-8 h-0.5 bg-gray-200" />
+                            <Separator className="my-8 h-0.5 bg-gray-200" />
 
                     {/* Itens Recebidos */}
                     <section className="mt-12 mb-8">
@@ -240,5 +224,3 @@ export const UserProfile = () => {
         </>
     );
 };
-
-

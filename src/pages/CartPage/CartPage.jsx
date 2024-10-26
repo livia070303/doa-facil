@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react"; 
 import { HeaderAndFooter, HeaderAndFooterContainer } from "../../components/Layouts/HeaderAndFooter.jsx";
+import { Link } from 'react-router-dom';
 
 const CartPage = () => {
   return (
@@ -41,12 +42,16 @@ const CartPage = () => {
 
           {/* Ações do Carrinho */}
           <div className="flex flex-col sm:flex-row justify-between items-center mt-8 gap-4">
-            <button className="w-full sm:w-auto px-12 py-4 border border-black/50 rounded text-black font-medium">
-              Return To Shop
-            </button>
-            <button className="w-full sm:w-auto px-12 py-4 border border-black/50 rounded text-black font-medium">
-              Update Cart
-            </button>
+            <Link to="/product-selection" className="w-full sm:w-auto">
+              <button className="w-full sm:w-auto px-12 py-4 border border-vermelho-médio rounded text-vermelho-médio font-bold hover:bg-vermelho-médio hover:text-white">
+                Voltar para Doações
+              </button>
+            </Link>
+            <Link to="/checkout" className="w-full sm:w-auto">
+              <button className="w-full sm:w-auto px-12 py-4 border border-azul-claro rounded text-azul-claro font-bold hover:bg-azul-claro hover:text-white">
+                Fazer checkout
+              </button>
+            </Link>
           </div>
         </div>
       </HeaderAndFooter>

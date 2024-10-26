@@ -107,13 +107,13 @@ export function Header() {
                                         </Link>
                                     </li>
                                     <li className="border-t border-azul-escuro hover:bg-azul-médio">
-                                        <Link
-                                            to="/favorites"
-                                            className="flex items-center px-4 py-2 text-white"
+                                        <HashLink 
+                                        smooth to="/user#favoritos"                         
+                                        className="flex items-center px-4 py-2 text-white"
                                             onClick={() => setMenuOpen(false)}
                                         >
                                             <FaHeart className="mr-2 text-white" /> Favoritos
-                                        </Link>
+                                        </HashLink>
                                     </li>
                                     <li className="border-t border-azul-escuro hover:bg-azul-médio">
                                         <Link
@@ -158,63 +158,87 @@ export function Header() {
                 </div>
 
                 {/* Links de Navegação */}
-                <div className="hidden md:flex md:w-full gap-4 md:justify-evenly">
-                    <Link to="/" className="font-medium font-poppins">
-                        Inicial
-                    </Link>
-                    <Link to="/faq" className="font-medium font-poppins">
-                        FAQ
-                    </Link>
+        <div className="hidden md:flex md:w-full gap-4 md:justify-evenly">
+          <Link
+            to="/"
+            className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105"
+          >
+            Inicial
+          </Link>
+          <Link
+            to="/faq"
+            className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105"
+          >
+            FAQ
+          </Link>
 
-                    {!isAuthenticated ? (
-                        // Links para usuários não logados
-                        <>
-                            <Link to="/register" className="font-medium font-poppins">
-                                Cadastre-se
-                            </Link>
-                            <Link to="/login" className="font-medium font-poppins">
-                                Login
-                            </Link>
-                        </>
-                    ) : (
-                        // Links para usuários logados
-                        <>
-                            <Link to="/create" className="font-medium font-poppins">
-                                Doar
-                            </Link>
-                            <Link to="/create-needed" className="font-medium font-poppins">
-                                Receber
-                            </Link>
-                        </>
-                    )}
-                </div>
+          {!isAuthenticated ? (
+            // Links para usuários não logados
+            <>
+              <Link
+                to="/register"
+                className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105"
+              >
+                Cadastre-se
+              </Link>
+              <Link
+                to="/login"
+                className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105"
+              >
+                Login
+              </Link>
+            </>
+          ) : (
+            // Links para usuários logados
+            <>
+              <Link
+                to="/create"
+                className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105"
+              >
+                Doar
+              </Link>
+              <Link
+                to="/create-needed"
+                className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105"
+              >
+                Receber
+              </Link>
+            </>
+          )}
+        </div>
 
-                {/* Ícones e Avatar */}
-                {isAuthenticated && (
-                    <div className="hidden mr-5 md:flex justify-between md:w-[20%]">
-                        <div className="flex gap-8 items-center flex-row-reverse">
-                            {/* Ícone de Favoritos */}
-                            <div className="relative flex items-center h-fit">
-                                <FaRegHeart className="text-2xl" />
-                                <span className="absolute -right-3 -top-4 bg-vermelho-escuro text-white text-center w-6 h-6 rounded-full">
-                                    0
-                                </span>
-                            </div>
+        {/* Ícones e Avatar */}
+        {isAuthenticated && (
+          <div className="hidden mr-5 md:flex justify-between md:w-[20%]">
+            <div className="flex gap-8 items-center flex-row-reverse">
+              {/* Ícone de Favoritos */}
+              <HashLink 
+              smooth to="/user#favoritos" 
+              className="relative flex items-center h-fit transition-all duration-200 ease-in-out transform hover:text-white hover:scale-110"
+              >
+                <FaRegHeart className="text-2xl" />
+                <span className="absolute -right-3 -top-4 bg-vermelho-escuro text-white text-center w-6 h-6 rounded-full">
+                  0
+                </span>
+              </HashLink>
 
-                            {/* Ícone de Carrinho */}
-                            <div className="relative flex items-center h-fit">
-                                <AiOutlineShoppingCart className="text-2xl" />
-                                <span className="absolute -right-3 -top-4 bg-vermelho-escuro text-white text-center w-6 h-6 rounded-full">
-                                    0
-                                </span>
-                            </div>
-                        </div>
-
-                        {/* Avatar do Usuário */}
-                        <AvatarDropDown />
-                    </div>
-                )}
+              {/* Ícone de Carrinho */}
+              <Link
+                to="/cart"
+                className="relative flex items-center h-fit transition-all duration-200 ease-in-out transform hover:text-white hover:scale-110"
+              >
+                <AiOutlineShoppingCart className="text-2xl" />
+                <span className="absolute -right-3 -top-4 bg-vermelho-escuro text-white text-center w-6 h-6 rounded-full">
+                  0
+                </span>
+              </Link>
             </div>
-        </>
-    );
+
+            {/* Avatar do Usuário */}
+            <AvatarDropDown />
+          </div>
+        )}
+      </div>
+    </>
+  );
 }

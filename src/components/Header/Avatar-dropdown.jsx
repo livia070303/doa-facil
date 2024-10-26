@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useUser } from '../../hooks/useUser';
 
-export function AvatarDropDown(){
+export function AvatarDropDown() {
 
     const { data } = useUser()
 
@@ -19,20 +19,20 @@ export function AvatarDropDown(){
 
     React.useEffect(() => {
         const handleClickOutside = (event) => {
-          if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-            handleCloseDropdown();
-          }
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                handleCloseDropdown();
+            }
         };
-    
+
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
-          document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('mousedown', handleClickOutside);
         };
-      }, []);
+    }, []);
 
-      const { handleLogout } = React.useContext(AuthContext)
+    const { handleLogout } = React.useContext(AuthContext)
 
-    return(
+    return (
         <>
         {
             isDropdownOpen && (
