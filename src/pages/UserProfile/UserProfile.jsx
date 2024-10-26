@@ -118,7 +118,7 @@ export const UserProfile = () => {
                             <Separator className="my-8 h-0.5 bg-gray-200" />
 
                             {/* Favoritos */}
-                            <section className="mt-12 mb-8">
+                            <section className="mt-12 mb-8" id="favoritos">
                                 <SectionHeader label="Favoritos" title="Itens Favoritos" />
                                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
                                     {/* Exemplo de itens favoritos (mesclados) */}

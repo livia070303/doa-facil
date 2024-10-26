@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from '../../hooks/useAuth';
 import { AvatarDropDown } from "./Avatar-dropdown";
+import { HashLink } from 'react-router-hash-link';
 
 export function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -107,13 +108,13 @@ export function Header() {
                                         </Link>
                                     </li>
                                     <li className="border-t border-azul-escuro hover:bg-azul-médio">
-                                        <Link
-                                            to="/favorites"
-                                            className="flex items-center px-4 py-2 text-white"
+                                        <HashLink 
+                                        smooth to="/user#favoritos"                         
+                                        className="flex items-center px-4 py-2 text-white"
                                             onClick={() => setMenuOpen(false)}
                                         >
                                             <FaHeart className="mr-2 text-white" /> Favoritos
-                                        </Link>
+                                        </HashLink>
                                     </li>
                                     <li className="border-t border-azul-escuro hover:bg-azul-médio">
                                         <Link
@@ -212,15 +213,15 @@ export function Header() {
           <div className="hidden mr-5 md:flex justify-between md:w-[20%]">
             <div className="flex gap-8 items-center flex-row-reverse">
               {/* Ícone de Favoritos */}
-              <Link
-                to="/favorites"
-                className="relative flex items-center h-fit transition-all duration-200 ease-in-out transform hover:text-white hover:scale-110"
+              <HashLink 
+              smooth to="/user#favoritos" 
+              className="relative flex items-center h-fit transition-all duration-200 ease-in-out transform hover:text-white hover:scale-110"
               >
                 <FaRegHeart className="text-2xl" />
                 <span className="absolute -right-3 -top-4 bg-vermelho-escuro text-white text-center w-6 h-6 rounded-full">
                   0
                 </span>
-              </Link>
+              </HashLink>
 
               {/* Ícone de Carrinho */}
               <Link
