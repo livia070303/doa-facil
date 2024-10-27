@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Obtendo a URL base da API a partir do ambiente
-const API_URL = 'http://doa-facil-api-tkba.vercel.app';
+const API_URL = 'https://doa-facil-api-tkba.vercel.app';
 
 export const getDonations = async () => {
   try {
