@@ -2,8 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { BiMinus, BiPlus } from 'react-icons/bi';
 
-function NumberInput({ id, className, min = 0, max = 100, step = 1 }) {
-    const [value, setValue] = useState(0);
+function NumberInput({ id, className, min = 0, max = 100, step = 1, value, setValue }) {
 
     const handleIncrement = () => {
         if (value < max) {

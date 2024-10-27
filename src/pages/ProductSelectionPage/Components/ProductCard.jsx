@@ -43,7 +43,7 @@ const Popup = styled.div`
 `;
 
 // Componente principal do card do produto
-const ProductCard = ({ imageUrl, title, badge, donorRating, avatarUrl, donorName, positiveComments, negativeComments }) => {
+const ProductCard = ({ imageUrl, title, badgeCondition, badgeQuantity, donor}) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   // Função para abrir o popup
@@ -56,36 +56,22 @@ const ProductCard = ({ imageUrl, title, badge, donorRating, avatarUrl, donorName
     setIsPopupOpen(false);
   };
 
-  // Função para renderizar as estrelas com base na nota do doador
-  const renderStars = (rating) => {
-    const stars = [];
-    for (let i = 1; i <= 5; i++) {
-      stars.push(
-        <FaStar
-          key={i}
-          color={i <= rating ? 'gold' : 'gray'}
-          className="text-lg"
-        />
-      );
-    }
-    return stars;
-  };
 
   return (
     <div className="bg-white p-4 rounded border shadow-sm relative">
-      {/* Avatar do Doador na Parte Superior do Card */}
-      <div className="flex items-center mb-4 relative">
+       {/* Avatar do Doador na Parte Superior do Card */}
+       <div className="flex items-center mb-4 relative">
         {/* Ícone de Avatar com Nota Sobreposta */}
         <div className="relative cursor-pointer" onClick={handleAvatarClick}>
           <img
-            src={avatarUrl}
+            src={donor?.image || 'https://www.screenfeed.fr/wp-content/uploads/2013/10/default-avatar.png'}
             alt="Avatar do Doador"
             className="w-12 h-12 rounded-full object-cover"
           />
           {/* Nota sobreposta na parte inferior centralizada do Avatar */}
-          <RatingBadge rating={donorRating}>
+          {/* <RatingBadge rating={donorRating}>
             {donorRating}
-          </RatingBadge>
+          </RatingBadge> */}
         </div>
       </div>
 
@@ -96,9 +82,15 @@ const ProductCard = ({ imageUrl, title, badge, donorRating, avatarUrl, donorName
       <h3 className="text-gray-700 text-sm mb-2">{title}</h3>
 
       {/* Badge de Destaque */}
-      {badge && (
-        <div className={`bg-${badge.color}-500 text-white text-xs rounded px-2 py-1 inline-block mt-2`}>
-          {badge.label}
+      {badgeCondition && (
+        <div className={`bg-${badgeCondition.color}-500 text-white text-xs rounded px-2 py-1 inline-block mt-2`}>
+          {badgeCondition.label}
+        </div>
+      )}
+      <span>          </span>
+      {badgeQuantity && (
+        <div className={`bg-${badgeQuantity.color}-500 text-white text-xs rounded px-2 py-1 inline-block mt-2`}>
+          Qtd: {badgeQuantity.label}
         </div>
       )}
 
@@ -107,22 +99,17 @@ const ProductCard = ({ imageUrl, title, badge, donorRating, avatarUrl, donorName
         <Overlay onClick={handleClosePopup}>
           <Popup onClick={(e) => e.stopPropagation()}>
             {/* Nome do Doador */}
-            <h2 className="text-xl font-bold mb-4">{donorName}</h2>
+            <h2 className="text-xl font-bold mb-4">Informações do doador</h2>
+            <p className="text-xl mb-4">Nome: {donor?.nomeCompleto}</p>
 
-            {/* Nota do Doador em Estrelas */}
-            <div className="flex justify-center mb-4">
-              {renderStars(donorRating)}
-            </div>
-
-            {/* Comentários Positivos e Negativos */}
-            <div className="text-left">
-              <h3 className="font-semibold text-green-600 mb-2">Comentário Positivo</h3>
-              <p className="text-sm text-gray-600 mb-4">{positiveComments}</p>
-
-              <h3 className="font-semibold text-red-600 mb-2">Comentário Negativo</h3>
-              <p className="text-sm text-gray-600">{negativeComments}</p>
-            </div>
-
+            <button
+              className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
+              onClick={handleClosePopup}
+            >
+              Falar com o Doador
+            </button>
+            <span>     </span>
+           
             {/* Botão para fechar o popup */}
             <button
               className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"

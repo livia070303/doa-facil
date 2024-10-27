@@ -7,12 +7,12 @@ const ProductList = ({ products }) => {
     <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       {products.map((product) => (
         <ProductCard
-          key={product.id}
-          imageUrl={product.imageUrl}
-          title={product.title}
-          badge={product.badge}
-          donorRating={product.donorRating} // Passa a nota do doador
-          avatarUrl={product.avatarUrl} // Passa a URL do avatar
+          key={product._id}
+          imageUrl={product.image}
+          title={product.productName}
+          badgeCondition={ { label: product.condition, color: "red" }}
+          badgeQuantity={ { label: product.quantity, color: "blue" }}
+          donor={product.donor}
         />
       ))}
     </div>
