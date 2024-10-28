@@ -13,6 +13,7 @@ const ProductList = ({ products }) => {
           badgeCondition={ { label: product.condition, color: "red" }}
           badgeQuantity={ { label: product.quantity, color: "blue" }}
           donor={product.donor}
+          _id={product._id}
         />
       ))}
     </div>

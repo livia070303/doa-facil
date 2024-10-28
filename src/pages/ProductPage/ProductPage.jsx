@@ -1,24 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { HeaderAndFooter, HeaderAndFooterContainer } from "../../components/Layouts/HeaderAndFooter.jsx";
 import { RelatedProducts } from './Components/RelatedProducts.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { getDonationById } from '../../services/donationServices.js';
+import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import {  BsFillHouseDoorFill } from "react-icons/bs";
 
 export function ProductPage() {
-  // Lista de imagens do produto
-  const images = [
-    "/cadeira.jpg",  // Imagem principal
-    "/cadeira2.jpg",    // Miniatura 1
-    "/cadeira-medidas.jpg",    // Miniatura 2
-    "/cadeira-detalhe.jpg",    // Miniatura 3
-    "/cadeira-tecido.jpg"      // Miniatura 4
-  ];
 
-  // Estado para armazenar a imagem atualmente exibida
-  const [mainImage, setMainImage] = useState(images[0]);
-
-  // Estado para o campo de condição do produto
-  const [productCondition, setProductCondition] = useState('usado');
+  const [images, setImages] = useState([]);
+  const [mainImage, setMainImage] = useState('');
 
   // Estado para o botão de favorito
   const [isFavorited, setIsFavorited] = useState(false);
@@ -38,13 +31,56 @@ export function ProductPage() {
     setIsFavorited(!isFavorited);
   };
 
+  const [product, setProduct] = useState(null);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchDonationsIdData = async () => {
+      try {
+        
+        const data = await getDonationById(id);
+        setProduct(data?.donations);
+        setImages(data?.donations?.image);
+        setMainImage(data?.donations?.image[0]);
+        
+      } catch (error) {
+        //alert(error?.response?.data?.message)
+        console.error('Erro ao buscar doações:', error);
+      }
+    };
+
+    fetchDonationsIdData();
+  }, []);
+
+  if (!product) {
+    return (
+      <HeaderAndFooter>
+        <HeaderAndFooterContainer>
+        <div className="flex flex-col items-center  w-screen h-screen">
+        <img src="../../../public/error404.svg" alt="Error" className="w-[400px] h-[400px]"/>
+        <div className="w-full flex flex-col items-center justify-center gap-4">
+            <div className="flex flex-col items-center">
+            <span className="font-poppins text-3xl font-semibold">404</span>
+            <span className="font-poppins text-2xl text-texto-infor">Produto não encontrado!</span>
+            </div>
+
+            <Link to="/">
+            <button className="bg-white text-azul-claro flex items-center justify-center px-4 gap-2 py-2 rounded-md shadow-md tracking-wide border  border-gray-300 cursor-pointer hover:bg-azul-claro hover:text-white"><BsFillHouseDoorFill/> IR PARA PÁGINA INICIAL</button>
+            </Link>
+        </div>
+        </div>
+        </HeaderAndFooterContainer>
+      </HeaderAndFooter>
+    )
+  }
+
   return (
     <HeaderAndFooter>
       <HeaderAndFooterContainer>
         <div className="w-full max-w-6xl mx-auto p-4 sm:p-6 md:p-8 lg:p-12 bg-white shadow-lg">
           {/* Título do Produto */}
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800 mb-8 text-center">
-            Cadeira em MDF Assento Estofado Bege e Encosto com Tela
+            {product?.productName || 'Não definido'}
           </h1>
 
           <div className="flex flex-col md:flex-row gap-12">
@@ -74,14 +110,10 @@ export function ProductPage() {
             {/* Informações do Produto */}
             <div className="flex flex-col w-full md:w-1/2">
               <p className="text-sm md:text-base text-gray-600 mb-8">
-                Esta cadeira de jantar de madeira combina estilo e durabilidade. Feita com madeira de alta qualidade, 
-                ela oferece um assento estofado em tecido bege, garantindo conforto durante longos períodos à mesa. 
-                O encosto em tela proporciona uma sensação de leveza e elegância ao design, sendo perfeita para 
-                ambientes sofisticados ou modernos. Com estrutura robusta e acabamento natural, esta cadeira é ideal 
-                para quem busca um toque de charme e funcionalidade para a sua sala de jantar.
+                {product?.description || 'Não definido'}
               </p>
 
-              <a href="#" className="text-sm text-teal-600 underline mb-6">Saber mais sobre o produto</a>
+              {/* <a href="#" className="text-sm text-teal-600 underline mb-6">Saber mais sobre o produto</a> */}
 
               {/* Estado do Produto e Favoritar */}
               <div className="flex items-center mb-6">
@@ -92,7 +124,7 @@ export function ProductPage() {
                       type="radio"
                       name="condition"
                       value="novo"
-                      checked={productCondition === 'novo'}
+                      checked={product?.condition === 'novo'}
                       onChange={handleConditionChange}
                       className="text-gray-800"
                     />
@@ -103,7 +135,7 @@ export function ProductPage() {
                       type="radio"
                       name="condition"
                       value="usado"
-                      checked={productCondition === 'usado'}
+                      checked={product?.condition === 'usado'}
                       onChange={handleConditionChange}
                       className="text-gray-800"
                     />
@@ -113,8 +145,8 @@ export function ProductPage() {
                     <input
                       type="radio"
                       name="condition"
-                      value="com-defeito"
-                      checked={productCondition === 'com-defeito'}
+                      value="precisa de reparos"
+                      checked={product?.condition === 'precisa de reparos'}
                       onChange={handleConditionChange}
                       className="text-gray-800"
                     />
