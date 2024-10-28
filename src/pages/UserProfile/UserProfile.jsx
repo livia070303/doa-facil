@@ -211,6 +211,18 @@ export const UserProfile = () => {
                             />
                         </div>
                     </section>
+
+                    {/* Favoritos */}
+                    <section className="mt-12 mb-8" id="favoritos">
+                                <SectionHeader label="Favoritos" title="Itens Favoritos" />
+                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
+                                    {/* Exemplo de itens favoritos (mesclados) */}
+                                    <DonationItem image="/computer.png" title="Computador" description="Computador em bom estado." />
+                                    <DonationItem image="/cellphone.png" title="Celular" description="Celular com tela trincada." />
+                                    <DonationItem image="/headphones.png" title="Fone de ouvido" description="Fone de ouvido de alta qualidade." />
+                                    <DonationItem image="/jacket.png" title="Casaco de frio" description="Casaco de lã para inverno." />
+                                </div>
+                            </section>
                 </main>
                 </div>
             </div>  
