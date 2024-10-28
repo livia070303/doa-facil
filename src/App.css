@@ -1,0 +1,21 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .high-contrast {
+    background-color: black;
+    color: yellow;
+  }
+  
+  .toggle-contrast-btn {
+    position: fixed;
+    bottom: 10px;  /* Alinhamento na parte inferior */
+    left: 10px;    /* Alinhamento à esquerda */
+    padding: 10px;
+    background-color: yellow;
+    color: black;
+    border: none;
+    cursor: pointer;
+    z-index: 1000; /* Garante que o botão fique visível sobre outros elementos */
+  }
+  
