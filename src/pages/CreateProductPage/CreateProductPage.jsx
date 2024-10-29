@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import { postDonation } from '../../services/donationServices';
 import { uploadToS3 } from '../../services/imageServices';
+import { useNavigate } from 'react-router-dom';
 
 export function CreateProductPage(){
 
@@ -35,7 +36,12 @@ export function CreateProductPage(){
       { id: "used", label: "Usado", value: "usado" },
       { id: "repair", label: "Necessita de reparo", value: "precisa de reparos" },
     ];
+    const navigate = useNavigate();
 
+    const handleRedirectToProduct = () => {
+      navigate('/product-selection'); // Navega para a rota desejada
+    };
+  
     const [name, setName] = React.useState('');
     const [category, setCategory] = React.useState('');
     const [description, setDescription] = React.useState('');
@@ -45,11 +51,6 @@ export function CreateProductPage(){
     const [quantity, setQuantity] = React.useState(0);
     const [error, setError] = React.useState(""); 
     const [files, setFiles] = React.useState([]);
-    const [imagensURLS3, setImagensURLS3] = React.useState([]);
-
-    const handleFileSelect = (id, file) => {
-      setFiles((prevFiles) => [...prevFiles, { id, file }]);
-    };
 
     async function save(e){
       e.preventDefault();
@@ -68,12 +69,11 @@ export function CreateProductPage(){
         alert("A numeração não foi preenchida");
         return;
       }
-
+      let urls =[];
       const fileArray = files.map(item => item.file);
         try {
-          const urls = await uploadToS3(fileArray);
+          urls = await uploadToS3(fileArray);
           console.log("Upload finalizado:", urls);
-          setImagensURLS3(urls);
         } catch (error) {
             console.error('Error uploading files:', error);
             alert('Não foi possível carregar as imagens corretamente, tente mais tarde...');
@@ -89,7 +89,7 @@ export function CreateProductPage(){
         "category" : category,
         "condition" : condition,
         "quantity" : quantity,
-        "image" : imagensURLS3,
+        "image" : urls,
         "donor" : "671acd9dd1da378ac5c98124"
         
       }
@@ -98,6 +98,7 @@ export function CreateProductPage(){
       .then(response => {
         alert(response.message);
         console.log("Doação criada com sucesso:", response);
+        handleRedirectToProduct();
       })
       .catch(error => {
         alert("Erro ao cadastrar doação");
@@ -194,7 +195,7 @@ export function CreateProductPage(){
                 <div className="flex flex-col items-center gap-4 md:grid md:grid-cols-2">
                     {/* Upload de Fotos */}
                     {[...Array(6)].map((_, index) => (
-                      <UploadDocInput key={index} id={`image-${index}`} label={`Upload de fotos do produto ${index + 1}`}  onFileSelect={handleFileSelect}/>
+                      <UploadDocInput key={index} id={`image-${index}`} label={`Upload de fotos do produto ${index + 1}`} setFiles={setFiles}/>
                     ))}
                 </div>
                 <section className="flex flex-col gap-4 w-full">
@@ -211,7 +212,7 @@ export function CreateProductPage(){
                   />
                 </section>
                 <div className="w-full flex justify-end items-end gap-6">
-                    <button className="py-4 w-[150px] lg:w-[10%] bg-vermelho-médio text-white rounded-md">Cancelar</button>
+                    <button type='button' onClick={handleRedirectToProduct} className="py-4 w-[150px] lg:w-[10%] bg-vermelho-médio text-white rounded-md">Cancelar</button>
                     <button type="submit" className="py-4 w-[150px] lg:w-[10%] bg-azul-claro text-white rounded-md">Salvar</button>
                 </div>
             </div>

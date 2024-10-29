@@ -4,14 +4,14 @@ import { GrAttachment } from 'react-icons/gr';
 
 
 
-export function UploadDocInput({ id, className, onFileSelect, label }) {
+export function UploadDocInput({ id, className, setFiles, label }) {
     const [fileName, setFileName] = useState('');
-
+  
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         if (file) {
             setFileName(file.name);  // Armazena o nome do arquivo no estado
-            onFileSelect(id, file);
+            setFiles((prevFiles) => [...prevFiles, { file }]);
         }
     };
 
