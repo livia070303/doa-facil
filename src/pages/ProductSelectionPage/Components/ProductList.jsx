@@ -8,7 +8,7 @@ const ProductList = ({ products }) => {
       {products.map((product) => (
         <ProductCard
           key={product._id}
-          imageUrl={product.image}
+          imageUrl={product.image?.[0]}
           title={product.productName}
           badgeCondition={ { label: product.condition, color: "red" }}
           badgeQuantity={ { label: product.quantity, color: "blue" }}

@@ -95,7 +95,7 @@ export function ProductPage() {
 
               {/* Miniaturas */}
               <div className="flex gap-2 mt-4">
-                {images.slice(1).map((image, index) => (
+                {images.map((image, index) => (
                   <img
                     key={index}
                     src={image}

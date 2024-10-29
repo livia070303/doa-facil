@@ -12,6 +12,7 @@ import {
   MenuItem,
 } from '@mui/material';
 import { postDonation } from '../../services/donationServices';
+import { uploadToS3 } from '../../services/imageServices';
 
 export function CreateProductPage(){
 
@@ -43,8 +44,14 @@ export function CreateProductPage(){
     const [tamanhos, setTamanhos] = React.useState(''); 
     const [quantity, setQuantity] = React.useState(0);
     const [error, setError] = React.useState(""); 
+    const [files, setFiles] = React.useState([]);
+    const [imagensURLS3, setImagensURLS3] = React.useState([]);
 
-    function save(e){
+    const handleFileSelect = (id, file) => {
+      setFiles((prevFiles) => [...prevFiles, { id, file }]);
+    };
+
+    async function save(e){
       e.preventDefault();
 
       if (quantity <= 0) {
@@ -62,6 +69,18 @@ export function CreateProductPage(){
         return;
       }
 
+      const fileArray = files.map(item => item.file);
+        try {
+          const urls = await uploadToS3(fileArray);
+          console.log("Upload finalizado:", urls);
+          setImagensURLS3(urls);
+        } catch (error) {
+            console.error('Error uploading files:', error);
+            alert('Não foi possível carregar as imagens corretamente, tente mais tarde...');
+            return;
+        }
+
+
       const model = {
         "productName": name,
         "description" : description,
@@ -70,7 +89,7 @@ export function CreateProductPage(){
         "category" : category,
         "condition" : condition,
         "quantity" : quantity,
-        "image" : ["https://tse2.mm.bing.net/th?id=OIP.-Qewxy53AuZbDYCUkq5qTwHaHa&pid=Api&P=0&h=180", "https://tse2.mm.bing.net/th?id=OIP.-Qewxy53AuZbDYCUkq5qTwHaHa&pid=Api&P=0&h=180", "https://tse2.mm.bing.net/th?id=OIP.-Qewxy53AuZbDYCUkq5qTwHaHa&pid=Api&P=0&h=180"],
+        "image" : imagensURLS3,
         "donor" : "671acd9dd1da378ac5c98124"
         
       }
@@ -175,7 +194,7 @@ export function CreateProductPage(){
                 <div className="flex flex-col items-center gap-4 md:grid md:grid-cols-2">
                     {/* Upload de Fotos */}
                     {[...Array(6)].map((_, index) => (
-                      <UploadDocInput key={index} id={`image-${index}`} label={`Upload de fotos do produto ${index + 1}`} />
+                      <UploadDocInput key={index} id={`image-${index}`} label={`Upload de fotos do produto ${index + 1}`}  onFileSelect={handleFileSelect}/>
                     ))}
                 </div>
                 <section className="flex flex-col gap-4 w-full">
