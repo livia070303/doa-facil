@@ -24,7 +24,7 @@ export function ProductList() {
   return (
     <div className="flex flex-col items-center gap-4 lg:grid lg:grid-cols-4">
       {products.map((product) => (
-        <Link to={`/product/${product.id}`} key={product.id}>
+        <Link to={`/product/${product._id}`} key={product._id}>
           <MostSearchedItems
             imgSrc={product?.image?.[0]}
             title={product.productName}
