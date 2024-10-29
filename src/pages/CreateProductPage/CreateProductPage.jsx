@@ -14,6 +14,7 @@ import {
 import { postDonation } from '../../services/donationServices';
 import { uploadToS3 } from '../../services/imageServices';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../../hooks/useUser';
 
 export function CreateProductPage(){
 
@@ -37,6 +38,7 @@ export function CreateProductPage(){
       { id: "repair", label: "Necessita de reparo", value: "precisa de reparos" },
     ];
     const navigate = useNavigate();
+    const { data } = useUser();
 
     const handleRedirectToProduct = () => {
       navigate('/product-selection'); // Navega para a rota desejada
@@ -90,7 +92,7 @@ export function CreateProductPage(){
         "condition" : condition,
         "quantity" : quantity,
         "image" : urls,
-        "donor" : "671acd9dd1da378ac5c98124"
+        "donor" : data?.user?._id
         
       }
 

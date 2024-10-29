@@ -23,6 +23,16 @@ export const getDonationById = async (id) => {
   }
 };
 
+export const mostRecentsDonations = async (limit) => {
+  try {
+    const response = await axios.get(`${API_URL}/donations/recents`, { params: {limit } });
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao buscar doações:', error);
+    throw error;
+  }
+};
+
 export const postDonation = async (donationData) => {
   try {
     const response = await axios.post(`${API_URL}/donations`, donationData);
