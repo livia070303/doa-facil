@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Obtendo a URL base da API a partir do ambiente
-const API_URL = 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_API_URL ??  'http://localhost:8000';
 
 export const getDonations = async () => {
   try {
