@@ -105,12 +105,20 @@ export function useUser(){
         },
       })
 
-
-
     const updateUserMutation = useMutation({
         mutationFn: async (user) => {
+        const { nomeCompleto, CPF, telefone, email, CEP, estado, rua, cidade } = user
           try {
-            const response = await api.put(`/user/${user.id}`, user)
+            const response = await api.put(`/user/${user.id}`, {
+                nomeCompleto,
+                CPF,
+                telefone,
+                email,
+                CEP,
+                estado,
+                rua,
+                cidade,
+            })
             return response.data
           } catch(err){
             console.error(err)
@@ -122,7 +130,7 @@ export function useUser(){
         }})
 
       const handleUserUpdate = async (user) => {
-        await updateUserMutation.mutateAsync(user)
+        updateUserMutation.mutate(user)
       }
 
     return { regionOptions, data, isLoading, handleUserUpdate }

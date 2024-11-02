@@ -73,9 +73,7 @@ export const AuthProvider = ({ children }) => {
   const handleRegister = async (data) => {
     createAccount.mutate(data)
   };
-
-  
-
+ 
   const logoutAccount = useMutation({
     mutationFn: async () => {
       try{

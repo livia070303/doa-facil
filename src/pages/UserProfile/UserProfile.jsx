@@ -24,7 +24,7 @@ const UserProfileSchema = z.object({
 
 export const UserProfile = () => {
 
-    const { data, isLoading, handleUserUpdate } = useUser();
+    const { data, isLoading, handleUserUpdate, regionOptions } = useUser();
 
     const { register, handleSubmit, reset } = useForm({
         resolver: zodResolver(UserProfileSchema),
@@ -156,11 +156,18 @@ export const UserProfile = () => {
                         </label>
                         </div>
                         <div>
-                        {/* <label className="block text-gray-700">UF
-                        <select className="mt-1 p-1 block w-full border border-gray-300 rounded-md">
-
+                        <label className="block text-gray-700">UF
+                        <select 
+                        className="mt-1 p-1 block w-full border border-gray-300 rounded-md"
+                        {...register('estado')}
+                        >
+                        {regionOptions.map((region) => (
+                        <option key={region.value} value={region.value}>
+                            {region.label}
+                        </option>
+                        ))}
                         </select>
-                        </label> */}
+                        </label>
                         </div>
                         <div>
                         <button 
