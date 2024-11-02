@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa'; // Ícone de estrela
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 // Estilos CSS personalizados usando styled-components para o popup
@@ -43,7 +44,7 @@ const Popup = styled.div`
 `;
 
 // Componente principal do card do produto
-const ProductCard = ({ imageUrl, title, badgeCondition, badgeQuantity, donor}) => {
+const ProductCard = ({ imageUrl, title, badgeCondition, badgeQuantity, donor, _id}) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   // Função para abrir o popup
@@ -93,6 +94,14 @@ const ProductCard = ({ imageUrl, title, badgeCondition, badgeQuantity, donor}) =
           Qtd: {badgeQuantity.label}
         </div>
       )}
+      
+      <Link to={`/product/${_id}`} key={_id}>
+        <div className="text-gray-700 text-sm mb-2">
+          <div className={`bg-yellow-500 text-white text-xs rounded px-2 py-1 inline-block mt-2`}>
+            + Detalhes
+          </div>
+        </div>
+      </Link>
 
       {/* Popup do Doador */}
       {isPopupOpen && (

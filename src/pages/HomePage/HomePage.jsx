@@ -25,7 +25,7 @@ export function HomePage() {
 
             {/* Seção Recentes e Mais Buscados */}
             <div className="flex flex-col p-6 md:p-8 lg:p-12 gap-8">
-              <SectionHeader label="Recentes" title="Mais buscados" key="recentes" />
+              <SectionHeader label="Recentes" title="Mais recentes" key="recentes" />
               
               {/* Renderizando a lista de produtos */}
               <ProductList />

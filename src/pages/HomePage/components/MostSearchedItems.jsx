@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-export function MostSearchedItems({ imgSrc, title, rating, reviews }) {
+export function MostSearchedItems({ imgSrc, title }) {
+
   return (
     <div className="flex flex-col items-center p-4 bg-white border border-gray-200 rounded-lg shadow-lg">
       <div className="relative">
@@ -15,13 +16,6 @@ export function MostSearchedItems({ imgSrc, title, rating, reviews }) {
       </div>
       <div className="mt-4 text-center">
         <h3 className="text-lg font-medium">{title}</h3>
-        <div className="flex justify-center items-center mt-2">
-          {/* Renderizando as estrelas */}
-          {[...Array(rating)].map((_, index) => (
-            <span key={index} className="text-yellow-400 text-lg">★</span>
-          ))}
-          <span className="ml-2 text-gray-500">({reviews})</span>
-        </div>
       </div>
     </div>
   );

@@ -1,7 +1,8 @@
+import { useState, useContext } from 'react';
 import { LoginPage } from './pages/LoginPage/LoginPage'; 
 import { ResetPasswordPage } from './pages/ResetPasswordPage/ResetPasswordPage';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
-import { AuthContext } from   './contexts/AuthContext';
+import { AuthContext } from './contexts/AuthContext';
 import { HomePage } from './pages/HomePage/HomePage';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 import { UserProfile } from './pages/UserProfile/UserProfile';
@@ -19,13 +20,12 @@ import ChatPage from './pages/ChatPage/ChatPage';
 import ProductSelectionPage from './pages/ProductSelectionPage/ProductSelectionPage';
 import { AuthProvider } from './contexts/AuthContext';
 import ScrollToTop from './components/ScrollToTop';
-import { useContext } from 'react';
 import { UserProvider } from './contexts/UserContext';
+import './App.css'; // Certifique-se de ter este arquivo de CSS para o alto contraste
 
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated, isLoading } = useContext(AuthContext);
 
-  
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -39,17 +39,15 @@ const PrivateRoute = ({ children }) => {
 
 export function App() {
   const location = useLocation();
+  const [highContrast, setHighContrast] = useState(false);
 
   const noChatPaths = ['/login', '/register', '/reset-password', '/chat'];
 
   const shouldRenderChat = () => {
-
-    // Se o caminho atual está em `noChatPaths`, não renderiza o chat
     if (noChatPaths.includes(location.pathname)) {
       return false;
     }
 
-    // Se nenhuma rota válida correspondeu, estamos na página de erro
     const validPaths = [
       '/',
       '/user',
@@ -65,7 +63,6 @@ export function App() {
     ];
 
     const isValidPath = validPaths.some((path) => {
-      // Tratar rotas com parâmetros, como '/product/:id'
       const regex = new RegExp('^' + path.replace(/:\w+/g, '\\w+') + '$');
       return regex.test(location.pathname);
     });
@@ -73,14 +70,21 @@ export function App() {
     return isValidPath;
   };
 
-
+  const toggleContrast = () => {
+    setHighContrast(!highContrast);
+  };
 
   return (
-    <>
-    <AuthProvider>
-      <UserProvider>
+    <div className={highContrast ? 'high-contrast' : ''}>
+      <AuthProvider>
+        <UserProvider>
+          <ScrollToTop />
 
-          <ScrollToTop /> {/* Coloque o ScrollToTop aqui */}
+          {/* Botão para alternar o alto contraste */}
+          <button onClick={toggleContrast} className="toggle-contrast-btn">
+            {highContrast ? 'Desativar Alto Contraste' : 'Ativar Alto Contraste'}
+          </button>
+
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
@@ -100,11 +104,9 @@ export function App() {
             <Route path="/product-selection" element={<ProductSelectionPage />} />
           </Routes>
 
-        {/* Renderiza o Chat se `shouldRenderChat` retornar true */}
-        {shouldRenderChat() && <Chat />}
-      </UserProvider>
-
-    </AuthProvider>
-    </>
+          {shouldRenderChat() && <Chat />}
+        </UserProvider>
+      </AuthProvider>
+    </div>
   );
 }
