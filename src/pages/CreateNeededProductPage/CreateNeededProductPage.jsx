@@ -74,7 +74,7 @@ export function CreateNeededProductPage(){
                             <NumberInput id="quantity" className="p-2 justify-center rounded-md md:items-start md:justify-start "/>
                           </label>
                           <label htmlFor="footNum" className="flex flex-col items-center md:justify-end md:items-end lg:items-start">
-                            Numeração (calçados)
+                            Numeração
                             <NumberInput id="footNum" className="p-2 rounded-md justify-center md:justify-end lg:justify-start"/>
                           </label>
                         </div>
