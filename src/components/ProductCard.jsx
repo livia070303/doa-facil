@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductCard = ({ product, onRemove }) => {
+const ProductCard = ({ product, onRemove, onEdit }) => {
   return (
     <div className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
       <img 
@@ -15,14 +15,26 @@ const ProductCard = ({ product, onRemove }) => {
           {product.status}
         </p>
       )}
-      {/* Botão de excluir para produtos disponíveis */}
-      {product.status === 'DISPONÍVEL' && onRemove && (
-        <button
-          onClick={() => onRemove(product.id)}
-          className="mt-2 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
-        >
-          Excluir
-        </button>
+      {/* Botões de editar e excluir para produtos disponíveis */}
+      {product.status === 'DISPONÍVEL' && (
+        <div className="mt-2 flex space-x-2">
+          {onRemove && (
+            <button
+              onClick={() => onRemove(product.id)}
+              className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+            >
+              Excluir
+            </button>
+          )}
+          {onEdit && (
+            <button
+              onClick={() => onEdit(product.id)}
+              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+            >
+              Editar
+            </button>
+          )}
+        </div>
       )}
     </div>
   );
