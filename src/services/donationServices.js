@@ -64,3 +64,44 @@ export const searchDonations = async (search) => {
     throw error;
   }
 };
+
+export const getItensDoadosByUser = async (userId) => {
+  try {
+    const response = await axios.get(`${API_URL}/donations/donor/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao obter doações favoritas do usuário:', error);
+    throw error;
+  }
+};
+
+
+export const getFavoritesByUser = async (userId) => {
+  try {
+    const response = await axios.get(`${API_URL}/user/favorite/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao obter doações favoritas do usuário:', error);
+    throw error;
+  }
+};
+
+export const createFavoritesByUser = async (dados) => {
+  try {
+    const response = await axios.post(`${API_URL}/user/favorite/`, dados);
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao adicionar item aos favoritos do usuário:', error);
+    throw error;
+  }
+};
+
+export const deleteFavoritesByUser = async (dados) => {
+  try {
+    const response = await axios.delete(`${API_URL}/user/favorite?userId=${dados.userId}&donationId=${dados.donationId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao excluir item dos favoritos do usuário:', error);
+    throw error;
+  }
+};
