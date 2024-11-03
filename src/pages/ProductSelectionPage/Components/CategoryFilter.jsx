@@ -8,7 +8,7 @@ const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
     'Roupas Masculinas',
     'Roupas Infantis',
     'Eletrodomésticos',
-    'Alimentos',
+    'Mantimentos e Cuidados',
     'Sapatos',
     'Decoração',
     'Educação',
