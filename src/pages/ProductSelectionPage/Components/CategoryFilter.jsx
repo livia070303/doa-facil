@@ -4,7 +4,6 @@ const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
   const categories = [
     'Eletrônicos',
     'Móveis',
-    'Roupas',
     'Roupas Femininas',
     'Roupas Masculinas',
     'Roupas Infantis',
