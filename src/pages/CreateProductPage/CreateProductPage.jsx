@@ -26,7 +26,7 @@ export function CreateProductPage(){
       'Roupas Masculinas',
       'Roupas Infantis',
       'Eletrodomésticos',
-      'Alimentos',
+      'Mantimentos e Cuidados',
       'Sapatos',
       'Decoração',
       'Educação',
