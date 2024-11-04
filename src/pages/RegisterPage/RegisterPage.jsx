@@ -35,7 +35,7 @@ export const RegisterPage = () => {
   const { handleRegister } = useContext(AuthContext);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-azul-claro to-vermelho-médio flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-b from-azul-claro to-vermelho-médio flex items-center justify-center contrast:bg-none contrast:bg-custom-black">
       {/* Seção central */}
       <div className="m-10 bg-white rounded-lg shadow-lg p-8 w-full max-w-3xl relative">
         {/* Botão de Retorno */}

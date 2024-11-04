@@ -18,13 +18,13 @@ const ConversationsList = ({
       {/* Header da Lista de Conversas */}
       <div
         className={`flex justify-between items-center p-4 border-b border-gray-300 bg-white ${
-          isMinimized ? 'bg-gradient-to-r from-vermelho-médio to-azul-claro' : ''
+          isMinimized ? 'bg-gradient-to-r from-vermelho-médio to-azul-claro contrast:bg-none contrast:bg-custom-black contrast:border contrast:border-custom-yellow' : ''
         }`}
       >
         <div className="flex items-center space-x-4">
           <h3
             className={`text-lg font-semibold ${
-              isMinimized ? 'text-white' : ''
+              isMinimized ? 'text-white contrast:text-custom-yellow' : ''
             }`}
           >
             Mensagens
@@ -33,7 +33,7 @@ const ConversationsList = ({
         {isMinimized && (
           <button
             onClick={toggleChat}
-            className="text-white hover:text-azul-escuro text-xl"
+            className="text-white hover:text-azul-escuro text-xl contrast:text-custom-yellow contrast:hover:text-white"
           >
             <IoClose className="text-2xl" />
           </button>
@@ -67,7 +67,7 @@ const ConversationsList = ({
               {conv.time}
             </div>
             {conv.unread && (
-              <div className="ml-2 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center">
+              <div className="ml-2 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center  contrast:bg-custom-yellow contrast:text-custom-black">
                 {conv.unread}
               </div>
             )}

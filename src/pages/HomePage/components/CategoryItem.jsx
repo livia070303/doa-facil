@@ -7,10 +7,10 @@ export function CategoryItem({ imgSrc, categoryName }) {
   return (
     <Link to={`/product-selection?category=${encodeURIComponent(categoryName)}`}>
       <div className="flex flex-col items-center w-32">
-        <div className="w-32 h-32 rounded-full border-2 border-low-gray hover:border-azul-claro shadow-md overflow-hidden flex items-center justify-center">
+        <div className="w-32 h-32 rounded-full border-2 border-low-gray hover:border-azul-claro shadow-md overflow-hidden flex items-center justify-center contrast:hover:border-custom-yellow">
           <img src={imgSrc} alt={categoryName} className="w-full h-full object-cover" />
         </div>
-        <span className="mt-2 text-center text-azul-escuro font-bold">{categoryName}</span>
+        <span className="mt-2 text-center text-azul-escuro font-bold contrast:text-custom-yellow contrast:hover:text-white">{categoryName}</span>
       </div>
     </Link>
   );

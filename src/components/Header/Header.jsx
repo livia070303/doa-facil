@@ -17,7 +17,7 @@ export function Header() {
     <>
       {/* Header para Telas Pequenas */}
       <div className="md:hidden">
-        <div className="flex items-center justify-between bg-gradient-to-r from-vermelho-médio to-azul-claro p-2">
+        <div className="flex items-center justify-between bg-gradient-to-r from-vermelho-médio to-azul-claro contrast:bg-none contrast:!bg-black p-2">
           {/* Logo */}
           <div className="p-2">
             <img src="./logoRecortado.png" alt="Logo" className="h-10 w-auto" />
@@ -169,7 +169,7 @@ export function Header() {
       </div>
 
       {/* Header para Telas Médias e Maiores */}
-      <div className="hidden md:flex justify-between bg-gradient-to-r from-vermelho-médio to-azul-claro p-0 items-center">
+      <div className="hidden md:flex justify-between bg-gradient-to-r from-vermelho-médio to-azul-claro contrast:bg-none contrast:bg-custom-black p-0 items-center">
         {/* Logo e Campo de Busca */}
         <div className="flex items-center md:w-full lg:w-[80%] justify-end md:justify-normal md:gap-2 lg:gap-4 xl:gap-12">
           <img
@@ -185,7 +185,7 @@ export function Header() {
                 className="min-w-64 md:w-full p-2 py-3 rounded-sm"
               />
               <FaSearch
-                className="absolute top-1/2 right-2 transform -translate-y-1/2 text-texto-infor"
+                className="absolute top-1/2 right-2 transform -translate-y-1/2 text-texto-infor contrast:text-custom-black"
                 aria-hidden="true"
               />
             </div>
@@ -199,13 +199,13 @@ export function Header() {
         >
           <Link
             to="/"
-            className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+            className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-white p-2 contrast:text-custom-yellow contrast:hover:text-white"
           >
             Inicial
           </Link>
           <Link
             to="/faq"
-            className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+            className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-white p-2 contrast:text-custom-yellow contrast:hover:text-white"
           >
             FAQ
           </Link>
@@ -215,13 +215,13 @@ export function Header() {
             <>
               <Link
                 to="/register"
-                className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-white p-2 contrast:text-custom-yellow contrast:hover:text-white"
               >
                 Cadastre-se
               </Link>
               <Link
                 to="/login"
-                className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-white p-2 contrast:text-custom-yellow contrast:hover:text-white"
               >
                 Login
               </Link>
@@ -231,13 +231,13 @@ export function Header() {
             <>
               <Link
                 to="/create"
-                className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-white p-2 contrast:text-custom-yellow contrast:hover:text-white"
               >
                 Doar
               </Link>
               <Link
                 to="/create-needed"
-                className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-white p-2 contrast:text-custom-yellow contrast:hover:text-white"
               >
                 Receber
               </Link>

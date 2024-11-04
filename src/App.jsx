@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { LoginPage } from './pages/LoginPage/LoginPage'; 
 import { ResetPasswordPage } from './pages/ResetPasswordPage/ResetPasswordPage';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
@@ -21,7 +21,7 @@ import ProductSelectionPage from './pages/ProductSelectionPage/ProductSelectionP
 import { AuthProvider } from './contexts/AuthContext';
 import ScrollToTop from './components/ScrollToTop';
 import { UserProvider } from './contexts/UserContext';
-import './App.css'; // Certifique-se de ter este arquivo de CSS para o alto contraste
+
 
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated, isLoading } = useContext(AuthContext);
@@ -40,6 +40,15 @@ const PrivateRoute = ({ children }) => {
 export function App() {
   const location = useLocation();
   const [highContrast, setHighContrast] = useState(false);
+
+  // Adicionado o useEffect para adicionar/remover a classe 'contrast' no elemento raiz
+  useEffect(() => {
+    if (highContrast) {
+      document.documentElement.classList.add('contrast');
+    } else {
+      document.documentElement.classList.remove('contrast');
+    }
+  }, [highContrast]);
 
   const noChatPaths = ['/login', '/register', '/reset-password', '/chat'];
 
@@ -75,38 +84,40 @@ export function App() {
   };
 
   return (
-    <div className={highContrast ? 'high-contrast' : ''}>
-      <AuthProvider>
-        <UserProvider>
-          <ScrollToTop />
+  
+    <AuthProvider>
+      <UserProvider>
+        <ScrollToTop />
 
-          {/* Botão para alternar o alto contraste */}
-          <button onClick={toggleContrast} className="toggle-contrast-btn">
-            {highContrast ? 'Desativar Alto Contraste' : 'Ativar Alto Contraste'}
-          </button>
+        {/* Botão para alternar o alto contraste */}
+        <button
+          onClick={toggleContrast}
+          className="fixed bottom-5 left-5 p-2 font-bold bg-yellow-400 text-black border-2 border-black z-50"
+        >
+          {highContrast ? 'Desativar Alto Contraste' : 'Ativar Alto Contraste'}
+        </button>
 
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/reset-password" element={<ResetPasswordPage />} />
-            <Route path="/user" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
-            <Route path="/history" element={<HistoryPage />} />
-            <Route path="/create" element={<CreateProductPage />} />
-            <Route path="/create-needed" element={<CreateNeededProductPage />} />
-            <Route path="/product/:id" element={<ProductPage />} />
-            <Route path="/faq" element={<FAQPage />} />
-            <Route path="*" element={<ErrorPage />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/checkout" element={<CheckOutPage />} />
-            <Route path="/requirements-list" element={<RequirementsListPage />} />
-            <Route path="/chat" element={<ChatPage />} />
-            <Route path="/product-selection" element={<ProductSelectionPage />} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/reset-password" element={<ResetPasswordPage />} />
+          <Route path="/user" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
+          <Route path="/history" element={<HistoryPage />} />
+          <Route path="/create" element={<CreateProductPage />} />
+          <Route path="/create-needed" element={<CreateNeededProductPage />} />
+          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="*" element={<ErrorPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout" element={<CheckOutPage />} />
+          <Route path="/requirements-list" element={<RequirementsListPage />} />
+          <Route path="/chat" element={<ChatPage />} />
+          <Route path="/product-selection" element={<ProductSelectionPage />} />
+        </Routes>
 
-          {shouldRenderChat() && <Chat />}
-        </UserProvider>
-      </AuthProvider>
-    </div>
+        {shouldRenderChat() && <Chat />}
+      </UserProvider>
+    </AuthProvider>
   );
 }

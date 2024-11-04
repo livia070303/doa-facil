@@ -66,11 +66,22 @@ export function AvatarDropDown() {
                 </div>
             )
         }
-        <button className="hidden lg:flex md:ml-6 xl:mr-4" onClick={() => handleOpenDropdown()}>
-            <div className="bg-white rounded-full h-10 w-10 flex items-center justify-center border-b border-b-rose-950">
+        <button className="hidden lg:flex md:ml-6 xl:mr-4" onClick={handleOpenDropdown}>
+        <div className="bg-white rounded-full h-10 w-10 flex items-center justify-center border-b border-b-rose-950 overflow-hidden">
+            {data?.user?.fotoPerfil ? (
+            <img
+                src={data.user.fotoPerfil}
+                alt="Foto de Perfil"
+                className="w-full h-full object-cover"
+            />
+            ) : (
+            <span className="text-xl font-semibold text-gray-700">
                 {data?.user.nomeCompleto?.split(' ').map((name) => name[0]).join('')}
-            </div>
+            </span>
+            )}
+        </div>
         </button>
+
         </>
     )
 }
