@@ -7,7 +7,7 @@ import { AuthContext } from '../contexts/AuthContext';
 export function useChat() {
 
     const queryClient = useQueryClient()
-    
+
     const [isChatOpen, setIsChatOpen] = React.useState(false)
     const [currentChat, setCurrentChat] = React.useState()
     const [messages, setMessages] = React.useState([])
@@ -49,10 +49,16 @@ export function useChat() {
         }
       })
 
+    /**
+     *
+     * @param {user1} sender
+     * @param {user2} receiver
+     * @param {message} message
+     */
     const handleSendMessage = async (user1, user2, message) => {
       sendMessage.mutate(user1, user2, message)
     }
-    
+
 
     return {  isChatOpen, handleChatOpen, handleChatClose, currentChat, handleCurrentChat, handleRemoveCurrentChat, handleSendMessage, setMessages, messages }
 }

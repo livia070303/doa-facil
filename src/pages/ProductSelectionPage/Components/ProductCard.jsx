@@ -1,25 +1,27 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useChat } from '../../../hooks/useChat'
+import { AuthContext } from '../../../contexts/AuthContext';
 
 // Estilos CSS personalizados usando styled-components para o popup
-const RatingBadge = styled.div`
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  font-size: 0.75rem;
-  font-weight: bold;
-  padding: 0.25rem;
-  border-radius: 4px;
-  background-color: ${({ rating }) => {
-    if (rating >= 3.5) return 'green';
-    if (rating >= 2.5) return 'orange';
-    return 'red';
-  }};
-`;
+// const RatingBadge = styled.div`
+//   position: absolute;
+//   bottom: -15px;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   color: white;
+//   font-size: 0.75rem;
+//   font-weight: bold;
+//   padding: 0.25rem;
+//   border-radius: 4px;
+//   background-color: ${({ rating }) => {
+//     if (rating >= 3.5) return 'green';
+//     if (rating >= 2.5) return 'orange';
+//     return 'red';
+//   }};
+// `;
 
 const Overlay = styled.div`
   position: fixed;
@@ -47,15 +49,25 @@ const Popup = styled.div`
 const ProductCard = ({ imageUrl, title, badgeCondition, badgeQuantity, donor, _id}) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
+  const { handleSendMessage } = useChat()
+  const { user } = useContext(AuthContext)
+ 
   // Função para abrir o popup
   const handleAvatarClick = () => {
     setIsPopupOpen(true);
   };
 
  const handleStartChat = () => {
-    
-  setIsPopupOpen(false);
 
+  const user1 = user;
+  const user2 = donor.ID;
+  const message = 'Olá, gostaria de saber mais sobre o produto anunciado.';
+
+
+
+   handleSendMessage({ user1, user2, message });
+  // console.log(donor.ID)
+  setIsPopupOpen(false);
  }
 
  const handleClosePopup = () => {
