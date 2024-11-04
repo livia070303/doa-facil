@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { z } from 'zod'   
 import { AuthContext } from '../../contexts/AuthContext';
+import { Link } from 'react-router-dom';
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -73,9 +74,9 @@ const LoginForm = () => {
       <div className="text-center mt-2.5">
         <span className="text-white text-[14px]">
           Não tem conta?{' '}
-          <a href="/register" className="text-azul-claro no-underline hover:underline">
+          <Link to="/register" className="text-azul-claro no-underline hover:underline">
             Registrar
-          </a>
+          </Link>
         </span>
       </div>
     </>

@@ -9,6 +9,10 @@ import { useUser } from '../../hooks/useUser.js';
 import * as z from 'zod'
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import DonationUserItem from './components/DonationUserItemDoado.jsx';
+import DonationUserItemDoados from './components/DonationUserItemDoado.jsx';
+import DonationUserItemRecebidos from './components/DonationUserItemRecebidos.jsx';
+import DonationUserItemFavorite from './components/DonationUserItemFavorite.jsx';
 
 
 const UserProfileSchema = z.object({
@@ -179,57 +183,28 @@ export const UserProfile = () => {
                     </div>
                 </form >
 
-                            {/* Separador Opcional */}
-                            <Separator className="my-8 h-0.5 bg-gray-200" />
+                    {/* Separador Opcional */}
+                    <Separator className="my-8 h-0.5 bg-gray-200" />
 
-                            {/* Minhas Doações */}
-                            <section className="mt-12 mb-8">
-                                <SectionHeader label="Minhas Doações" title="Itens Doados" />
-                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
-                                    {/* Exemplo de itens */}
-                                    <DonationItem image="/video-game.png" title="Video Game PS" description="Vídeo game em bom estado." />
-                                    <DonationItem image="/computer.png" title="Computador" description="Funcionando bem." />
-                                    <DonationItem image="/air-conditioner.png" title="Ar condicionado Inverter Midea" description="Descrição do produto 3" />
-                                    <DonationItem image="/headphones.png" title="Fone de ouvido" description="Descrição do produto 3" />
-                                </div>
-                            </section>
+                    {/* Minhas Doações */}
+                    <section className="mt-12 mb-8">
+                        <SectionHeader label="Minhas Doações" title="Itens Doados" />
+                        <DonationUserItemDoados />
+                    </section>
 
-                            <Separator className="my-8 h-0.5 bg-gray-200" />
+                    <Separator className="my-8 h-0.5 bg-gray-200" />
 
                     {/* Itens Recebidos */}
                     <section className="mt-12 mb-8">
-                            <SectionHeader label="Itens Recebidos" title="Itens Recebidos" />
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
-                            {/* Exemplo de itens */}
-                            <DonationItem
-                                image="/cellphone.png"
-                                title="Celular"
-                                description="Celular precisando de reparos."
-                            />
-                            <DonationItem
-                                image="/jacket.png"
-                                title="Casaco rosa"
-                                description="Casaco de frio em bom estado."
-                            />
-                            <DonationItem
-                                image="/plantinhas.png"
-                                title="Planta Decorativa "
-                                description="Vasinhos de planta artificial para decoração (levemente desbotado)."
-                            />
-                        </div>
+                        <SectionHeader label="Itens Recebidos" title="Itens Recebidos" />
+                        <DonationUserItemRecebidos/>
                     </section>
 
                     {/* Favoritos */}
                     <section className="mt-12 mb-8" id="favoritos">
-                                <SectionHeader label="Favoritos" title="Itens Favoritos" />
-                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
-                                    {/* Exemplo de itens favoritos (mesclados) */}
-                                    <DonationItem image="/computer.png" title="Computador" description="Computador em bom estado." />
-                                    <DonationItem image="/cellphone.png" title="Celular" description="Celular com tela trincada." />
-                                    <DonationItem image="/headphones.png" title="Fone de ouvido" description="Fone de ouvido de alta qualidade." />
-                                    <DonationItem image="/jacket.png" title="Casaco de frio" description="Casaco de lã para inverno." />
-                                </div>
-                            </section>
+                        <SectionHeader label="Favoritos" title="Itens Favoritos" />
+                        <DonationUserItemFavorite/>
+                    </section>
                 </main>
                 </div>
             </div>  

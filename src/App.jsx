@@ -94,7 +94,7 @@ export function App() {
             <Route path="/user" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
             <Route path="/history" element={<HistoryPage />} />
             <Route path="/create" element={<CreateProductPage />} />
-            <Route path="/create-needed" element={<CreateNeededProductPage />} />
+            {/* <Route path="/create-needed" element={<CreateNeededProductPage />} /> */}
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="*" element={<ErrorPage />} />

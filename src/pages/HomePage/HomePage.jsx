@@ -2,9 +2,8 @@ import { Link } from 'react-router-dom';
 import { HeaderAndFooter, HeaderAndFooterContainer } from '../../components/Layouts/HeaderAndFooter.jsx';
 import { Separator } from '../../components/Separator.jsx';
 import { SectionHeader } from './components/SectionHeader.jsx';
-import { ProductList } from './components/ProductList'; // Componente de produtos
-import { CategoryList } from './components/CategoryList'; // Componente de categorias
-
+import { ProductList } from './components/ProductList';
+import { CategoryList } from './components/CategoryList'; 
 export function HomePage() {
   return (
     <>
@@ -17,7 +16,7 @@ export function HomePage() {
             {/* Imagem do Anúncio */}
             <div className="w-full">
               <img
-                src="/conectandosolidariedade.jpg"
+                src="/conectando.png"
                 alt="Descrição do anúncio"
                 className="object-cover w-full"
                 />
