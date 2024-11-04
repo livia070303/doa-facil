@@ -105,3 +105,13 @@ export const deleteFavoritesByUser = async (dados) => {
     throw error;
   }
 };
+
+export const deleteDonationById = async (id) => {
+  try {
+    const response = await axios.delete(`${API_URL}/donations/${id}`); // URL corrigida
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao excluir a doação', error);
+    throw error;
+  }
+};
