@@ -2,9 +2,8 @@ import { Link } from 'react-router-dom';
 import { HeaderAndFooter, HeaderAndFooterContainer } from '../../components/Layouts/HeaderAndFooter.jsx';
 import { Separator } from '../../components/Separator.jsx';
 import { SectionHeader } from './components/SectionHeader.jsx';
-import { ProductList } from './components/ProductList'; // Componente de produtos
-import { CategoryList } from './components/CategoryList'; // Componente de categorias
-
+import { ProductList } from './components/ProductList';
+import { CategoryList } from './components/CategoryList'; 
 export function HomePage() {
   return (
     <>
@@ -19,8 +18,8 @@ export function HomePage() {
               <img
                 src="/conectando.png"
                 alt="Banner com slogan Conectando Solidariedade"
-                className="w-full h-auto object-cover "
-              />
+                className="object-cover w-full"
+                />
             </div>
 
             {/* Seção Recentes e Mais Buscados */}

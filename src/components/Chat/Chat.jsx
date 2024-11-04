@@ -1,43 +1,50 @@
 // src/components/Chat/Chat.jsx
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ChatWindow from '../../pages/ChatPage/components/ChatWindow';
 import ConversationsList from '../../pages/ChatPage/components/ConversationsList';
-import { conversations } from '../../pages/ChatPage/data'; // Importe seus dados de conversas
 import { BsChatLeftText } from "react-icons/bs";
+import { useChat } from '../../hooks/useChat';
+import { useQuery } from '@tanstack/react-query';
+import { api } from '../../lib/api';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const Chat = () => {
-  const [isChatOpen, setIsChatOpen] = useState(false);
-  const [selectedConversation, setSelectedConversation] = useState(null);
-  const [isChatListVisible, setIsChatListVisible] = useState(true); // Controla se a lista ou o chat está visível
+
+  const { isChatOpen, handleChatClose, handleChatOpen, currentChat, handleCurrentChat, handleRemoveCurrentChat, handleSendMessage, setMessages, messages } = useChat()
+
+  const [isChatListVisible, setIsChatListVisible] = React.useState(true); // Controla se a lista ou o chat está visível
   const navigate = useNavigate();
 
-  const toggleChat = () => {
-    setIsChatOpen(!isChatOpen);
-    // Resetar para a lista de conversas quando o chat for aberto
-    if (!isChatOpen) {
-      setIsChatListVisible(true);
-      setSelectedConversation(null);
-    }
-  };
+  const { user } = React.useContext(AuthContext)
+
+  const { data, refetch } = useQuery({
+    queryKey: ['chats', user],
+    queryFn: async () => {
+      const response = await api.get(`/chat/getLastMessages/${user}`);
+      return response.data;
+    },
+  });
+
 
   const openFullScreenChat = () => {
-    setIsChatOpen(false); // Minimiza o chat flutuante
+    handleChatClose()
     navigate('/chat');
   };
 
   // Função para selecionar uma conversa
   const handleSelectConversation = (conversation) => {
-    setSelectedConversation(conversation);
+    handleCurrentChat(conversation);
     setIsChatListVisible(false); // Oculta a lista e mostra o chat
   };
 
   // Função para voltar à lista de conversas
   const handleBackToList = () => {
     setIsChatListVisible(true);
-    setSelectedConversation(null);
+    handleRemoveCurrentChat();
   };
+
 
   return (
     <>
@@ -45,14 +52,13 @@ const Chat = () => {
       {!isChatOpen && (
         <div className="fixed bottom-4 rounded-full right-4 z-50">
           <button
-            onClick={toggleChat}
-            className="bg-vermelho-médio text-white p-6 rounded-full shadow-lg hover:bg-azul-claro transform transition-transform duration-300 hover:-translate-y-1 contrast:bg-custom-yellow contrast:hover:bg-white"
+            onClick={handleChatOpen}
+            className="bg-vermelho-médio text-white p-6 rounded-full shadow-lg hover:bg-azul-claro transform transition-transform duration-300 hover:-translate-y-1"
           >
             <BsChatLeftText className="text-3xl  contrast:text-black" />
           </button>
         </div>
 )}
-
 
       {/* Chat Suspenso */}
       {isChatOpen && (
@@ -61,18 +67,24 @@ const Chat = () => {
             {isChatListVisible ? (
               // Exibir a lista de conversas
               <ConversationsList
-                conversations={conversations}
+                conversations={data}
                 onSelectConversation={handleSelectConversation}
                 isMinimized={true}
-                toggleChat={toggleChat} 
+                toggleChat={handleChatClose} 
+                user={user}
               />
             ) : (
               // Exibir a janela de chat da conversa selecionada
               <ChatWindow
-                conversation={selectedConversation}
+                conversation={currentChat}
                 isFullScreen={false}
-                toggleChat={toggleChat}
+                toggleChat={handleChatClose}
                 onBack={handleBackToList} // Função para voltar à lista
+                currentUserId={user}
+                sendMessage={handleSendMessage}
+                setMessages={setMessages}
+                messages={messages}
+                refetch={refetch}
               />
             )}
             {/* Link para ver o chat em tela cheia */}

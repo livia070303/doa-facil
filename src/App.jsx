@@ -23,6 +23,7 @@ import ScrollToTop from './components/ScrollToTop';
 import { UserProvider } from './contexts/UserContext';
 
 
+// eslint-disable-next-line react/prop-types
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated, isLoading } = useContext(AuthContext);
 
@@ -97,24 +98,24 @@ export function App() {
           {highContrast ? 'Desativar Alto Contraste' : 'Ativar Alto Contraste'}
         </button>
 
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/reset-password" element={<ResetPasswordPage />} />
-          <Route path="/user" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
-          <Route path="/history" element={<HistoryPage />} />
-          <Route path="/create" element={<CreateProductPage />} />
-          <Route path="/create-needed" element={<CreateNeededProductPage />} />
-          <Route path="/product/:id" element={<ProductPage />} />
-          <Route path="/faq" element={<FAQPage />} />
-          <Route path="*" element={<ErrorPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/checkout" element={<CheckOutPage />} />
-          <Route path="/requirements-list" element={<RequirementsListPage />} />
-          <Route path="/chat" element={<ChatPage />} />
-          <Route path="/product-selection" element={<ProductSelectionPage />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
+            <Route path="/user" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
+            <Route path="/history" element={<HistoryPage />} />
+            <Route path="/create" element={<CreateProductPage />} />
+            {/* <Route path="/create-needed" element={<CreateNeededProductPage />} /> */}
+            <Route path="/product/:id" element={<ProductPage />} />
+            <Route path="/faq" element={<FAQPage />} />
+            <Route path="*" element={<ErrorPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/checkout" element={<CheckOutPage />} />
+            <Route path="/requirements-list" element={<RequirementsListPage />} />
+            <Route path="/chat" element={<ChatPage />} />
+            <Route path="/product-selection" element={<ProductSelectionPage />} />
+          </Routes>
 
         {shouldRenderChat() && <Chat />}
       </UserProvider>

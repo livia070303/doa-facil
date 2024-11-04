@@ -1,10 +1,23 @@
 // src/pages/ChatPage/ChatPage.jsx
 
-import React, { useState, useEffect } from 'react';
+// **************************************
+
+
+
+// ESSE ARQUIVO É INÚTIL, NAO É CHAMADO EM NENHUM LUGAR.
+
+
+
+
+// **************************************
+
+
+import  { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ConversationsList from './components/ConversationsList';
 import ChatWindow from './components/ChatWindow';
 import { conversations } from './data';
+
 
 export const ChatPage = () => {
   const [selectedConversation, setSelectedConversation] = useState(null);

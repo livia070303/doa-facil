@@ -1,13 +1,13 @@
 import * as React from 'react'   
 import { AuthContext } from '../contexts/AuthContext'
-import { UserContext } from '../contexts/UserContext'
-import { useMutation, useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { api } from '../lib/api'
 
 
 export function useUser(){
 
     const { user } = React.useContext(AuthContext)
+    const queryClient = useQueryClient()
    
     const regionOptions = [ {
         value: 'AC',
@@ -125,7 +125,7 @@ export function useUser(){
             return err.response.data
           }
         },
-        onSuccess: (data) => {
+        onSuccess: () => {
           queryClient.invalidateQueries('userData')
         }})
 
@@ -133,5 +133,5 @@ export function useUser(){
         updateUserMutation.mutate(user)
       }
 
-    return { regionOptions, data, isLoading, handleUserUpdate }
+    return { regionOptions, data, isLoading, handleUserUpdate, user }
 }

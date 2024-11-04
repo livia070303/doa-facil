@@ -47,15 +47,7 @@ export function AvatarDropDown() {
                                 Perfil
                             </Link>
                         </li>
-                        {/*<li>
-                            <Link
-                                to="/settings"
-                                className="block w-full text-left px-4 py-2 hover:bg-gray-200"
-                                onClick={() => setIsDropdownOpen(false)}
-                            >
-                                Configurações
-                            </Link>
-                        </li>*/}
+                   
                         <li>
                             <button onClick={() => {
                                 handleLogout()

@@ -235,12 +235,12 @@ export function Header() {
               >
                 Doar
               </Link>
-              <Link
+              {/* <Link
                 to="/create-needed"
                 className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-white p-2 contrast:text-custom-yellow contrast:hover:text-white"
               >
                 Receber
-              </Link>
+              </Link> */}
             </>
           )}
         </nav>
