@@ -203,6 +203,14 @@ export const UserProfile = () => {
 
                 <Separator className="my-8 h-0.5 bg-gray-200" />
 
+                {/* Favoritos */}
+                <section className="mt-12 mb-8" id="favoritos">
+                  <SectionHeader label="Favoritos" title="Itens Favoritos" />
+                  <DonationUserItemFavorite />
+                </section>
+
+                <Separator className="my-8 h-0.5 bg-gray-200" />
+
                 {/* Itens Recebidos */}
                 <section className="mt-12 mb-8">
                   <SectionHeader
@@ -212,11 +220,7 @@ export const UserProfile = () => {
                   <DonationUserItemRecebidos />
                 </section>
 
-                {/* Favoritos */}
-                <section className="mt-12 mb-8" id="favoritos">
-                  <SectionHeader label="Favoritos" title="Itens Favoritos" />
-                  <DonationUserItemFavorite />
-                </section>
+                
               </main>
             </div>
           </div>

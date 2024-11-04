@@ -120,7 +120,7 @@ export function Header() {
                       <span>Doar</span>
                     </Link>
                   </li>
-                  <li className="border-t border-azul-escuro hover:bg-azul-médio">
+                  {/* <li className="border-t border-azul-escuro hover:bg-azul-médio">
                     <Link
                       to="/receive"
                       className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
@@ -129,7 +129,7 @@ export function Header() {
                       <FaGift className="mr-2 text-white" aria-hidden="true" />
                       <span>Receber</span>
                     </Link>
-                  </li>
+                  </li> */}
                   <li className="border-t border-azul-escuro hover:bg-azul-médio">
                     <HashLink
                       smooth
@@ -141,7 +141,7 @@ export function Header() {
                       <span>Favoritos</span>
                     </HashLink>
                   </li>
-                  <li className="border-t border-azul-escuro hover:bg-azul-médio">
+                  {/* <li className="border-t border-azul-escuro hover:bg-azul-médio">
                     <Link
                       to="/cart"
                       className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
@@ -150,7 +150,7 @@ export function Header() {
                       <FaShoppingCart className="mr-2 text-white" aria-hidden="true" />
                       <span>Carrinho</span>
                     </Link>
-                  </li>
+                  </li> */}
                   <li className="border-t border-azul-escuro border-b hover:bg-azul-médio">
                     <Link
                       to="/user"
