@@ -242,9 +242,9 @@ export function ProductPage() {
                 <button className="w-full py-2 md:py-3 bg-red-600 hover:bg-red-500 text-white rounded-md text-sm md:text-lg transition-colors duration-300">
                   EU QUERO!
                 </button>
-                <button className="w-full py-2 md:py-3 border border-teal-500 hover:bg-teal-500 hover:text-white text-teal-500 rounded-md text-sm md:text-lg transition-colors duration-300">
+                {/* <button className="w-full py-2 md:py-3 border border-teal-500 hover:bg-teal-500 hover:text-white text-teal-500 rounded-md text-sm md:text-lg transition-colors duration-300">
                   Adicionar ao sacola
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
