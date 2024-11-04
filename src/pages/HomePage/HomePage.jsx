@@ -19,8 +19,8 @@ export function HomePage() {
               <img
                 src="/conectandosolidariedade.jpg"
                 alt="Descrição do anúncio"
-                className="w-full h-auto object-cover "
-              />
+                className="object-cover w-full"
+                />
             </div>
 
             {/* Seção Recentes e Mais Buscados */}

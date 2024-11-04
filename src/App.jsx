@@ -23,6 +23,7 @@ import ScrollToTop from './components/ScrollToTop';
 import { UserProvider } from './contexts/UserContext';
 import './App.css'; // Certifique-se de ter este arquivo de CSS para o alto contraste
 
+// eslint-disable-next-line react/prop-types
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated, isLoading } = useContext(AuthContext);
 

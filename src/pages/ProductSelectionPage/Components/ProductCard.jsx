@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { FaStar } from 'react-icons/fa'; // Ícone de estrela
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -52,10 +52,15 @@ const ProductCard = ({ imageUrl, title, badgeCondition, badgeQuantity, donor, _i
     setIsPopupOpen(true);
   };
 
-  // Função para fechar o popup
-  const handleClosePopup = () => {
-    setIsPopupOpen(false);
-  };
+ const handleStartChat = () => {
+    
+  setIsPopupOpen(false);
+
+ }
+
+ const handleClosePopup = () => {
+  setIsPopupOpen(false);
+ }
 
 
   return (
@@ -113,7 +118,7 @@ const ProductCard = ({ imageUrl, title, badgeCondition, badgeQuantity, donor, _i
 
             <button
               className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
-              onClick={handleClosePopup}
+              onClick={handleStartChat}
             >
               Falar com o Doador
             </button>
@@ -123,6 +128,7 @@ const ProductCard = ({ imageUrl, title, badgeCondition, badgeQuantity, donor, _i
             <button
               className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
               onClick={handleClosePopup}
+              
             >
               Fechar
             </button>

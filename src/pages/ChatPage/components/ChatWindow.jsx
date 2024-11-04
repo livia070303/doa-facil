@@ -1,41 +1,44 @@
-// src/pages/ChatPage/components/ChatWindow.jsx
+/* eslint-disable react/prop-types */
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Avatar from 'react-avatar';
 import { IoClose, IoChevronBackOutline, IoSend } from "react-icons/io5";
 
-const ChatWindow = ({ conversation, isFullScreen, toggleChat, onMinimizeChat, onBack, isMobileView }) => {
-  const [messages, setMessages] = useState([]);
+const ChatWindow = ({ conversation, isFullScreen, toggleChat, onBack, isMobileView, currentUserId, sendMessage, setMessages, messages, refetch }) => {
+
+  
   const [newMessage, setNewMessage] = useState('');
-  const currentUserId = 1; // ID do usuário atual
+  const [triggerRefetch, setTriggerRefetch] = useState(false);
 
   // Atualiza as mensagens quando a conversa mudar
   useEffect(() => {
     if (conversation && conversation.messages) {
       setMessages(conversation.messages);
+    } else if(triggerRefetch){
+      setMessages(conversation.messages);
+      setTriggerRefetch(false);
     } else {
       setMessages([]);
     }
-  }, [conversation]);
+  }, [conversation, setMessages, triggerRefetch]);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (newMessage.trim() === '') return;
 
-    const message = {
-      id: messages.length + 1,
-      senderId: currentUserId,
-      senderName: 'Você',
+    const data = {
+      user1: currentUserId,
+      user2: conversation.userIdSecond,
       message: newMessage,
-      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      avatar: "/avatardayelle.png",
-    };
+    }
+    await sendMessage(data);
+    refetch()
+    setTriggerRefetch(true);
 
-    setMessages([...messages, message]);
     setNewMessage('');
   };
 
   return (
-    <div className={`bg-white ${isFullScreen ? 'h-full m-2 rounded-lg' : 'flex-1'} overflow-hidden flex flex-col`}>
+    <div key={conversation.userIdSecond} className={`bg-white ${isFullScreen ? 'h-full m-2 rounded-lg' : 'flex-1'} overflow-hidden flex flex-col`}>
       {/* Chat Header */}
       <div className="bg-gradient-to-r from-vermelho-médio to-azul-claro flex justify-between items-center p-4 border-b border-gray-300">
         <div className="flex items-center space-x-4">
@@ -46,13 +49,28 @@ const ChatWindow = ({ conversation, isFullScreen, toggleChat, onMinimizeChat, on
               <IoChevronBackOutline className="text-2xl" />
             </button>
           )}
-          <Avatar
+          
+          {
+          conversation?.avatar ?
+          (
+
+            <Avatar
             size="40"
             round={true}
-            src={conversation?.avatar || 'https://via.placeholder.com/58x64'}
-          />
+            src={conversation?.avatar}
+            />
+          ) : (
+            <Avatar
+            size='40'
+            round={true}
+            name={conversation && conversation.userIdSecond === currentUserId && conversation.userFirstDetails.nomeCompleto || conversation && conversation.userIdFirst === currentUserId && conversation.userSecondDetails.nomeCompleto}
+            />
+          )
+          }
+
           <h3 className="text-white text-lg font-semibold">
-            {conversation ? ` ${conversation.name}` : ''}
+            {conversation && conversation.userIdSecond === currentUserId && conversation.userFirstDetails.nomeCompleto}
+            {conversation && conversation.userIdFirst === currentUserId && conversation.userSecondDetails.nomeCompleto}
           </h3>
         </div>
         {!isFullScreen && (
@@ -64,15 +82,18 @@ const ChatWindow = ({ conversation, isFullScreen, toggleChat, onMinimizeChat, on
 
       {/* Chat Body */}
       <div className="p-4 flex-1 overflow-y-auto">
-        {messages.length > 0 ? (
+        {messages?.length > 0 ? (
           messages.map((msg) => {
-            const isSentByCurrentUser = msg.senderId === currentUserId;
+            const isSentByCurrentUser = msg.userSend === currentUserId;
+
+            const messageSentTime = new Date(msg.Timespam)
+            const messageSentTimeFormatted = messageSentTime.toLocaleDateString([], { day: '2-digit', month: '2-digit', year: 'numeric' }) + ' às ' + messageSentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
 
             return (
               <div key={msg.id} className={`mb-4 flex ${isSentByCurrentUser ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-xs p-3 rounded-lg ${isSentByCurrentUser ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-800'}`}>
-                  <p className="text-sm">{msg.message}</p>
-                  <div className="text-xs mt-1 text-right">{msg.time}</div>
+                  <p className="text-sm">{msg.ConteudoMessage}</p>
+                  <div className="text-xs mt-1 text-right text-slate-300 opacity-80">{messageSentTimeFormatted}</div>
                 </div>
               </div>
             );
