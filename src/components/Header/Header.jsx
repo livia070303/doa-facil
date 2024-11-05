@@ -222,14 +222,26 @@ export function Header() {
               <HashLink
                 smooth
                 to="/user#favoritos"
-                className="relative flex items-center h-fit transition-all duration-200 ease-in-out transform hover:text-white hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                className="relative flex items-center h-fit transition-all duration-200 ease-in-out transform hover:text-white hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white contrast:text-custom-yellow contrast:hover:text-white"
                 aria-label="Favoritos"
               >
                 <FaRegHeart className="text-2xl" aria-hidden="true" />
-                <span className="absolute -right-3 -top-4 bg-vermelho-escuro text-white text-center w-6 h-6 rounded-full">
+                <span className="absolute -right-3 -top-4 bg-vermelho-escuro text-white text-center w-6 h-6 rounded-full contrast:bg-white contrast:text-custom-black contrast:hover:bg-custom-yellow">
                   {favoritesCount || 0}
                 </span>
               </HashLink>
+
+              {/* Ícone de Carrinho 
+              <Link
+                to="/cart"
+                className="relative flex items-center h-fit transition-all duration-200 ease-in-out transform hover:text-white hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                aria-label="Carrinho"
+              >
+                <AiOutlineShoppingCart className="text-2xl" aria-hidden="true" />
+                <span className="absolute -right-3 -top-4 bg-vermelho-escuro text-white text-center w-6 h-6 rounded-full">
+                  0
+                </span>
+              </Link> */}
             </div>
 
             {/* Avatar do Usuário */}

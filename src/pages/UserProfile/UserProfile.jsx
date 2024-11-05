@@ -96,7 +96,7 @@ export const UserProfile = () => {
               </div>
 
               {/* Main Content */}
-              <main className="flex-1 bg-gray-100 p-10">
+              <main className="flex-1 bg-gray-100 p-10 contrast:bg-custom-black">
                 {/* Seção de Informações do Usuário */}
                 <form
                   onSubmit={handleSubmit(submitForm)}
@@ -114,7 +114,7 @@ export const UserProfile = () => {
                     </div>
                     {/* Nome */}
                     <div className="mt-4 sm:mt-0 sm:ml-6 flex-1 w-full">
-                      <label className="block text-gray-700">
+                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
                         Nome
                         <input
                           type="text"
@@ -127,7 +127,7 @@ export const UserProfile = () => {
                   {/* Linha: Email e Telefone */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                     <div>
-                      <label className="block text-gray-700">
+                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
                         Email
                         <input
                           type="email"
@@ -137,7 +137,7 @@ export const UserProfile = () => {
                       </label>
                     </div>
                     <div>
-                      <label className="block text-gray-700">
+                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
                         Telefone
                         <input
                           type="tel"
@@ -150,7 +150,7 @@ export const UserProfile = () => {
                   {/* Linha: Endereço e Cidade */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                     <div>
-                      <label className="block text-gray-700">
+                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
                         Endereço
                         <input
                           type="text"
@@ -160,7 +160,7 @@ export const UserProfile = () => {
                       </label>
                     </div>
                     <div>
-                      <label className="block text-gray-700">
+                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
                         Cidade
                         <input
                           type="text"
@@ -173,7 +173,7 @@ export const UserProfile = () => {
                   {/* Linha: CEP, UF e Botão */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
                     <div>
-                      <label className="block text-gray-700">
+                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
                         CEP
                         <input
                           type="text"
@@ -183,7 +183,7 @@ export const UserProfile = () => {
                       </label>
                     </div>
                     <div>
-                      <label className="block text-gray-700">
+                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
                         UF
                  
                           <select
@@ -203,7 +203,7 @@ export const UserProfile = () => {
                     <div>
                       <button
                         type="submit"
-                        className="w-full bg-azul-claro text-white py-2 px-4 rounded-md hover:bg-azul-médio"
+                        className="w-full bg-azul-claro text-white py-2 px-4 rounded-md hover:bg-azul-médio contrast:border contrast:bg-custom-yellow contrast:text-custom-black contrast:border-custom-black contrast:font-bold"
                       >
                         Editar Minhas Informações
                       </button>

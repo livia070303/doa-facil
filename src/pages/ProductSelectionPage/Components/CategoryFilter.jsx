@@ -20,7 +20,7 @@ const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 contrast:bg-white contrast:p-4 contrast:rounded-lg">
       <h2 className="text-lg font-bold">Categorias</h2>
       <ul className="space-y-2">
         {categories.map((category) => (

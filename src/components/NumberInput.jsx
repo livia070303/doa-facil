@@ -42,9 +42,9 @@ function NumberInput({ id, className, min = 0, max = 100, step = 1, value, setVa
             <button
                 type="button"
                 onClick={handleIncrement}
-                className="p-2 border border-low-gray bg-azul-claro flex items-center juistify-center rounded-r-md"
+                className="p-2 border border-low-gray bg-azul-claro flex items-center juistify-center rounded-r-md contrast:border-custom-black contrast:bg-custom-yellow"
             >
-                <BiPlus className='text-2xl text-white'/>
+                <BiPlus className='text-2xl text-white contrast:text-custom-black'/>
             </button>
         </div>
     );
