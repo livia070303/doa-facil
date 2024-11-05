@@ -20,7 +20,6 @@ import ProductSelectionPage from './pages/ProductSelectionPage/ProductSelectionP
 import { AuthProvider } from './contexts/AuthContext';
 import ScrollToTop from './components/ScrollToTop';
 import { UserProvider } from './contexts/UserContext';
-import './App.css'; // Certifique-se de ter este arquivo de CSS para o alto contraste
 import { ChatProvider } from './contexts/ChatContext';
 
 // eslint-disable-next-line react/prop-types
