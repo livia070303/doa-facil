@@ -49,7 +49,7 @@ const ConversationsList = ({
       </div>
       {/* Lista de Conversas */}
       <div className="flex-1 overflow-y-auto bg-white">
-        {conversations.map((conv) => {
+        {conversations?.map((conv) => {
 
           const lastMessage = conv.messages[conv.messages.length - 1]
           const lastMessageSentTime = new Date(lastMessage.Timespam)
@@ -63,7 +63,7 @@ const ConversationsList = ({
           >
             {/* Garantir que o avatar não fique disforme */}
             <div className="flex-shrink-0">
-              {conv.avatar ?
+              {conv?.avatar ?
               (
                 <Avatar size="40" round={true} src={conv.avatar} />
               ) :
@@ -75,7 +75,7 @@ const ConversationsList = ({
             <div className="ml-4 flex-1 min-w-0">
               <h4 className="text-sm font-medium truncate">{conv.userIdSecond === user && conv.userFirstDetails.nomeCompleto || conv.userIdFirst === user && conv.userSecondDetails.nomeCompleto}</h4>
 
-                    <p className="text-xs text-gray-500 truncate" key={lastMessage.id}>
+                    <p className="text-xs text-gray-500 truncate" key={lastMessage.ConteudoMessage}>
                       {lastMessage.ConteudoMessage}
                     </p>
                   

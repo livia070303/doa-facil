@@ -11,7 +11,6 @@ import { CreateProductPage } from './pages/CreateProductPage/CreateProductPage';
 import { FAQPage } from './pages/FAQPage/FAQPage';
 import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 import HistoryPage from './pages/HistoryPage/HistoryPage';
-import { CreateNeededProductPage } from './pages/CreateNeededProductPage/CreateNeededProductPage';
 import CartPage from './pages/CartPage/CartPage';
 import CheckOutPage from './pages/CheckOutPage/CheckOutPage';
 import RequirementsListPage from './pages/RequirementsListPage/RequirementsListPage';
@@ -22,6 +21,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import ScrollToTop from './components/ScrollToTop';
 import { UserProvider } from './contexts/UserContext';
 import './App.css'; // Certifique-se de ter este arquivo de CSS para o alto contraste
+import { ChatProvider } from './contexts/ChatContext';
 
 // eslint-disable-next-line react/prop-types
 const PrivateRoute = ({ children }) => {
@@ -79,6 +79,8 @@ export function App() {
     <div className={highContrast ? 'high-contrast' : ''}>
       <AuthProvider>
         <UserProvider>
+          <ChatProvider>
+
           <ScrollToTop />
 
           {/* Botão para alternar o alto contraste */}
@@ -106,6 +108,7 @@ export function App() {
           </Routes>
 
           {shouldRenderChat() && <Chat />}
+         </ChatProvider>
         </UserProvider>
       </AuthProvider>
     </div>
