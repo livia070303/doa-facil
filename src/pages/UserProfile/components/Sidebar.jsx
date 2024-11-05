@@ -19,6 +19,12 @@ const Sidebar = () => {
                         </Link>
                     </li>
                     <li>
+                        <Link to='/history' className="flex items-center px-6 py-4 hover:bg-azul-médio">
+                            <FaHistory className="text-xl" />
+                            <span className="ml-4 text-lg">Histórico</span>
+                        </Link>
+                    </li>
+                    <li>
                         <Link to='/chat' className="flex items-center px-6 py-4 hover:bg-azul-médio">
                             <FaEnvelope className="text-xl" />
                             <span className="ml-4 text-lg">Mensagens</span>
