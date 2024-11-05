@@ -4,13 +4,12 @@ import { MostSearchedItems } from './MostSearchedItems';
 import { mostRecentsDonations } from '../../../services/donationServices';
 
 export function ProductList() {
-
   const [products, setProducts] = useState([]);
   
   useEffect(() => {
     const fetchDonationsData = async () => {
       try {
-        const limitItens = 4;
+        const limitItens = 4; // Ajustado para exibir apenas 4 produtos
         const data = await mostRecentsDonations(limitItens);
         setProducts(data?.donations);
       } catch (error) {
@@ -22,7 +21,7 @@ export function ProductList() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center gap-4 lg:grid lg:grid-cols-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {products.map((product) => (
         <Link to={`/product/${product._id}`} key={product._id}>
           <MostSearchedItems

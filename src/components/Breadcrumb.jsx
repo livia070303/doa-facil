@@ -8,7 +8,7 @@ const pageNames = {
   "history": "Histórico",
   "create": "Cadastro de doação",
   "create-needed": "Cadastro de solicitação",
-  "procuct": "Produto",
+  "product": "Produto",
   "faq": "Perguntas frequentes",
   "cart": "Carrinho",
   "checkout": "Finalização",
