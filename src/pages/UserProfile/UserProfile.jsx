@@ -39,7 +39,6 @@ export const UserProfile = () => {
     },
   });
 
-
   React.useEffect(() => {
     if (data) {
       reset({

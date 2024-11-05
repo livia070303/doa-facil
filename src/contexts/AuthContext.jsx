@@ -83,8 +83,7 @@ export const AuthProvider = ({ children }) => {
       }
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['user'] })
-      setUser('')
+      setUser(undefined)
       navigate('/login')
     }
   })
