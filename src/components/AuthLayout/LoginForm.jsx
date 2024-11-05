@@ -24,10 +24,10 @@ const LoginForm = () => {
 
   return (
     <>
-      <h1 className="font-bold text-[32px] text-center text-white mb-5">Login</h1>
+      <h1 className="font-bold text-[32px] text-center text-white mb-5 contrast:text-custom-yellow">Login</h1>
       <form onSubmit={handleSubmit(handleLogin)}>
         <div className="mb-4">
-          <label htmlFor="email" className="block text-[14px] mb-1 text-white">
+          <label htmlFor="email" className="block text-[14px] mb-1 text-white contrast:text-custom-yellow">
             Usuário ou email
           </label>
           <input
@@ -39,7 +39,7 @@ const LoginForm = () => {
           />
         </div>
         <div className="mb-4 relative">
-          <label htmlFor="password" className="block text-[14px] mb-1 text-white">
+          <label htmlFor="password" className="block text-[14px] mb-1 text-white contrast:text-custom-yellow">
             Senha
           </label>
           <input
@@ -54,7 +54,7 @@ const LoginForm = () => {
             className="absolute right-2 top-1/2 transform -translate-y-1/2"
             onClick={() => setShowPassword(!showPassword)}
           >
-            {showPassword ? <FaEyeSlash className="text-white" /> : <FaEye className="text-white" />}
+            {showPassword ? <FaEyeSlash className="text-white contrast:text-custom-yellow" /> : <FaEye className="text-white contrast:text-custom-yellow" />}
           </button>
         </div>
         <div className="text-right mb-5">
@@ -65,7 +65,7 @@ const LoginForm = () => {
         <div className="mb-4">
           <button
             type="submit"
-            className="w-full p-2.5 bg-azul-claro text-white rounded-[5px] text-[16px] cursor-pointer transition duration-300 hover:bg-azul-médio"
+            className="w-full p-2.5 bg-azul-claro text-white rounded-[5px] text-[16px] cursor-pointer transition duration-300 hover:bg-azul-médio contrast:bg-custom-yellow contrast:text-custom-black contrast:font-bold contrast:hover:bg-white"
           >
             Entrar
           </button>
@@ -74,7 +74,7 @@ const LoginForm = () => {
       <div className="text-center mt-2.5">
         <span className="text-white text-[14px]">
           Não tem conta?{' '}
-          <Link to="/register" className="text-azul-claro no-underline hover:underline">
+          <Link to="/register" className="text-azul-claro no-underline hover:underline contrast:text-custom-yellow">
             Registrar
           </Link>
         </span>

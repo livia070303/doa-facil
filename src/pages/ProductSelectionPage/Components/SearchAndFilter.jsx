@@ -6,13 +6,13 @@ const SearchAndFilter = ({search, setSearch , orderBy, setOrderBy}) => {
       <input
         type="text"
         placeholder="Pesquisar..."
-        className="border border-gray-300 rounded px-4 py-2 w-full max-w-xs"
+        className="border border-gray-300 rounded px-4 py-2 w-full max-w-xs contrast:border-custom-black"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
       <div className="flex items-center space-x-2">
         <span>Ordenar por:</span>
-        <button type='button' className="border border-gray-300 rounded px-4 py-2" onClick={(e) => setOrderBy((prevOrderBy) => (prevOrderBy === "recents" ? "" : "recents"))}>
+        <button type='button' className="border border-gray-300 rounded px-4 py-2 contrast:border-custom-black" onClick={(e) => setOrderBy((prevOrderBy) => (prevOrderBy === "recents" ? "" : "recents"))}>
           Recentes
         </button>
       </div>

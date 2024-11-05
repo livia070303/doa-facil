@@ -35,7 +35,7 @@ const PopularBrands = () => {
           >
             <span
               className={`${
-                brand.selected ? 'bg-red-500' : 'bg-white border border-gray-300'
+                brand.selected ? 'bg-red-500 contrast:bg-custom-yellow' : 'bg-white border border-gray-300 contrast:border-custom-black'
               } w-5 h-5 rounded-sm`}
             ></span>
             <span className="ml-2">{brand.label}</span>

@@ -16,7 +16,7 @@ const Pagination = ({ productsPerPage, totalProducts, currentPage, paginate }) =
           <button
             onClick={() => paginate(currentPage - 1)}
             disabled={currentPage === 1} // Desativa o botão "Anterior" se for a primeira página
-            className={`px-3 py-2 rounded-l-md bg-gray-200 ${
+            className={`px-3 py-2 rounded-l-md bg-gray-200 contrast:bg-custom-yellow contrast:border contrast:border-custom-black contrast:font-bold ${
               currentPage === 1 ? 'cursor-not-allowed' : 'hover:bg-gray-300'
             }`}
           >
@@ -45,7 +45,7 @@ const Pagination = ({ productsPerPage, totalProducts, currentPage, paginate }) =
           <button
             onClick={() => paginate(currentPage + 1)}
             disabled={currentPage === pageNumbers.length} // Desativa o botão "Próxima" se for a última página
-            className={`px-3 py-2 rounded-r-md bg-gray-200 ${
+            className={`px-3 py-2 rounded-r-md bg-gray-200 contrast:bg-custom-yellow contrast:border contrast:border-custom-black contrast:font-bold ${
               currentPage === pageNumbers.length ? 'cursor-not-allowed' : 'hover:bg-gray-300'
             }`}
           >
