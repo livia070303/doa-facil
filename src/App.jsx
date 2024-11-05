@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { LoginPage } from './pages/LoginPage/LoginPage'; 
 import { ResetPasswordPage } from './pages/ResetPasswordPage/ResetPasswordPage';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
@@ -42,6 +42,15 @@ export function App() {
   const location = useLocation();
   const [highContrast, setHighContrast] = useState(false);
 
+  // Adicionado o useEffect para adicionar/remover a classe 'contrast' no elemento raiz
+  useEffect(() => {
+    if (highContrast) {
+      document.documentElement.classList.add('contrast');
+    } else {
+      document.documentElement.classList.remove('contrast');
+    }
+  }, [highContrast]);
+
   const noChatPaths = ['/login', '/register', '/reset-password', '/chat'];
 
   const shouldRenderChat = () => {
@@ -83,10 +92,13 @@ export function App() {
 
           <ScrollToTop />
 
-          {/* Botão para alternar o alto contraste */}
-          <button onClick={toggleContrast} className="toggle-contrast-btn">
-            {highContrast ? 'Desativar Alto Contraste' : 'Ativar Alto Contraste'}
-          </button>
+        {/* Botão para alternar o alto contraste */}
+        <button
+          onClick={toggleContrast}
+          className="fixed bottom-5 left-5 p-2 font-bold bg-yellow-400 text-black border-2 border-black z-50"
+        >
+          {highContrast ? 'Desativar Alto Contraste' : 'Ativar Alto Contraste'}
+        </button>
 
           <Routes>
             <Route path="/" element={<HomePage />} />

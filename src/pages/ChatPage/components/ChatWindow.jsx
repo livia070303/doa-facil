@@ -55,11 +55,11 @@ const ChatWindow = ({
   return (
     <div key={conversation?.userIdSecond} className={`bg-white ${isFullScreen ? 'h-full m-2 rounded-lg' : 'flex-1'} overflow-hidden flex flex-col`}>
       {/* Chat Header */}
-      <div className="bg-gradient-to-r from-vermelho-médio to-azul-claro flex justify-between items-center p-4 border-b border-gray-300">
+      <div className="bg-gradient-to-r from-vermelho-médio to-azul-claro flex justify-between items-center p-4 border-b border-gray-300 contrast:bg-none contrast:bg-custom-black contrast:text-custom-yellow contrast:border-2 contrast:border-custom-yellow">
         <div className="flex items-center space-x-4">
           {/* Mostra o botão de voltar apenas no mobile e quando em tela cheia */}
           {(!isFullScreen || (isMobileView && isFullScreen)) && (
-            <button onClick={onBack} className="text-white hover:text-azul-escuro">
+            <button onClick={onBack} className="text-white hover:text-azul-escuro contrast:text-custom-yellow contrast:hover:text-white">
               {/* Ícone de seta para voltar */}
               <IoChevronBackOutline className="text-2xl" />
             </button>
@@ -89,7 +89,7 @@ const ChatWindow = ({
           </h3>
         </div>
         {!isFullScreen && (
-          <button onClick={toggleChat} className="text-white hover:text-azul-escuro text-xl">
+          <button onClick={toggleChat} className="text-white hover:text-azul-escuro text-xl contrast:text-custom-yellow contrast:hover:text-white">
            <IoClose className='text-2xl'/>
           </button>
         )}
@@ -135,7 +135,7 @@ const ChatWindow = ({
             }}
           />
           <button
-            className="ml-3 bg-azul-claro text-white p-3 rounded-full hover:bg-azul-médio transition-all duration-300"
+            className="ml-3 bg-azul-claro text-white p-3 rounded-full hover:bg-azul-médio transition-all duration-300 contrast:bg-custom-yellow contrast:text-custom-black"
             onClick={handleSendMessage}
           >
             <IoSend />

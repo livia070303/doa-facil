@@ -19,14 +19,14 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="max-w-4xl mx-auto p-6 mb-12 bg-vermelho-claro/30 border rounded-lg shadow-md">
+    <section className="max-w-4xl mx-auto p-6 mb-12 bg-vermelho-claro/30 border rounded-lg shadow-md contrast:bg-purple-200">
       <h2 className="text-3xl font-bold mb-6 text-center">Ainda tem dúvidas?</h2>
-      <p className="mb-6 text-center text-gray-600">
+      <p className="mb-6 text-center text-gray-600 contrast:text-custom-black">
         Se você não encontrou a resposta para sua pergunta, envie-nos uma mensagem!
       </p>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="email" className="block text-lg font-medium text-gray-700">
+          <label htmlFor="email" className="block text-lg font-medium text-gray-700 contrast:text-custom-black">
             Email:
           </label>
           <input
@@ -39,7 +39,7 @@ const ContactForm = () => {
           />
         </div>
         <div>
-          <label htmlFor="subject" className="block text-lg font-medium text-gray-700">
+          <label htmlFor="subject" className="block text-lg font-medium text-gray-700 contrast:text-custom-black">
             Assunto:
           </label>
           <input
@@ -52,7 +52,7 @@ const ContactForm = () => {
           />
         </div>
         <div>
-          <label htmlFor="message" className="block text-lg font-medium text-gray-700">
+          <label htmlFor="message" className="block text-lg font-medium text-gray-700 contrast:text-custom-black">
             Mensagem/Dúvida:
           </label>
           <textarea
@@ -66,7 +66,7 @@ const ContactForm = () => {
         <div className="text-center">
           <button
             type="submit"
-            className="bg-vermelho-médio text-white px-6 py-2 rounded-md hover:bg-vermelho-escuro transition duration-300"
+            className="bg-vermelho-médio text-white font-bold px-6 py-2 rounded-md hover:bg-vermelho-escuro transition duration-300 contrast:bg-custom-yellow contrast:text-custom-black contrast:border contrast:border-custom-black"
           >
             Enviar Pergunta
           </button>

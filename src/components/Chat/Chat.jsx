@@ -59,7 +59,7 @@ const Chat = () => {
             onClick={handleChatOpen}
             className="bg-vermelho-médio text-white p-6 rounded-full shadow-lg hover:bg-azul-claro transform transition-transform duration-300 hover:-translate-y-1"
           >
-            <BsChatLeftText className="text-3xl" />
+            <BsChatLeftText className="text-3xl  contrast:text-black" />
           </button>
         </div>
 )}
@@ -97,7 +97,7 @@ const Chat = () => {
             <div className="text-center mt-2">
               <button
                 onClick={openFullScreenChat}
-                className="text-white font-bold rounded-md shadow-lg bg-azul-claro hover:bg-azul-médio  p-2 px-6 mb-2 border"
+                className="text-white font-bold rounded-md shadow-lg bg-azul-claro hover:bg-azul-médio  p-2 px-6 mb-2 border contrast:bg-custom-yellow contrast:text-custom-black contrast:border-custom-black contrast:hover:bg-white"
               >
                 Ver em tela cheia
               </button>

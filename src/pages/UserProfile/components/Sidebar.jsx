@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaHome, FaHistory, FaEnvelope, FaSignOutAlt } from 'react-icons/fa';
 
 const Sidebar = () => {
@@ -19,19 +19,13 @@ const Sidebar = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to='/history' className="flex items-center px-6 py-4 hover:bg-azul-médio">
-                            <FaHistory className="text-xl" />
-                            <span className="ml-4 text-lg">Histórico</span>
-                        </Link>
-                    </li>
-                    <li>
                         <Link to='/chat' className="flex items-center px-6 py-4 hover:bg-azul-médio">
                             <FaEnvelope className="text-xl" />
                             <span className="ml-4 text-lg">Mensagens</span>
                         </Link>
                     </li>
                     <li>
-                        <Link to='#' className="flex items-center px-6 py-4 hover:bg-azul-médio">
+                        <Link to='/login' className="flex items-center px-6 py-4 hover:bg-azul-médio">
                             <FaSignOutAlt className="text-xl" />
                             <span className="ml-4 text-lg">Sair</span>
                         </Link>

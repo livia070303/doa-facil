@@ -11,13 +11,13 @@ export function HomePage() {
         <HeaderAndFooterContainer className="flex flex-col lg:flex-row gap-8 lg:gap-4">
 
           {/* Conteúdo principal sem o menu lateral */}
-          <div className="flex flex-col w-full h-fit-content bg-white shadow-md">
+          <div className="flex flex-col w-full h-fit-content bg-white shadow-md contrast:bg-black">
 
             {/* Imagem do Anúncio */}
             <div className="w-full">
               <img
                 src="/conectando.png"
-                alt="Descrição do anúncio"
+                alt="Banner com slogan Conectando Solidariedade"
                 className="object-cover w-full"
                 />
             </div>
@@ -33,7 +33,7 @@ export function HomePage() {
               <div className="w-full flex items-center justify-center mt-8">
                 <Link
                   to="/product-selection"
-                  className="cursor-pointer p-4 rounded-md bg-vermelho-escuro hover:bg-vermelho-médio transition-colors text-white font-poppins"
+                  className="cursor-pointer p-4 rounded-md bg-vermelho-escuro hover:bg-vermelho-médio transition-colors text-white font-poppins contrast:bg-custom-yellow contrast:text-custom-black contrast:hover:bg-white"
                 >
                   Ver Todos Produtos
                 </Link>
