@@ -51,6 +51,7 @@ const ProductCard = ({ imageUrl, title, badgeCondition, badgeQuantity, donor, _i
 
   const { handleChatOpen, handleCurrentChat, setIsChatListVisible, data } = useChat()
   const { user } = useContext(AuthContext)
+  const navigate = ('/chat')
 
  
   // Função para abrir o popup
@@ -134,6 +135,7 @@ const ProductCard = ({ imageUrl, title, badgeCondition, badgeQuantity, donor, _i
             <button
               className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
               onClick={handleStartChat}
+              navigate
             >
               Falar com o Doador
             </button>
