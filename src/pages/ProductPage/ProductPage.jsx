@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import { BsFillHouseDoorFill } from "react-icons/bs";
 import { useUser } from "../../hooks/useUser.js";
 import { useFavorites } from "../../contexts/FavoritesContext.jsx";
+import RequestDonationModal from "./RequestDonationModal .jsx";
 
 export function ProductPage() {
   const [images, setImages] = useState([]);
@@ -29,6 +30,11 @@ export function ProductPage() {
 
   const { toggleFavorite, isFavorite} = useFavorites();
   const [isFavorited, setIsFavorited] = useState(isFavorite(id));
+
+  //Modal de Eu quero!!
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
   
   // Função para atualizar a imagem principal ao clicar em uma miniatura
   const handleThumbnailClick = (image) => {
@@ -203,12 +209,18 @@ export function ProductPage() {
 
               {/* Botões de Ação */}
               <div className="flex flex-col gap-4 mt-8">
-                <button className="w-full py-2 md:py-3 bg-red-600 hover:bg-red-500 text-white rounded-md text-sm md:text-lg transition-colors duration-300">
+                <button onClick={handleOpenModal} className="w-full py-2 md:py-3 bg-red-600 hover:bg-red-500 text-white rounded-md text-sm md:text-lg transition-colors duration-300">
                   EU QUERO!
                 </button>
-                {/* <button className="w-full py-2 md:py-3 border border-teal-500 hover:bg-teal-500 hover:text-white text-teal-500 rounded-md text-sm md:text-lg transition-colors duration-300">
-                  Adicionar ao sacola
-                </button> */}
+                {/* Chamada do modal com o ID do produto e o estado de abertura */}
+                  <RequestDonationModal 
+                    productId={id} 
+                    open={isModalOpen} 
+                    productName={product?.productName}
+                    idUserLogado={data?.user?.ID}
+                    idUserDonor={product?.donor?.ID}
+                    onClose={handleCloseModal} 
+                  />
               </div>
             </div>
           </div>
