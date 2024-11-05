@@ -19,12 +19,12 @@ const Sidebar = () => {
                             <span className="ml-4 text-lg contrast:font-bold contrast:text-custom-black">Home</span>
                         </Link>
                     </li>
-                    {/*<li>
+                    <li>
                         <Link to='/history' className="flex items-center px-6 py-4 hover:bg-azul-médio contrast:hover:bg-white">
                             <FaHistory className="text-xl contrast:text-custom-black" />
                             <span className="ml-4 text-lg contrast:font-bold contrast:text-custom-black">Histórico</span>
                         </Link>
-                    </li>*/}
+                    </li>
                     <li>
                         <Link to='/create' className="flex items-center px-6 py-4 hover:bg-azul-médio contrast:hover:bg-white">
                             <BiSolidDonateHeart className="text-2xl contrast:text-custom-black" />
