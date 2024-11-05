@@ -2,7 +2,6 @@
 
 import { FaBars, FaHeart, FaHome, FaPlusCircle, FaQuestionCircle, FaSearch, FaTimes, FaUser, FaUserPlus } from "react-icons/fa";  
 import { FaRegHeart } from "react-icons/fa6";
-import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AvatarDropDown } from "./Avatar-dropdown";
@@ -12,8 +11,8 @@ import { useFavorites } from "../../contexts/FavoritesContext";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { isAuthenticated} = useContext(AuthContext);
-  const {favoritesCount} = useFavorites();
+  const { isAuthenticated } = useContext(AuthContext);
+  const { favoritesCount } = useFavorites();
 
   return (
     <>
@@ -86,7 +85,6 @@ export function Header() {
                 </Link>
               </li>
               {!isAuthenticated ? (
-                // Menu para usuários não logados
                 <>
                   <li className="border-t border-azul-escuro hover:bg-azul-médio contrast:border-white">
                     <Link
@@ -110,7 +108,6 @@ export function Header() {
                   </li>
                 </>
               ) : (
-                // Menu para usuários logados
                 <>
                   <li className="border-t border-azul-escuro hover:bg-azul-médio contrast:border-white">
                     <Link
@@ -122,16 +119,6 @@ export function Header() {
                       <span>Doar</span>
                     </Link>
                   </li>
-                  {/* <li className="border-t border-azul-escuro hover:bg-azul-médio">
-                    <Link
-                      to="/receive"
-                      className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      <FaGift className="mr-2 text-white" aria-hidden="true" />
-                      <span>Receber</span>
-                    </Link>
-                  </li> */}
                   <li className="border-t border-azul-escuro hover:bg-azul-médio contrast:border-white">
                     <HashLink
                       smooth
@@ -143,16 +130,6 @@ export function Header() {
                       <span>Favoritos</span>
                     </HashLink>
                   </li>
-                  {/* <li className="border-t border-azul-escuro hover:bg-azul-médio">
-                    <Link
-                      to="/cart"
-                      className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      <FaShoppingCart className="mr-2 text-white" aria-hidden="true" />
-                      <span>Carrinho</span>
-                    </Link>
-                  </li> */}
                   <li className="border-t border-azul-escuro border-b hover:bg-azul-médio contrast:border-white">
                     <Link
                       to="/user"
@@ -172,14 +149,12 @@ export function Header() {
 
       {/* Header para Telas Médias e Maiores */}
       <div className="hidden md:flex justify-between bg-gradient-to-r from-vermelho-médio to-azul-claro contrast:bg-none contrast:bg-custom-black p-0 items-center">
-        {/* Logo e Campo de Busca */}
         <div className="flex items-center md:w-full lg:w-[80%] justify-end md:justify-normal md:gap-2 lg:gap-4 xl:gap-12">
           <img
             src="./logoRecortado.png"
             alt="Logo"
             className="hidden xl:ml-4 lg:ml-2 mt-2 md:flex w-20 h-[5.5rem]"
           />
-
           {isAuthenticated && (
             <div className="relative w-full">
               <input
@@ -213,7 +188,6 @@ export function Header() {
           </Link>
 
           {!isAuthenticated ? (
-            // Links para usuários não logados
             <>
               <Link
                 to="/register"
@@ -229,7 +203,6 @@ export function Header() {
               </Link>
             </>
           ) : (
-            // Links para usuários logados
             <>
               <Link
                 to="/create"
@@ -237,12 +210,6 @@ export function Header() {
               >
                 Doar
               </Link>
-              {/* <Link
-                to="/create-needed"
-                className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-white p-2 contrast:text-custom-yellow contrast:hover:text-white"
-              >
-                Receber
-              </Link> */}
             </>
           )}
         </nav>
@@ -263,18 +230,6 @@ export function Header() {
                   {favoritesCount || 0}
                 </span>
               </HashLink>
-
-              {/* Ícone de Carrinho */}
-              <Link
-                to="/cart"
-                className="relative flex items-center h-fit transition-all duration-200 ease-in-out transform hover:text-white hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
-                aria-label="Carrinho"
-              >
-                <AiOutlineShoppingCart className="text-2xl" aria-hidden="true" />
-                <span className="absolute -right-3 -top-4 bg-vermelho-escuro text-white text-center w-6 h-6 rounded-full">
-                  0
-                </span>
-              </Link>
             </div>
 
             {/* Avatar do Usuário */}
