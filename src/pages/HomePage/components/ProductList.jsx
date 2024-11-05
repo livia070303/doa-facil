@@ -9,7 +9,7 @@ export function ProductList() {
   useEffect(() => {
     const fetchDonationsData = async () => {
       try {
-        const limitItens = 4;
+        const limitItens = 4; // Ajustado para exibir apenas 4 produtos
         const data = await mostRecentsDonations(limitItens);
         setProducts(data?.donations);
       } catch (error) {
@@ -21,7 +21,7 @@ export function ProductList() {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"> {/* gap reduzido para aproximar os itens */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6"> {/* Layout ajustado para responsividade */}
       {products.map((product) => (
         <Link to={`/product/${product._id}`} key={product._id}>
           <MostSearchedItems
