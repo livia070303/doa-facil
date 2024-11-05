@@ -105,6 +105,7 @@ export function useUser(){
         },
       })
 
+
     const updateUserMutation = useMutation({
         mutationFn: async (user) => {
         const { nomeCompleto, CPF, telefone, email, CEP, estado, rua, cidade } = user

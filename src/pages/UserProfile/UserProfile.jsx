@@ -1,6 +1,5 @@
 import React from "react";
 import Sidebar from "./components/Sidebar.jsx";
-import DonationItem from "../../components/DonationItem/DonationItem.jsx";
 import MobileHeader from "./components/MobileHeader.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 import { SectionHeader } from "../HomePage/components/SectionHeader.jsx";
@@ -12,7 +11,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import DonationUserItemDoados from "./components/DonationUserItemDoado.jsx";
 import DonationUserItemRecebidos from "./components/DonationUserItemRecebidos.jsx";
 import DonationUserItemFavorite from "./components/DonationUserItemFavorite.jsx";
-import { Typography } from "@mui/material";
 
 const UserProfileSchema = z.object({
   nome: z.string().min(3),
@@ -28,7 +26,7 @@ const UserProfileSchema = z.object({
 export const UserProfile = () => {
   const { data, isLoading, handleUserUpdate, regionOptions } = useUser();
 
-  const { register, handleSubmit, reset } = useForm({
+  const { register, handleSubmit, reset, } = useForm({
     resolver: zodResolver(UserProfileSchema),
     defaultValues: {
       nome: data?.user?.nomeCompleto,
@@ -41,6 +39,7 @@ export const UserProfile = () => {
     },
   });
 
+
   React.useEffect(() => {
     if (data) {
       reset({
@@ -49,15 +48,18 @@ export const UserProfile = () => {
         phone: data?.user?.telefone,
         logradouro: data?.user?.rua,
         cidade: data?.user?.cidade,
-        estado: data?.estado,
+        estado: regionOptions.find((region) => region.value === data?.user.estado)?.value,
         cep: data?.user?.CEP,
       });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, reset]);
 
   const submitForm = async (data) => {
     handleUserUpdate(data);
   };
+
+
 
   return (
     <>
@@ -169,7 +171,8 @@ export const UserProfile = () => {
                     <div>
                       <label className="block text-gray-700">
                         UF
-                        <select
+                 
+                          <select
                           className="mt-1 p-1 block w-full border border-gray-300 rounded-md"
                           {...register("estado")}
                         >
@@ -179,6 +182,8 @@ export const UserProfile = () => {
                             </option>
                           ))}
                         </select>
+                                
+                         
                       </label>
                     </div>
                     <div>
