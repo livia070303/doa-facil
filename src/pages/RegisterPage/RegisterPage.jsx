@@ -42,14 +42,14 @@ export const RegisterPage = () => {
         <button
           onClick={() => navigate('/')}
           aria-label="Voltar para a página inicial"
-          className="absolute top-4 right-4 text-azul-claro hover:text-azul-escuro focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-azul-claro"
+          className="absolute top-4 right-4 text-azul-claro hover:text-azul-escuro focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-azul-claro contrast:text-custom-black"
         >
           <FaArrowLeft className="text-2xl" aria-hidden="true" />
         </button>
 
         {/* Título */}
         <div className="mb-6">
-          <h1 className="text-2xl font-bold text-azul-escuro">Cadastre-se</h1>
+          <h1 className="text-2xl font-bold text-azul-escuro contrast:text-custom-black">Cadastre-se</h1>
         </div>
 
         {/* Formulário */}
@@ -58,7 +58,7 @@ export const RegisterPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Nome */}
             <div>
-              <label htmlFor="nome" className="block text-gray-700">Nome</label>
+              <label htmlFor="nome" className="block text-black contrast:font-bold ">Nome</label>
               <input
                 type="text"
                 id="nome"
@@ -72,7 +72,7 @@ export const RegisterPage = () => {
 
             {/* CPF */}
             <div>
-              <label htmlFor="cpf" className="block text-gray-700">CPF</label>
+              <label htmlFor="cpf" className="block text-black contrast:font-bold ">CPF</label>
               <InputMask
                 mask="999.999.999-99"
                 {...register('cpf')}
@@ -97,7 +97,7 @@ export const RegisterPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-gray-700">Email</label>
+              <label htmlFor="email" className="block text-black contrast:font-bold ">Email</label>
               <input
                 type="email"
                 id="email"
@@ -111,7 +111,7 @@ export const RegisterPage = () => {
 
             {/* Telefone */}
             <div>
-              <label htmlFor="phone" className="block text-gray-700">Telefone</label>
+              <label htmlFor="phone" className="block text-black contrast:font-bold ">Telefone</label>
               <InputMask
                 mask="(99) 99999-9999"
                 {...register('phone')}
@@ -136,7 +136,7 @@ export const RegisterPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             {/* Senha */}
             <div>
-              <label htmlFor="password" className="block text-gray-700">Senha</label>
+              <label htmlFor="password" className="block text-black contrast:font-bold ">Senha</label>
               <input
                 type="password"
                 id="password"
@@ -150,7 +150,7 @@ export const RegisterPage = () => {
 
             {/* Confirmar Senha */}
             <div>
-              <label htmlFor="confirmPassword" className="block text-gray-700">Confirmar Senha</label>
+              <label htmlFor="confirmPassword" className="block text-black contrast:font-bold ">Confirmar Senha</label>
               <input
                 type="password"
                 id="confirmPassword"
@@ -164,13 +164,13 @@ export const RegisterPage = () => {
           </div>
 
           {/* Subtítulo Endereço */}
-          <h2 className="text-xl font-semibold text-azul-escuro mt-6">Endereço</h2>
+          <h2 className="text-xl font-semibold text-azul-escuro mt-6 contrast:text-custom-black">Endereço</h2>
 
           {/* Linha: Logradouro e Cidade */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             {/* Logradouro */}
             <div>
-              <label htmlFor="logradouro" className="block text-gray-700">Rua</label>
+              <label htmlFor="logradouro" className="block text-black contrast:font-bold ">Rua</label>
               <input
                 type="text"
                 id="logradouro"
@@ -184,7 +184,7 @@ export const RegisterPage = () => {
 
             {/* Cidade */}
             <div>
-              <label htmlFor="cidade" className="block text-gray-700">Cidade</label>
+              <label htmlFor="cidade" className="block text-black contrast:font-bold ">Cidade</label>
               <input
                 type="text"
                 id="cidade"
@@ -201,7 +201,7 @@ export const RegisterPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 items-end">
             {/* Estado */}
             <div>
-              <label htmlFor="estado" className="block text-gray-700">Estado</label>
+              <label htmlFor="estado" className="block text-black contrast:font-bold ">Estado</label>
               <select
                 id="estado"
                 className={`mt-1 w-full border ${errors.estado ? 'border-red-500' : 'border-gray-300'} rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-azul-claro`}
@@ -221,7 +221,7 @@ export const RegisterPage = () => {
 
             {/* CEP */}
             <div>
-              <label htmlFor="cep" className="block text-gray-700">CEP</label>
+              <label htmlFor="cep" className="block text-black contrast:font-bold ">CEP</label>
               <InputMask
                 mask="99999-999"
                 {...register('cep')}
@@ -245,7 +245,7 @@ export const RegisterPage = () => {
             <div className="mt-2 md:mt-0">
               <button
                 type="submit"
-                className="w-full bg-azul-claro text-white font-semibold rounded-md p-2 hover:bg-azul-médio shadow-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-azul-claro"
+                className="w-full bg-azul-claro text-white font-semibold rounded-md p-2 hover:bg-azul-médio shadow-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-azul-claro contrast:bg-custom-yellow contrast:text-custom-black contrast:border contrast:border-custom-black"
               >
                 Cadastrar
               </button>

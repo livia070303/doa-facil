@@ -48,9 +48,9 @@ export function Header() {
               className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
             >
               {menuOpen ? (
-                <FaTimes className="text-2xl text-white" aria-hidden="true" />
+                <FaTimes className="text-2xl text-white contrast:text-custom-yellow" aria-hidden="true" />
               ) : (
-                <FaBars className="text-2xl text-white" aria-hidden="true" />
+                <FaBars className="text-2xl text-white contrast:text-custom-yellow" aria-hidden="true" />
               )}
             </button>
           </div>
@@ -59,24 +59,24 @@ export function Header() {
         {/* Menu Dropdown */}
         {menuOpen && (
           <nav
-            className="bg-gradient-to-r from-vermelho-médio to-azul-claro"
+            className="bg-gradient-to-r from-vermelho-médio to-azul-claro contrast:bg-none contrast:bg-custom-black"
             aria-label="Menu móvel"
           >
             <ul>
-              <li className="border-t border-azul-escuro hover:bg-azul-médio">
+              <li className="border-t border-azul-escuro hover:bg-azul-médio contrast:border-white">
                 <Link
                   to="/"
-                  className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                  className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white contrast:text-custom-yellow"
                   onClick={() => setMenuOpen(false)}
                 >
                   <FaHome className="mr-2 text-white" aria-hidden="true" />
                   <span>Inicial</span>
                 </Link>
               </li>
-              <li className="border-t border-azul-escuro hover:bg-azul-médio">
+              <li className="border-t border-azul-escuro hover:bg-azul-médio contrast:border-white">
                 <Link
                   to="/faq"
-                  className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                  className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white  contrast:text-custom-yellow"
                   onClick={() => setMenuOpen(false)}
                 >
                   <FaQuestionCircle className="mr-2 text-white" aria-hidden="true" />
@@ -86,20 +86,20 @@ export function Header() {
               {!isAuthenticated ? (
                 // Menu para usuários não logados
                 <>
-                  <li className="border-t border-azul-escuro hover:bg-azul-médio">
+                  <li className="border-t border-azul-escuro hover:bg-azul-médio contrast:border-white">
                     <Link
                       to="/register"
-                      className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                      className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white contrast:text-custom-yellow"
                       onClick={() => setMenuOpen(false)}
                     >
                       <FaUserPlus className="mr-2 text-white" aria-hidden="true" />
                       <span>Cadastre-se</span>
                     </Link>
                   </li>
-                  <li className="border-t border-azul-escuro border-b hover:bg-azul-médio">
+                  <li className="border-t border-azul-escuro border-b hover:bg-azul-médio contrast:border-white">
                     <Link
                       to="/login"
-                      className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                      className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white contrast:text-custom-yellow"
                       onClick={() => setMenuOpen(false)}
                     >
                       <FaUser className="mr-2 text-white" aria-hidden="true" />
@@ -110,10 +110,10 @@ export function Header() {
               ) : (
                 // Menu para usuários logados
                 <>
-                  <li className="border-t border-azul-escuro hover:bg-azul-médio">
+                  <li className="border-t border-azul-escuro hover:bg-azul-médio contrast:border-white">
                     <Link
                       to="/create"
-                      className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                      className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white contrast:text-custom-yellow"
                       onClick={() => setMenuOpen(false)}
                     >
                       <FaPlusCircle className="mr-2 text-white" aria-hidden="true" />
@@ -130,11 +130,11 @@ export function Header() {
                       <span>Receber</span>
                     </Link>
                   </li> */}
-                  <li className="border-t border-azul-escuro hover:bg-azul-médio">
+                  <li className="border-t border-azul-escuro hover:bg-azul-médio contrast:border-white">
                     <HashLink
                       smooth
                       to="/user#favoritos"
-                      className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                      className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white contrast:text-custom-yellow"
                       onClick={() => setMenuOpen(false)}
                     >
                       <FaHeart className="mr-2 text-white" aria-hidden="true" />
@@ -151,10 +151,10 @@ export function Header() {
                       <span>Carrinho</span>
                     </Link>
                   </li> */}
-                  <li className="border-t border-azul-escuro border-b hover:bg-azul-médio">
+                  <li className="border-t border-azul-escuro border-b hover:bg-azul-médio contrast:border-white">
                     <Link
                       to="/user"
-                      className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                      className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white contrast:text-custom-yellow"
                       onClick={() => setMenuOpen(false)}
                     >
                       <FaUser className="mr-2 text-white" aria-hidden="true" />

@@ -53,7 +53,7 @@ const Chat = () => {
         <div className="fixed bottom-4 rounded-full right-4 z-50">
           <button
             onClick={handleChatOpen}
-            className="bg-vermelho-médio text-white p-6 rounded-full shadow-lg hover:bg-azul-claro transform transition-transform duration-300 hover:-translate-y-1"
+            className="bg-vermelho-médio text-white p-6 rounded-full shadow-lg hover:bg-azul-claro transform transition-transform duration-300 hover:-translate-y-1 contrast:bg-custom-yellow contrast:hover:bg-white"
           >
             <BsChatLeftText className="text-3xl  contrast:text-black" />
           </button>

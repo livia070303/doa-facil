@@ -32,8 +32,8 @@ const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
             <span
               className={`${
                 selectedCategory === category
-                  ? 'bg-red-500 text-white'
-                  : 'bg-white border border-gray-300'
+                  ? 'bg-red-500 text-white contrast:bg-custom-yellow contrast:text-custom-black'
+                  : 'bg-white border border-gray-300 contrast:border-custom-black'
               } w-5 h-5 rounded-full flex justify-center items-center`}
             >
               {selectedCategory === category && '●'}

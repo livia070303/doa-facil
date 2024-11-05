@@ -36,12 +36,12 @@ export function AvatarDropDown() {
         <>
         {
             isDropdownOpen && (
-                <div ref={dropdownRef} className="absolute right-8 top-[4.6rem] bg-white rounded-md shadow-md">
+                <div ref={dropdownRef} className="absolute right-8 top-[4.6rem] bg-white rounded-md shadow-md contrast:bg-custom-yellow">
                     <ul>
                         <li>
                             <Link
                                 to="/user"
-                                className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                                className="block w-full text-left px-4 py-2 hover:bg-gray-200 contrast:text-custom-black"
                                 onClick={() => setIsDropdownOpen(false)}
                             >
                                 Perfil
@@ -52,7 +52,7 @@ export function AvatarDropDown() {
                             <button onClick={() => {
                                 handleLogout()
                                 setIsDropdownOpen(false)
-                            }} className="w-full text-left px-4 py-2 hover:bg-gray-200">Sair</button>
+                            }} className="w-full text-left px-4 py-2 hover:bg-gray-200 contrast:text-custom-black">Sair</button>
                         </li>
                     </ul>
                 </div>
