@@ -8,10 +8,12 @@ import { Link } from "react-router-dom";
 import { AvatarDropDown } from "./Avatar-dropdown";
 import { AuthContext } from "../../contexts/AuthContext";
 import { HashLink } from "react-router-hash-link";
+import { useFavorites } from "../../contexts/FavoritesContext";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated} = useContext(AuthContext);
+  const {favoritesCount} = useFavorites();
 
   return (
     <>
@@ -258,7 +260,7 @@ export function Header() {
               >
                 <FaRegHeart className="text-2xl" aria-hidden="true" />
                 <span className="absolute -right-3 -top-4 bg-vermelho-escuro text-white text-center w-6 h-6 rounded-full">
-                  0
+                  {favoritesCount || 0}
                 </span>
               </HashLink>
 

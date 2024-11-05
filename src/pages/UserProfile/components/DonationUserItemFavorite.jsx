@@ -6,26 +6,15 @@ import {
   getItensDoadosByUser,
 } from "../../../services/donationServices";
 import { useUser } from "../../../hooks/useUser";
+import { useFavorites } from "../../../contexts/FavoritesContext";
 
 export default function DonationUserItemFavorite({ item }) {
   const [donations, setDonations] = useState([]);
-  const { data } = useUser();
-  const idUser = data?.user?._id;
+  const { favorites} = useFavorites();
 
   useEffect(() => {
-    const fetchDonationsData = async () => {
-      try {
-        let data;
-
-        data = await getFavoritesByUser(idUser);
-        setDonations(data?.favorite || []);
-      } catch (error) {
-        console.error("Erro ao buscar doações:", error);
-      }
-    };
-
-    fetchDonationsData();
-  }, []);
+        setDonations(favorites || []);
+  }, [favorites]);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">

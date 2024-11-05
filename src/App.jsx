@@ -21,6 +21,8 @@ import { AuthProvider } from './contexts/AuthContext';
 import ScrollToTop from './components/ScrollToTop';
 import { UserProvider } from './contexts/UserContext';
 import { ChatProvider } from './contexts/ChatContext';
+import { FavoritesProvider } from './contexts/FavoritesContext';
+
 
 // eslint-disable-next-line react/prop-types
 const PrivateRoute = ({ children }) => {
@@ -87,6 +89,7 @@ export function App() {
     <div className={highContrast ? 'high-contrast' : ''}>
       <AuthProvider>
         <UserProvider>
+        <FavoritesProvider>
           <ChatProvider>
 
           <ScrollToTop />
@@ -120,7 +123,8 @@ export function App() {
 
           {shouldRenderChat() && <Chat />}
          </ChatProvider>
-        </UserProvider>
+          </FavoritesProvider>
+      </UserProvider>
       </AuthProvider>
     </div>
   );

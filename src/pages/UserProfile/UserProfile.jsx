@@ -199,14 +199,6 @@ export const UserProfile = () => {
                 {/* Separador Opcional */}
                 <Separator className="my-8 h-0.5 bg-gray-200" />
 
-                {/* Minhas Doações */}
-                <section className="mt-12 mb-8">
-                  <SectionHeader label="Minhas Doações" title="Histórico"/>
-                  <DonationUserItemDoados />
-                </section>
-
-                <Separator className="my-8 h-0.5 bg-gray-200" />
-
                 {/* Favoritos */}
                 <section className="mt-12 mb-8" id="favoritos">
                   <SectionHeader label="Favoritos" title="Itens Favoritos" />

@@ -16,15 +16,20 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { BsFillHouseDoorFill } from "react-icons/bs";
 import { useUser } from "../../hooks/useUser.js";
-import { FaLaptopHouse } from "react-icons/fa";
+import { useFavorites } from "../../contexts/FavoritesContext.jsx";
 
 export function ProductPage() {
   const [images, setImages] = useState([]);
   const [mainImage, setMainImage] = useState("");
 
-  // Estado para o botão de favorito
-  const [isFavorited, setIsFavorited] = useState(false);
+  const [product, setProduct] = useState(null);
+  const { id } = useParams();
+  const { data } = useUser();
+  const idUser = data?.user?._id;
 
+  const { toggleFavorite, isFavorite} = useFavorites();
+  const [isFavorited, setIsFavorited] = useState(isFavorite(id));
+  
   // Função para atualizar a imagem principal ao clicar em uma miniatura
   const handleThumbnailClick = (image) => {
     setMainImage(image);
@@ -35,34 +40,11 @@ export function ProductPage() {
     setProductCondition(event.target.value);
   };
 
-  const [product, setProduct] = useState(null);
-  const { id } = useParams();
-  const { data } = useUser();
-  const idUser = data?.user?._id;
+  function changeFavorite(){
+    toggleFavorite(isFavorited, idUser,id); 
+    setIsFavorited(!isFavorited);
+  }
 
-  // Função para favoritar o item
-  const toggleFavorite = async () => {
-    const model = {
-      userId: idUser,
-      donationId: ''+id+'',
-    };
-
-    try {
-      if (isFavorited) {
-        // Excluir o item favorito
-        debugger
-        const response = await deleteFavoritesByUser(model);
-        console.log("Item excluído dos favoritos com sucesso:", response);
-      } else {
-        // Criar o item favorito
-        const response = await createFavoritesByUser(model);
-        console.log("Item adicionado aos favoritos com sucesso:", response);
-      }
-      setIsFavorited(!isFavorited);
-    } catch (error) {
-      console.error("Erro ao atualizar favoritos:", error);
-    }
-  };
 
   useEffect(() => {
     const fetchDonationsIdData = async () => {
@@ -72,7 +54,6 @@ export function ProductPage() {
         setImages(data?.donations?.image);
         setMainImage(data?.donations?.image[0]);
       } catch (error) {
-        //alert(error?.response?.data?.message)
         console.error("Erro ao buscar doações:", error);
       }
     };
@@ -81,24 +62,7 @@ export function ProductPage() {
   }, []);
 
   useEffect(() => {
-    const fetchDonationsFavorite = async () => {
-      try {
-        const data = await getFavoritesByUser(idUser);
-
-        if (data.favorite.length > 0) {
-          const isFavorite = data.favorite.some(
-            (favorite) => favorite.donationId?._id === id
-          );
-          console.log("é favorito: " + isFavorite);
-          setIsFavorited(isFavorite);
-        } else {
-          setIsFavorited(false);
-        }
-      } catch (error) {
-        console.error("Erro ao buscar itens favoritos:", error);
-      }
-    };
-    fetchDonationsFavorite();
+    setIsFavorited(isFavorite(id));
   }, [product]);
 
   if (!product) {
@@ -225,7 +189,7 @@ export function ProductPage() {
                   {/* Ícone de Favoritar */}
                   <button
                     className="ml-4 focus:outline-none"
-                    onClick={toggleFavorite}
+                    onClick={changeFavorite}
                   >
                     <FontAwesomeIcon
                       icon={faHeart}
