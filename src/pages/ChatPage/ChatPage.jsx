@@ -1,26 +1,15 @@
 // src/pages/ChatPage/ChatPage.jsx
 
-// **************************************
 
-
-
-// ESSE ARQUIVO É INÚTIL, NAO É CHAMADO EM NENHUM LUGAR.
-
-
-
-
-// **************************************
-
-
-import  { useState, useEffect } from 'react';
+import  { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ConversationsList from './components/ConversationsList';
 import ChatWindow from './components/ChatWindow';
-import { conversations } from './data';
+import { useChat } from '../../hooks/useChat';
+import { AuthContext } from '../../contexts/AuthContext';
 
 
 export const ChatPage = () => {
-  const [selectedConversation, setSelectedConversation] = useState(null);
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
   const navigate = useNavigate();
 
@@ -38,6 +27,9 @@ export const ChatPage = () => {
     navigate(-1); // Volta para a página anterior (chat flutuante)
   };
 
+  const { data, currentChat: selectedConversation, handleChatClose, handleCurrentChat, handleRemoveCurrentChat, handleSendMessage, setMessages, messages,refetch, refetchState, setRefetchState } = useChat()
+  const { user } = useContext(AuthContext)
+
   return (
     <div className="flex flex-col h-screen overflow-hidden bg-gray-200">
       <div className="flex flex-1 h-full">
@@ -45,9 +37,11 @@ export const ChatPage = () => {
         {(isMobileView && !selectedConversation) || !isMobileView ? (
           <div className={`w-full md:w-1/3 h-full ${isMobileView ? 'absolute w-full' : ''}`}>
             <ConversationsList
-              conversations={conversations}
-              onSelectConversation={setSelectedConversation}
+              conversations={data}
+              onSelectConversation={handleCurrentChat}
               onMinimizeChat={handleMinimizeChat}
+                toggleChat={handleChatClose} 
+                user={user}
             />
           </div>
         ) : null}
@@ -60,8 +54,15 @@ export const ChatPage = () => {
                 conversation={selectedConversation}
                 isFullScreen={true}
                 onMinimizeChat={handleMinimizeChat}
-                onBack={() => setSelectedConversation(null)}
-                isMobileView={isMobileView}  // Passando a prop para controlar o botão de retorno no mobile
+                onBack={handleRemoveCurrentChat}
+                isMobileView={isMobileView}  
+                currentUserId={user}
+                sendMessage={handleSendMessage}
+                setMessages={setMessages}
+                messages={messages}
+                refetch={refetch}
+                refetchState={refetchState}
+                setRefetchState={setRefetchState}
               />
             ) : (
               <div className="flex items-center justify-center h-full">

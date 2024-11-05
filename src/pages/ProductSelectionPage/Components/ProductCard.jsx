@@ -49,8 +49,9 @@ const Popup = styled.div`
 const ProductCard = ({ imageUrl, title, badgeCondition, badgeQuantity, donor, _id}) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const { handleSendMessage } = useChat()
+  const { handleChatOpen, handleCurrentChat, setIsChatListVisible, data } = useChat()
   const { user } = useContext(AuthContext)
+
  
   // Função para abrir o popup
   const handleAvatarClick = () => {
@@ -59,15 +60,17 @@ const ProductCard = ({ imageUrl, title, badgeCondition, badgeQuantity, donor, _i
 
  const handleStartChat = () => {
 
-  const user1 = user;
-  const user2 = donor.ID;
-  const message = 'Olá, gostaria de saber mais sobre o produto anunciado.';
+  //  handleSendMessage({ user1, user2, message });
 
+   setIsPopupOpen(false);
 
+    handleChatOpen();
 
-   handleSendMessage({ user1, user2, message });
-  // console.log(donor.ID)
-  setIsPopupOpen(false);
+  const conversation = data.find((chat) => chat.userIdFirst === user && chat.userIdSecond === donor.ID || chat.userIdFirst === donor.ID && chat.userIdSecond === user)
+
+    handleCurrentChat(conversation);
+    setIsChatListVisible(false);
+
  }
 
  const handleClosePopup = () => {

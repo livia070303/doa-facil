@@ -1,17 +1,29 @@
 import * as React from 'react'
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { api } from '../lib/api';
 import { AuthContext } from '../contexts/AuthContext';
+import { ChatContext } from '../contexts/ChatContext';
 
 
 export function useChat() {
 
     const queryClient = useQueryClient()
 
-    const [isChatOpen, setIsChatOpen] = React.useState(false)
-    const [currentChat, setCurrentChat] = React.useState()
-    const [messages, setMessages] = React.useState([])
+    const { 
+      isChatOpen,
+      setIsChatOpen, 
+      currentChat, 
+      setCurrentChat, 
+      messages, 
+      setMessages, 
+      refetchState, 
+      setRefetchState,
+      isChatListVisible,
+      setIsChatListVisible
+    } = React.useContext(ChatContext)
+
     const { user } = React.useContext(AuthContext)
+    const queryKey = ['chats', user]
 
     const handleChatOpen = () => {
         setIsChatOpen(true)
@@ -28,11 +40,19 @@ export function useChat() {
         setCurrentChat(null)
     }
 
+    const { data, refetch } = useQuery({
+      queryKey,
+      queryFn: async () => {
+        const response = await api.get(`/chat/getLastMessages/${user}`);
+        return response.data;
+      },
+    });
+
     const sendMessage = useMutation({
         mutationFn: async (data) => {
           const { user1, user2, message } = data
+          
           try{
-
             const response = api.post('/chat/send-message', {
               user1,
               user2,
@@ -45,7 +65,7 @@ export function useChat() {
           }
         },
         onSuccess: () => {
-          queryClient.invalidateQueries({ queryKey: ['chats', user] })
+          queryClient.invalidateQueries({ queryKey })
         }
       })
 
@@ -57,8 +77,26 @@ export function useChat() {
      */
     const handleSendMessage = async (user1, user2, message) => {
       sendMessage.mutate(user1, user2, message)
+
     }
 
 
-    return {  isChatOpen, handleChatOpen, handleChatClose, currentChat, handleCurrentChat, handleRemoveCurrentChat, handleSendMessage, setMessages, messages }
+    return { 
+      isChatOpen, 
+      handleChatOpen,
+      handleChatClose, 
+      currentChat, 
+      handleCurrentChat, 
+      handleRemoveCurrentChat, 
+      handleSendMessage, 
+      setMessages, 
+      messages, 
+      queryKey,
+      refetchState,
+      setRefetchState,
+      isChatListVisible,
+      setIsChatListVisible,
+      data,
+      refetch
+     }
 }

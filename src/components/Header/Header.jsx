@@ -1,6 +1,6 @@
 // src/components/Header/Header.jsx
 
-import { FaBars, FaHeart, FaHome, FaPlusCircle, FaQuestionCircle, FaSearch, FaShoppingCart, FaTimes, FaUser, FaUserPlus, FaGift } from "react-icons/fa";  
+import { FaBars, FaHeart, FaHome, FaPlusCircle, FaQuestionCircle, FaSearch, FaTimes, FaUser, FaUserPlus } from "react-icons/fa";  
 import { FaRegHeart } from "react-icons/fa6";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useContext, useState } from "react";

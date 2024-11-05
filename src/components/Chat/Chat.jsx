@@ -6,27 +6,32 @@ import ChatWindow from '../../pages/ChatPage/components/ChatWindow';
 import ConversationsList from '../../pages/ChatPage/components/ConversationsList';
 import { BsChatLeftText } from "react-icons/bs";
 import { useChat } from '../../hooks/useChat';
-import { useQuery } from '@tanstack/react-query';
-import { api } from '../../lib/api';
 import { AuthContext } from '../../contexts/AuthContext';
 
 const Chat = () => {
 
-  const { isChatOpen, handleChatClose, handleChatOpen, currentChat, handleCurrentChat, handleRemoveCurrentChat, handleSendMessage, setMessages, messages } = useChat()
+  const { 
+    isChatOpen, 
+    handleChatClose, 
+    handleChatOpen, 
+    currentChat, 
+    handleCurrentChat, 
+    handleRemoveCurrentChat, 
+    handleSendMessage, 
+    setMessages, 
+    messages, 
+    refetchState,
+    setRefetchState,
+    isChatListVisible,
+    setIsChatListVisible,
+    data,
+    refetch
+   } = useChat()
 
-  const [isChatListVisible, setIsChatListVisible] = React.useState(true); // Controla se a lista ou o chat está visível
+   // Controla se a lista ou o chat está visível
   const navigate = useNavigate();
 
   const { user } = React.useContext(AuthContext)
-
-  const { data, refetch } = useQuery({
-    queryKey: ['chats', user],
-    queryFn: async () => {
-      const response = await api.get(`/chat/getLastMessages/${user}`);
-      return response.data;
-    },
-  });
-
 
   const openFullScreenChat = () => {
     handleChatClose()
@@ -44,7 +49,6 @@ const Chat = () => {
     setIsChatListVisible(true);
     handleRemoveCurrentChat();
   };
-
 
   return (
     <>
@@ -85,6 +89,8 @@ const Chat = () => {
                 setMessages={setMessages}
                 messages={messages}
                 refetch={refetch}
+                refetchState={refetchState}
+                setRefetchState={setRefetchState}
               />
             )}
             {/* Link para ver o chat em tela cheia */}
