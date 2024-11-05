@@ -103,6 +103,7 @@ export const AuthProvider = ({ children }) => {
         return err.response.data
       }
     },
+    staleTime: 1000 * 60 * 60 * 4,
   })
  
   React.useEffect(() => {

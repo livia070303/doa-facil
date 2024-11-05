@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Sidebar from "./components/Sidebar.jsx";
 import MobileHeader from "./components/MobileHeader.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
@@ -11,20 +11,22 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import DonationUserItemDoados from "./components/DonationUserItemDoado.jsx";
 import DonationUserItemRecebidos from "./components/DonationUserItemRecebidos.jsx";
 import DonationUserItemFavorite from "./components/DonationUserItemFavorite.jsx";
+import { AuthContext } from "../../contexts/AuthContext.jsx";
 
 const UserProfileSchema = z.object({
-  nome: z.string().min(3),
-  cpf: z.string().regex(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, "CPF inválido"),
-  email: z.string().email(),
-  phone: z.string().regex(/^\(\d{2}\) \d{5}-\d{4}$/, "Telefone inválido"),
-  logradouro: z.string().min(3),
-  cidade: z.string().min(3),
-  estado: z.string().length(2),
-  cep: z.string().regex(/^\d{5}-\d{3}$/, "CEP inválido"),
+  nome: z.string(),
+  email: z.string(),
+  phone: z.string(),
+  logradouro: z.string(),
+  cidade: z.string(),
+  estado: z.string(),
+  cep: z.string(),
 });
 
 export const UserProfile = () => {
   const { data, isLoading, handleUserUpdate, regionOptions } = useUser();
+
+  const { user } = useContext(AuthContext);
 
   const { register, handleSubmit, reset, } = useForm({
     resolver: zodResolver(UserProfileSchema),
@@ -55,15 +57,28 @@ export const UserProfile = () => {
   }, [data, reset]);
 
   const submitForm = async (data) => {
-    handleUserUpdate(data);
-  };
 
+    const { nome, email, phone, logradouro, cidade, estado, cep } = data;
+
+    const formattedData = {
+      nomeCompleto: nome,
+      email,
+      telefone: phone,
+      rua: logradouro,
+      cidade,
+      estado,
+      CEP: cep,
+      id: user,
+    }
+
+    handleUserUpdate(formattedData);
+  }
 
 
   return (
     <>
       {isLoading ? (
-        <span>carregando...</span>
+        <span>Carregando...</span>
       ) : (
         <div className="min-h-screen flex flex-col">
           {/* Container flex para Sidebar e Conteúdo Principal */}

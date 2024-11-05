@@ -108,11 +108,12 @@ export function useUser(){
 
     const updateUserMutation = useMutation({
         mutationFn: async (user) => {
-        const { nomeCompleto, CPF, telefone, email, CEP, estado, rua, cidade } = user
+        const { nomeCompleto, telefone, email, CEP, estado, rua, cidade } = user
+            console.log(user)
+
           try {
             const response = await api.put(`/user/${user.id}`, {
                 nomeCompleto,
-                CPF,
                 telefone,
                 email,
                 CEP,
