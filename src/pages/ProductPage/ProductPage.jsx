@@ -70,7 +70,7 @@ export function ProductPage() {
         <HeaderAndFooterContainer>
           <div className="flex flex-col items-center  w-screen h-screen contrast:bg-custom-black">
             <img
-              src="../../../public/error404.svg"
+              src="/error404.svg"
               alt="Error"
               className="w-[400px] h-[400px]"
             />
@@ -83,7 +83,7 @@ export function ProductPage() {
               </div>
 
               <Link to="/">
-                <button className="bg-white text-azul-claro flex items-center justify-center px-4 gap-2 py-2 rounded-md shadow-md tracking-wide border  border-gray-300 cursor-pointer hover:bg-azul-claro hover:text-white">
+                <button className="bg-white text-azul-claro flex items-center justify-center px-4 gap-2 py-2 rounded-md shadow-md tracking-wide border  border-gray-300 cursor-pointer hover:bg-azul-claro hover:text-white contrast:bg-custom-yellow contrast:text-custom-black contrast:hover:bg-white">
                   <BsFillHouseDoorFill /> IR PARA PÁGINA INICIAL
                 </button>
               </Link>
@@ -96,7 +96,7 @@ export function ProductPage() {
 
   return (
     <HeaderAndFooter>
-      <HeaderAndFooterContainer>
+      <HeaderAndFooterContainer className="contrast:bg-custom-black">
         <div className="w-full max-w-6xl mx-auto p-4 sm:p-6 md:p-8 lg:p-12 bg-white shadow-lg">
           {/* Título do Produto */}
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800 mb-8 text-center">
@@ -150,7 +150,7 @@ export function ProductPage() {
                       <div
                         className={`w-3 h-3 rounded-full ${
                           product?.condition === "novo"
-                            ? "bg-red-600"
+                            ? "bg-red-600 contrast:border contrast:border-custom-black contrast:bg-custom-yellow"
                             : "bg-gray-300"
                         }`}
                       ></div> 
@@ -162,7 +162,7 @@ export function ProductPage() {
                       <div
                         className={`w-3 h-3 rounded-full ${
                           product?.condition === "usado"
-                            ? "bg-red-600"
+                            ? "bg-red-600 contrast:border contrast:border-custom-black contrast:bg-custom-yellow"
                             : "bg-gray-300"
                         }`}
                       ></div> 
@@ -174,7 +174,7 @@ export function ProductPage() {
                       <div
                         className={`w-3 h-3 rounded-full ${
                           product?.condition === "precisa de reparos"
-                            ? "bg-red-600"
+                            ? "bg-red-600 contrast:border contrast:border-custom-black contrast:bg-custom-yellow"
                             : "bg-gray-300"
                         }`}
                       ></div> 
@@ -191,7 +191,7 @@ export function ProductPage() {
                     <FontAwesomeIcon
                       icon={faHeart}
                       className={`text-2xl md:text-3xl ${
-                        isFavorited ? "text-red-500" : "text-gray-400"
+                        isFavorited ? "text-red-500 contrast:text-custom-yellow" : "text-gray-400"
                       }`}
                     />
                   </button>
@@ -200,7 +200,7 @@ export function ProductPage() {
 
               {/* Botões de Ação */}
               <div className="flex flex-col gap-4 mt-8">
-                <button onClick={handleOpenModal} className="w-full py-2 md:py-3 bg-red-600 hover:bg-red-500 text-white rounded-md text-sm md:text-lg transition-colors duration-300">
+                <button onClick={handleOpenModal} className="w-full py-2 md:py-3 bg-red-600 hover:bg-red-500 text-white rounded-md text-sm md:text-lg transition-colors duration-300 contrast:bg-custom-yellow contrast:text-custom-black contrast:border contrast:border-custom-black contrast:hover:bg-white">
                   EU QUERO!
                 </button>
                 {/* Chamada do modal com o ID do produto e o estado de abertura */}
