@@ -4,6 +4,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { api } from '../lib/api';
 import * as React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export const AuthContext = createContext();
 
@@ -34,6 +35,7 @@ export const AuthProvider = ({ children }) => {
     queryClient.invalidateQueries({ queryKey: ['user'] })
     setUser(data)
     navigate('/')
+    toast.success('Logout realizado com sucesso')
   }
  })
 
@@ -66,6 +68,7 @@ export const AuthProvider = ({ children }) => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] })
       navigate('/login')
+      toast.success('Logout realizado com sucesso')
     },
   })
 
@@ -76,20 +79,22 @@ export const AuthProvider = ({ children }) => {
   const logoutAccount = useMutation({
     mutationFn: async () => {
       try{
-        await api.get('/logout')
+        await api.get('/logout', {
+          withCredentials: true,
+        })
       }catch(err){
         console.error(err)
         return err.response.data
       }
     },
     onSuccess: () => {
-      setUser(undefined)
-      navigate('/login')
+      toast.success('Logout realizado com sucesso')
     }
   })
 
   const handleLogout = () => {
     logoutAccount.mutate()
+    setUser(null)
   }
 
   const { data } = useQuery({
@@ -98,7 +103,7 @@ export const AuthProvider = ({ children }) => {
       try{
         const response = await api.get('/authorization')
         return response.data
-      }catch(err){
+      } catch(err){
         console.error(err)
         return err.response.data
       }

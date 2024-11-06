@@ -2,6 +2,7 @@ import * as React from 'react'
 import { AuthContext } from '../contexts/AuthContext'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { api } from '../lib/api'
+import { toast } from 'react-toastify'
 
 
 export function useUser(){
@@ -109,7 +110,6 @@ export function useUser(){
     const updateUserMutation = useMutation({
         mutationFn: async (user) => {
         const { nomeCompleto, telefone, email, CEP, estado, rua, cidade } = user
-            console.log(user)
 
           try {
             const response = await api.put(`/user/${user.id}`, {
@@ -129,7 +129,16 @@ export function useUser(){
         },
         onSuccess: () => {
           queryClient.invalidateQueries('userData')
-        }})
+          toast.success('Usuário atualizado com sucesso', {
+            position: 'top-right',
+          })
+        },
+        onError: (error) => {
+          toast.error(error.response.data.message, {
+            position: 'top-right',
+          })
+        },
+    })
 
       const handleUserUpdate = async (user) => {
         updateUserMutation.mutate(user)

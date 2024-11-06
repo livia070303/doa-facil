@@ -1,12 +1,10 @@
 // FavoritesContext.js
-import React, { createContext, useContext, useState, useEffect } from "react";
-import axios from "axios";
+import { createContext, useContext, useState, useEffect } from "react";
 import {
   createFavoritesByUser,
   deleteFavoritesByUser,
   getFavoritesByUser,
 } from "../services/donationServices";
-import { useUser } from "../hooks/useUser";
 import { AuthContext } from "./AuthContext";
 import { api } from "../lib/api";
 

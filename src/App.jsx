@@ -22,6 +22,9 @@ import ScrollToTop from './components/ScrollToTop';
 import { UserProvider } from './contexts/UserContext';
 import { ChatProvider } from './contexts/ChatContext';
 import { FavoritesProvider } from './contexts/FavoritesContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/ReactToastify.css'
+
 
 
 // eslint-disable-next-line react/prop-types
@@ -91,8 +94,21 @@ export function App() {
         <UserProvider>
         <FavoritesProvider>
           <ChatProvider>
-
+          
           <ScrollToTop />
+
+          <ToastContainer 
+          position='top-right'
+          autoClose={5000}
+          hideProgressBar={true}
+          closeOnClick
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme='dark'
+
+
+          />
 
         {/* Botão para alternar o alto contraste */}
         <button
@@ -102,23 +118,24 @@ export function App() {
           {highContrast ? 'Desativar Alto Contraste' : 'Ativar Alto Contraste'}
         </button>
 
+          
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/reset-password" element={<ResetPasswordPage />} />
             <Route path="/user" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
-            <Route path="/history" element={<HistoryPage />} />
-            <Route path="/create" element={<CreateProductPage />} />
+            <Route path="/history" element={<PrivateRoute><HistoryPage /></PrivateRoute>} />
+            <Route path="/create" element={<PrivateRoute><CreateProductPage /></PrivateRoute>} />
             {/* <Route path="/create-needed" element={<CreateNeededProductPage />} /> */}
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="*" element={<ErrorPage />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/checkout" element={<CheckOutPage />} />
-            <Route path="/requirements-list" element={<RequirementsListPage />} />
-            <Route path="/chat" element={<ChatPage />} />
-            <Route path="/product-selection" element={<ProductSelectionPage />} />
+            <Route path="/cart" element={<PrivateRoute><CartPage /></PrivateRoute>} />
+            <Route path="/checkout" element={<PrivateRoute><CheckOutPage /></PrivateRoute>} />
+            <Route path="/requirements-list" element={<PrivateRoute><RequirementsListPage /></PrivateRoute>} />
+            <Route path="/chat" element={<PrivateRoute><ChatPage /></PrivateRoute>} />
+            <Route path="/product-selection" element={<PrivateRoute><ProductSelectionPage /></PrivateRoute>} />
           </Routes>
 
           {shouldRenderChat() && <Chat />}
