@@ -16,7 +16,7 @@ import SelectInput from "../../../components/SelectInput";
 import { updateDonationById, getDonationById } from "../../../services/donationServices";
 import {useParams } from "react-router-dom";
 
-export function UpdateProductDialog({ open, onClose, item, setRefresh }) {
+export function UpdateProductDialog({ open, onClose, item, setRefresh, refresh }) {
   const{ donationId } = useParams();
   console.log(item)
   const sizeOptions = ["PP", "P", "M", "G", "GG"];
@@ -95,7 +95,7 @@ export function UpdateProductDialog({ open, onClose, item, setRefresh }) {
       const response = await updateDonationById(item?._id, updatedDonation);
       alert(response.message);
       console.log("Doação atualizada com sucesso:", response);
-      setRefresh(true);
+      setRefresh(!refresh);
       onClose();
     } catch (error) {
       alert("Erro ao atualizar doação");

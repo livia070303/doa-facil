@@ -57,7 +57,7 @@ export default function DonationUserItemDoados() {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
-       <UpdateProductDialog open={openDialog} onClose={handleCloseDialog} item={updateProduct} setRefresh={setUpdateRefresh}/>
+       <UpdateProductDialog open={openDialog} onClose={handleCloseDialog} item={updateProduct} setRefresh={setUpdateRefresh} refresh={updateRefresh}/>
       {donations.length === 0 ? (
         <div className="flex flex-col items-center justify-center col-span-full">
           <CircularProgress />
