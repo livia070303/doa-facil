@@ -21,7 +21,7 @@ export function Header() {
         <div className="flex items-center justify-between bg-gradient-to-r from-vermelho-médio to-azul-claro contrast:bg-none contrast:!bg-black p-2">
           {/* Logo */}
           <div className="p-2">
-            <img src="./logoRecortado.png" alt="Logo" className="h-10 w-auto" />
+            <img src="/logoRecortado.png" alt="Logo" className="h-10 w-auto" />
           </div>
 
           {/* Barra de Pesquisa */}
@@ -151,7 +151,7 @@ export function Header() {
       <div className="hidden md:flex justify-between bg-gradient-to-r from-vermelho-médio to-azul-claro contrast:bg-none contrast:bg-custom-black p-0 items-center">
         <div className="flex items-center md:w-full lg:w-[80%] justify-end md:justify-normal md:gap-2 lg:gap-4 xl:gap-12">
           <img
-            src="./logoRecortado.png"
+            src="/logoRecortado.png"
             alt="Logo"
             className="hidden xl:ml-4 lg:ml-2 mt-2 md:flex w-20 h-[5.5rem]"
           />
