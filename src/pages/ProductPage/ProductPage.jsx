@@ -75,7 +75,7 @@ export function ProductPage() {
     return (
       <HeaderAndFooter>
         <HeaderAndFooterContainer>
-          <div className="flex flex-col items-center  w-screen h-screen">
+          <div className="flex flex-col items-center  w-screen h-screen contrast:bg-custom-black">
             <img
               src="../../../public/error404.svg"
               alt="Error"

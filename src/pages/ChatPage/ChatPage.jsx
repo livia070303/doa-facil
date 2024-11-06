@@ -31,7 +31,7 @@ export const ChatPage = () => {
   const { user } = useContext(AuthContext)
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-gray-200">
+    <div className="flex flex-col h-screen overflow-hidden bg-gray-200 contrast:bg-custom-black">
       <div className="flex flex-1 h-full">
         {/* Esquerda: Lista de Conversas */}
         {(isMobileView && !selectedConversation) || !isMobileView ? (

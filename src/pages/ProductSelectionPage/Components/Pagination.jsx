@@ -31,7 +31,7 @@ const Pagination = ({ productsPerPage, totalProducts, currentPage, paginate }) =
               onClick={() => paginate(number)}
               className={`px-3 py-2 ${
                 currentPage === number
-                  ? 'bg-blue-500 text-white' // Estiliza a página atual com cor diferente
+                  ? 'bg-blue-500 text-white  contrast:bg-azul-escuro' // Estiliza a página atual com cor diferente
                   : 'bg-gray-200 hover:bg-gray-300'
               }`}
             >

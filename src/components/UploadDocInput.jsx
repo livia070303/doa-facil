@@ -28,14 +28,14 @@ export function UploadDocInput({ id, className, setFiles, label }) {
                     onChange={handleFileChange}
                 />
                 <label htmlFor={id} className='items-center flex gap-4 p-2 rounded-tl-md rounded-bl-md border w-full h-12 cursor-pointer'>
-                    <GrAttachment className='text-2xl text-azul-claro'/>
+                    <GrAttachment className='text-2xl text-azul-claro contrast:text-custom-black'/>
                     <span className={`font-poppins font-light ${fileName ? 'text-amber-600' : 'text-texto-infor'}`}>
                         {fileName || 'Arquivo'}  {/* Mostra o nome do arquivo ou "Arquivo" */}
                     </span>
                 </label>
                 <label
                     htmlFor={id}
-                    className="rounded-tr-md rounded-br-md flex items-center justify-center cursor-pointer bg-azul-claro text-white w-[150px] h-12 px-4 border border-azul-claro"
+                    className="rounded-tr-md rounded-br-md flex items-center justify-center cursor-pointer bg-azul-claro text-white w-[150px] h-12 px-4 border border-azul-claro contrast:bg-custom-yellow contrast:text-custom-black contrast:border-custom-black contrast:font-bold"
                 >
                     Ir
                 </label>

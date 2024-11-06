@@ -24,10 +24,9 @@ const UserProfileSchema = z.object({
 
 export const UserProfile = () => {
   const { data, isLoading, handleUserUpdate, regionOptions } = useUser();
-
   const { user } = useContext(AuthContext);
 
-  const { register, handleSubmit, reset, } = useForm({
+  const { register, handleSubmit, reset } = useForm({
     resolver: zodResolver(UserProfileSchema),
     defaultValues: {
       nome: data?.user?.nomeCompleto,
@@ -52,12 +51,10 @@ export const UserProfile = () => {
         cep: data?.user?.CEP,
       });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, reset]);
 
-  const submitForm = async (data) => {
-
-    const { nome, email, phone, logradouro, cidade, estado, cep } = data;
+  const submitForm = async (formData) => {
+    const { nome, email, phone, logradouro, cidade, estado, cep } = formData;
 
     const formattedData = {
       nomeCompleto: nome,
@@ -68,11 +65,10 @@ export const UserProfile = () => {
       estado,
       CEP: cep,
       id: user,
-    }
+    };
 
     handleUserUpdate(formattedData);
-  }
-
+  };
 
   return (
     <>
@@ -80,40 +76,35 @@ export const UserProfile = () => {
         <span>Carregando...</span>
       ) : (
         <div className="min-h-screen flex flex-col">
-          {/* Container flex para Sidebar e Conteúdo Principal */}
           <div className="flex flex-1">
-            {/* Sidebar para telas grandes */}
             <div className="hidden md:flex">
               <Sidebar />
             </div>
 
-            {/* Área do conteúdo principal */}
             <div className="flex-1 flex flex-col">
-              {/* Header para telas pequenas */}
               <div className="md:hidden">
                 <MobileHeader />
               </div>
 
               {/* Main Content */}
-              <main className="flex-1 bg-gray-100 p-10">
+              <main className="flex-1 bg-gray-100 p-10 contrast:bg-custom-black">
                 {/* Seção de Informações do Usuário */}
                 <form
                   onSubmit={handleSubmit(submitForm)}
                   className="flex-1 bg-white p-8 rounded shadow-md w-full max-w-3xl mx-auto"
                 >
-                  {/* Informações do Usuário */}
                   <div className="flex flex-col sm:flex-row items-center mb-6">
                     {/* Foto de Perfil */}
                     <div className="w-24 h-24 rounded-full bg-gray-300 flex-shrink-0">
                       <img
-                        src="/avatardayelle.png"
+                        src={data?.user?.fotoPerfil || "/avatardayelle.png"}
                         alt="Foto de Perfil"
                         className="w-full h-full rounded-full object-cover"
                       />
                     </div>
-                    {/* Nome */}
+
                     <div className="mt-4 sm:mt-0 sm:ml-6 flex-1 w-full">
-                      <label className="block text-gray-700">
+                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
                         Nome
                         <input
                           type="text"
@@ -123,10 +114,10 @@ export const UserProfile = () => {
                       </label>
                     </div>
                   </div>
-                  {/* Linha: Email e Telefone */}
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                     <div>
-                      <label className="block text-gray-700">
+                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
                         Email
                         <input
                           type="email"
@@ -136,7 +127,7 @@ export const UserProfile = () => {
                       </label>
                     </div>
                     <div>
-                      <label className="block text-gray-700">
+                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
                         Telefone
                         <input
                           type="tel"
@@ -146,10 +137,10 @@ export const UserProfile = () => {
                       </label>
                     </div>
                   </div>
-                  {/* Linha: Endereço e Cidade */}
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                     <div>
-                      <label className="block text-gray-700">
+                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
                         Endereço
                         <input
                           type="text"
@@ -159,7 +150,7 @@ export const UserProfile = () => {
                       </label>
                     </div>
                     <div>
-                      <label className="block text-gray-700">
+                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
                         Cidade
                         <input
                           type="text"
@@ -169,10 +160,10 @@ export const UserProfile = () => {
                       </label>
                     </div>
                   </div>
-                  {/* Linha: CEP, UF e Botão */}
+
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
                     <div>
-                      <label className="block text-gray-700">
+                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
                         CEP
                         <input
                           type="text"
@@ -182,10 +173,9 @@ export const UserProfile = () => {
                       </label>
                     </div>
                     <div>
-                      <label className="block text-gray-700">
+                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
                         UF
-                 
-                          <select
+                        <select
                           className="mt-1 p-1 block w-full border border-gray-300 rounded-md"
                           {...register("estado")}
                         >
@@ -195,14 +185,12 @@ export const UserProfile = () => {
                             </option>
                           ))}
                         </select>
-                                
-                         
                       </label>
                     </div>
                     <div>
                       <button
                         type="submit"
-                        className="w-full bg-azul-claro text-white py-2 px-4 rounded-md hover:bg-azul-médio"
+                        className="w-full bg-azul-claro text-white py-2 px-4 rounded-md hover:bg-azul-médio contrast:border contrast:bg-custom-yellow contrast:text-custom-black contrast:border-custom-black contrast:font-bold"
                       >
                         Editar Minhas Informações
                       </button>
@@ -210,7 +198,6 @@ export const UserProfile = () => {
                   </div>
                 </form>
 
-                {/* Separador Opcional */}
                 <Separator className="my-8 h-0.5 bg-gray-200" />
 
                 {/* Favoritos */}
@@ -218,19 +205,6 @@ export const UserProfile = () => {
                   <SectionHeader label="Favoritos" title="Itens Favoritos" />
                   <DonationUserItemFavorite />
                 </section>
-
-                <Separator className="my-8 h-0.5 bg-gray-200" />
-
-                {/* Itens Recebidos */}
-                <section className="mt-12 mb-8">
-                  <SectionHeader
-                    label="Itens Recebidos"
-                    title="Itens Recebidos"
-                  />
-                  <DonationUserItemRecebidos />
-                </section>
-
-                
               </main>
             </div>
           </div>

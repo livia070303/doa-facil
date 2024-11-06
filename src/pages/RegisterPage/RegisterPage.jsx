@@ -1,12 +1,14 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import InputMask from 'react-input-mask';
 import { z } from 'zod';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useUser } from '../../hooks/useUser';
 import { useNavigate } from 'react-router-dom';
-import { FaArrowLeft } from 'react-icons/fa';
+import { FaArrowLeft, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { GrAttachment } from 'react-icons/gr';
+import { FiX } from 'react-icons/fi';
 
 const registerSchema = z.object({
   nome: z.string().min(3, 'O nome deve ter pelo menos 3 caracteres'),
@@ -29,16 +31,20 @@ export const RegisterPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(registerSchema),
   });
-
   const { regionOptions } = useUser();
-
   const { handleRegister } = useContext(AuthContext);
+
+  // Estado para a foto de perfil
+  const [fotoPerfil, setFotoPerfil] = useState(null);
+
+  // Estados para a visibilidade das senhas
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-azul-claro to-vermelho-médio flex items-center justify-center contrast:bg-none contrast:bg-custom-black">
-      {/* Seção central */}
       <div className="m-10 bg-white rounded-lg shadow-lg p-8 w-full max-w-3xl relative">
-        {/* Botão de Retorno */}
         <button
           onClick={() => navigate('/')}
           aria-label="Voltar para a página inicial"
@@ -47,18 +53,15 @@ export const RegisterPage = () => {
           <FaArrowLeft className="text-2xl" aria-hidden="true" />
         </button>
 
-        {/* Título */}
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-azul-escuro contrast:text-custom-black">Cadastre-se</h1>
         </div>
 
-        {/* Formulário */}
         <form onSubmit={handleSubmit(handleRegister)} noValidate>
           {/* Primeira Linha */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Nome */}
             <div>
-              <label htmlFor="nome" className="block text-black contrast:font-bold ">Nome</label>
+              <label htmlFor="nome" className="block text-black font-bold">Nome</label>
               <input
                 type="text"
                 id="nome"
@@ -70,9 +73,8 @@ export const RegisterPage = () => {
               {errors.nome && <span id="nome-error" className="text-red-500">{errors.nome.message}</span>}
             </div>
 
-            {/* CPF */}
             <div>
-              <label htmlFor="cpf" className="block text-black contrast:font-bold ">CPF</label>
+              <label htmlFor="cpf" className="block text-black font-bold">CPF</label>
               <InputMask
                 mask="999.999.999-99"
                 {...register('cpf')}
@@ -95,9 +97,8 @@ export const RegisterPage = () => {
 
           {/* Segunda Linha */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-            {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-black contrast:font-bold ">Email</label>
+              <label htmlFor="email" className="block text-black font-bold">Email</label>
               <input
                 type="email"
                 id="email"
@@ -109,9 +110,8 @@ export const RegisterPage = () => {
               {errors.email && <span id="email-error" className="text-red-500">{errors.email.message}</span>}
             </div>
 
-            {/* Telefone */}
             <div>
-              <label htmlFor="phone" className="block text-black contrast:font-bold ">Telefone</label>
+              <label htmlFor="phone" className="block text-black font-bold">Telefone</label>
               <InputMask
                 mask="(99) 99999-9999"
                 {...register('phone')}
@@ -134,43 +134,113 @@ export const RegisterPage = () => {
 
           {/* Terceira Linha */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-            {/* Senha */}
-            <div>
-              <label htmlFor="password" className="block text-black contrast:font-bold ">Senha</label>
-              <input
-                type="password"
-                id="password"
-                className={`mt-1 w-full border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-azul-claro`}
-                {...register('password')}
-                aria-invalid={errors.password ? 'true' : 'false'}
-                aria-describedby={errors.password ? 'password-error' : undefined}
-              />
+           {/* Campo de Senha */}
+           <div>
+              <label htmlFor="password" className="block text-black font-bold">Senha</label>
+              <div className="mt-1 relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  id="password"
+                  className={`w-full border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-md p-2 pr-10 focus:outline-none focus:ring-2 focus:ring-azul-claro`}
+                  {...register('password')}
+                  aria-invalid={errors.password ? 'true' : 'false'}
+                  aria-describedby={errors.password ? 'password-error' : undefined}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+                  aria-label={showPassword ? 'Esconder senha' : 'Mostrar senha'}
+                >
+                  {showPassword ? (
+                    <FaEyeSlash className="text-gray-500" />
+                  ) : (
+                    <FaEye className="text-gray-500" />
+                  )}
+                </button>
+              </div>
               {errors.password && <span id="password-error" className="text-red-500">{errors.password.message}</span>}
             </div>
 
-            {/* Confirmar Senha */}
+            {/* Campo de Confirmação de Senha */}
             <div>
-              <label htmlFor="confirmPassword" className="block text-black contrast:font-bold ">Confirmar Senha</label>
-              <input
-                type="password"
-                id="confirmPassword"
-                className={`mt-1 w-full border ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'} rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-azul-claro`}
-                {...register('confirmPassword')}
-                aria-invalid={errors.confirmPassword ? 'true' : 'false'}
-                aria-describedby={errors.confirmPassword ? 'confirmPassword-error' : undefined}
-              />
+              <label htmlFor="confirmPassword" className="block text-black font-bold">Confirmar Senha</label>
+              <div className="mt-1 relative">
+                <input
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  id="confirmPassword"
+                  className={`w-full border ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'} rounded-md p-2 pr-10 focus:outline-none focus:ring-2 focus:ring-azul-claro`}
+                  {...register('confirmPassword')}
+                  aria-invalid={errors.confirmPassword ? 'true' : 'false'}
+                  aria-describedby={errors.confirmPassword ? 'confirmPassword-error' : undefined}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+                  aria-label={showConfirmPassword ? 'Esconder confirmação de senha' : 'Mostrar confirmação de senha'}
+                >
+                  {showConfirmPassword ? (
+                    <FaEyeSlash className="text-gray-500" />
+                  ) : (
+                    <FaEye className="text-gray-500" />
+                  )}
+                </button>
+              </div>
               {errors.confirmPassword && <span id="confirmPassword-error" className="text-red-500">{errors.confirmPassword.message}</span>}
             </div>
           </div>
 
+          {/* Campo de Upload de Foto de Perfil */}
+          <div className="mt-4">
+            <label htmlFor="fotoPerfil" className="block text-gray-700 font-bold">Foto de Perfil</label>
+            <div className="mt-1 flex items-center">
+              <label
+                htmlFor="fotoPerfil"
+                className="flex items-center px-4 py-2 bg-white text-azul-claro rounded-md shadow-md tracking-wide border border-gray-300 cursor-pointer hover:bg-azul-claro hover:text-white contrast:text-custom-black contrast:hover:bg-custom-yellow"
+              >
+                <GrAttachment className="text-2xl mr-2" />
+                Escolher arquivo
+              </label>
+              {fotoPerfil && (
+                <span className="ml-4 text-gray-700">{fotoPerfil.name}</span>
+              )}
+            </div>
+            <input
+              type="file"
+              id="fotoPerfil"
+              accept="image/*"
+              className="hidden"
+              onChange={(e) => setFotoPerfil(e.target.files[0])}
+            />
+          </div>
+
+          {/* Pré-visualização da Imagem com Botão de Remoção */}
+          {fotoPerfil && (
+            <div className="mt-4 relative">
+              <img
+                src={URL.createObjectURL(fotoPerfil)}
+                alt="Pré-visualização da Foto de Perfil"
+                className="w-32 h-32 object-cover rounded-full mx-auto"
+              />
+              <button
+                type="button"
+                className="absolute top-0 right-0 mt-2 mr-2 bg-white rounded-full p-1 text-gray-700 hover:text-red-500 focus:outline-none"
+                onClick={() => setFotoPerfil(null)}
+                aria-label="Remover imagem selecionada"
+              >
+                <FiX className="w-5 h-5" />
+              </button>
+            </div>
+          )}
+
           {/* Subtítulo Endereço */}
-          <h2 className="text-xl font-semibold text-azul-escuro mt-6 contrast:text-custom-black">Endereço</h2>
+          <h2 className="text-xl font-semibold text-azul-escuro mt-6">Endereço</h2>
 
           {/* Linha: Logradouro e Cidade */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-            {/* Logradouro */}
             <div>
-              <label htmlFor="logradouro" className="block text-black contrast:font-bold ">Rua</label>
+              <label htmlFor="logradouro" className="block text-black font-bold">Rua</label>
               <input
                 type="text"
                 id="logradouro"
@@ -182,9 +252,8 @@ export const RegisterPage = () => {
               {errors.logradouro && <span id="logradouro-error" className="text-red-500">{errors.logradouro.message}</span>}
             </div>
 
-            {/* Cidade */}
             <div>
-              <label htmlFor="cidade" className="block text-black contrast:font-bold ">Cidade</label>
+              <label htmlFor="cidade" className="block text-black font-bold">Cidade</label>
               <input
                 type="text"
                 id="cidade"
@@ -197,11 +266,10 @@ export const RegisterPage = () => {
             </div>
           </div>
 
-          {/* Linha: Estado, CEP e Botão */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 items-end">
-            {/* Estado */}
+          {/* Linha: Estado e CEP */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
             <div>
-              <label htmlFor="estado" className="block text-black contrast:font-bold ">Estado</label>
+              <label htmlFor="estado" className="block text-black font-bold">Estado</label>
               <select
                 id="estado"
                 className={`mt-1 w-full border ${errors.estado ? 'border-red-500' : 'border-gray-300'} rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-azul-claro`}
@@ -219,9 +287,8 @@ export const RegisterPage = () => {
               {errors.estado && <span id="estado-error" className="text-red-500">{errors.estado.message}</span>}
             </div>
 
-            {/* CEP */}
             <div>
-              <label htmlFor="cep" className="block text-black contrast:font-bold ">CEP</label>
+              <label htmlFor="cep" className="block text-black font-bold">CEP</label>
               <InputMask
                 mask="99999-999"
                 {...register('cep')}
@@ -240,67 +307,19 @@ export const RegisterPage = () => {
               </InputMask>
               {errors.cep && <span id="cep-error" className="text-red-500">{errors.cep.message}</span>}
             </div>
-
-            {/* Botão Cadastrar */}
-            <div className="mt-2 md:mt-0">
-              <button
-                type="submit"
-                className="w-full bg-azul-claro text-white font-semibold rounded-md p-2 hover:bg-azul-médio shadow-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-azul-claro contrast:bg-custom-yellow contrast:text-custom-black contrast:border contrast:border-custom-black"
-              >
-                Cadastrar
-              </button>
-            </div>
           </div>
+           {/* Botão Cadastrar */}
+           <div className="mt-4">
+            <button
+              type="submit"
+              className="w-full bg-azul-claro text-white font-semibold rounded-md p-2 hover:bg-azul-médio shadow-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-azul-claro contrast:bg-custom-yellow contrast:text-custom-black contrast:border contrast:border-custom-black"
+            >
+              Cadastrar
+            </button>
+          </div>
+
         </form>
       </div>
     </div>
   );
 };
-
-// {/* Campo de Upload de Foto de Perfil */}
-// <div className="mt-4">
-// <label htmlFor="fotoPerfil" className="block text-gray-700">Foto de Perfil</label>
-// {/* Contêiner para o botão personalizado */}
-//  <div className="mt-1 flex items-center">
-//   <label
-//     htmlFor="fotoPerfil"
-//     className="flex items-center px-4 py-2 bg-white text-azul-claro rounded-md shadow-md tracking-wide border  border-gray-300 cursor-pointer hover:bg-azul-claro hover:text-white"
-//   >
-//     <GrAttachment className="text-2xl mr-2" />
-//     Escolher arquivo
-//   </label>
-// {/* Mostrar o nome do arquivo selecionado */}
-//   {fotoPerfil && (
-//     <span className="ml-4 text-gray-700">{fotoPerfil.name}</span>
-//   )}
-// </div>
-// <input
-//   type="file"
-//   id="fotoPerfil"
-//   accept="image/*"
-//   className="hidden"
-//   onChange={(e) => setFotoPerfil(e.target.files[0])}
-// />
-// </div>
-
- 
-        //  {/* Pré-visualização da Imagem com Botão de Remoção */}
-        //  {fotoPerfil && (
-        //   <div className="mt-4 relative">
-        //     <img
-        //       src={URL.createObjectURL(fotoPerfil)}
-        //       alt="Pré-visualização da Foto de Perfil"
-        //       className="w-32 h-32 object-cover rounded-full mx-auto"
-        //     />
-        //     <button
-        //       type="button"
-        //       className="absolute top-0 right-0 mt-2 mr-2 bg-white rounded-full p-1 text-gray-700 hover:text-red-500 focus:outline-none"
-        //       onClick={() => setFotoPerfil(null)}
-        //       aria-label="Remover imagem selecionada"
-        //     >
-        //       <FiX className="w-5 h-5" />
-        //     </button>
-        //   </div>
-        // )}
-
-

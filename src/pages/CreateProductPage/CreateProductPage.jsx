@@ -111,10 +111,10 @@ export function CreateProductPage(){
     return(
         <>
         <HeaderAndFooter>
-        <HeaderAndFooterContainer className="flex p-12 lg:p-24 flex-col gap-4"> 
-            <h1 className="font-poppins text-3xl">Cadastro de produto para doação</h1>
+        <HeaderAndFooterContainer className="flex p-12 lg:p-24 flex-col gap-4 contrast:bg-custom-black"> 
+            <h1 className="font-poppins text-3xl contrast:text-custom-yellow">Cadastro de produto para doação</h1>
             <form onSubmit={save}>
-            <div className="flex gap-12 flex-col border border-dashed border-pink p-6 rounded-lg">
+            <div className="flex gap-12 flex-col border border-dashed border-pink p-6 rounded-lg bg-white contrast:border-custom-yellow ">
                 <div className="flex flex-col gap-12 lg:flex-row justify-between w-full">
                     <section className="flex flex-col gap-4 w-full">
                       {/* Nome do Produto */}
@@ -148,7 +148,7 @@ export function CreateProductPage(){
                     </section>
                     <section className="w-full">
                         <div className="flex flex-col md:flex-row md:justify-between lg:justify-start w-full">
-                          <label htmlFor="quantity" className="flex flex-col items-center md:items-start">
+                          <label htmlFor="quantity" className="flex flex-col items-center md:items-start contrast:font-bold">
                             Quantidade*
                             <NumberInput 
                               id="quantity" 
@@ -158,7 +158,7 @@ export function CreateProductPage(){
                               min={1}/>
                               {error && <span className="text-red-500 text-sm">{error}</span>}
                           </label>
-                          <label htmlFor="footNum" className="flex flex-col items-center md:justify-end md:items-end lg:items-start">
+                          <label htmlFor="footNum" className="flex flex-col items-center md:justify-end md:items-end lg:items-start contrast:font-bold">
                             Numeração
                             <NumberInput
                               id="footNum"
@@ -169,7 +169,7 @@ export function CreateProductPage(){
                           </label>
                         </div>
                         <SelectInput id="size" className="p-2 w-full my-2" options={sizeOptions} onChange={setTamanhos}/>
-                        <div className="flex flex-col w-full gap-4 my-4">
+                        <div className="flex flex-col w-full gap-4 my-4 contrast:font-bold">
                             <span>Estado de conservação*:</span>
                             <div className="flex flex-col">
                               {conditions.map((option) => (
@@ -214,8 +214,8 @@ export function CreateProductPage(){
                   />
                 </section>
                 <div className="w-full flex justify-end items-end gap-6">
-                    <button type='button' onClick={handleRedirectToProduct} className="py-4 w-[150px] lg:w-[10%] bg-vermelho-médio text-white rounded-md">Cancelar</button>
-                    <button type="submit" className="py-4 w-[150px] lg:w-[10%] bg-azul-claro text-white rounded-md">Salvar</button>
+                    <button type='button' onClick={handleRedirectToProduct} className="py-4 w-[150px] lg:w-[10%] bg-vermelho-médio text-white rounded-md contrast:bg-azul-escuro">Cancelar</button>
+                    <button type="submit" className="py-4 w-[150px] lg:w-[10%] bg-azul-claro text-white rounded-md contrast:bg-custom-yellow contrast:text-custom-black contrast:font-bold contrast:border contrast:border-custom-black">Salvar</button>
                 </div>
             </div>
             </form>

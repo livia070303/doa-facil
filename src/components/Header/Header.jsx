@@ -21,7 +21,7 @@ export function Header() {
         <div className="flex items-center justify-between bg-gradient-to-r from-vermelho-médio to-azul-claro contrast:bg-none contrast:!bg-black p-2">
           {/* Logo */}
           <div className="p-2">
-            <img src="./logoRecortado.png" alt="Logo" className="h-10 w-auto" />
+            <img src="/logoRecortado.png" alt="Logo" className="h-10 w-auto" />
           </div>
 
           {/* Barra de Pesquisa */}
@@ -151,7 +151,7 @@ export function Header() {
       <div className="hidden md:flex justify-between bg-gradient-to-r from-vermelho-médio to-azul-claro contrast:bg-none contrast:bg-custom-black p-0 items-center">
         <div className="flex items-center md:w-full lg:w-[80%] justify-end md:justify-normal md:gap-2 lg:gap-4 xl:gap-12">
           <img
-            src="./logoRecortado.png"
+            src="/logoRecortado.png"
             alt="Logo"
             className="hidden xl:ml-4 lg:ml-2 mt-2 md:flex w-20 h-[5.5rem]"
           />
@@ -222,14 +222,26 @@ export function Header() {
               <HashLink
                 smooth
                 to="/user#favoritos"
-                className="relative flex items-center h-fit transition-all duration-200 ease-in-out transform hover:text-white hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                className="relative flex items-center h-fit transition-all duration-200 ease-in-out transform hover:text-white hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white contrast:text-custom-yellow contrast:hover:text-white"
                 aria-label="Favoritos"
               >
                 <FaRegHeart className="text-2xl" aria-hidden="true" />
-                <span className="absolute -right-3 -top-4 bg-vermelho-escuro text-white text-center w-6 h-6 rounded-full">
+                <span className="absolute -right-3 -top-4 bg-vermelho-escuro text-white text-center w-6 h-6 rounded-full contrast:bg-white contrast:text-custom-black contrast:hover:bg-custom-yellow">
                   {favoritesCount || 0}
                 </span>
               </HashLink>
+
+              {/* Ícone de Carrinho 
+              <Link
+                to="/cart"
+                className="relative flex items-center h-fit transition-all duration-200 ease-in-out transform hover:text-white hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                aria-label="Carrinho"
+              >
+                <AiOutlineShoppingCart className="text-2xl" aria-hidden="true" />
+                <span className="absolute -right-3 -top-4 bg-vermelho-escuro text-white text-center w-6 h-6 rounded-full">
+                  0
+                </span>
+              </Link> */}
             </div>
 
             {/* Avatar do Usuário */}
