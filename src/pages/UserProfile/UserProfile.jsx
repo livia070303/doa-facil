@@ -8,7 +8,6 @@ import { useUser } from "../../hooks/useUser.js";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import DonationUserItemRecebidos from "./components/DonationUserItemRecebidos.jsx";
 import DonationUserItemFavorite from "./components/DonationUserItemFavorite.jsx";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
 
@@ -51,6 +50,7 @@ export const UserProfile = () => {
         cep: data?.user?.CEP,
       });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, reset]);
 
   const submitForm = async (formData) => {

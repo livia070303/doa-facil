@@ -3,6 +3,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { api } from '../lib/api';
 import { AuthContext } from '../contexts/AuthContext';
 import { ChatContext } from '../contexts/ChatContext';
+import { toast } from 'react-toastify';
 
 
 export function useChat() {
@@ -65,7 +66,10 @@ export function useChat() {
           }
         },
         onSuccess: () => {
-          queryClient.invalidateQueries({ queryKey })
+          queryClient.invalidateQueries([queryKey])
+          toast.success('Mensagem enviada com sucesso', {
+            position: 'top-right'
+          })
         }
       })
 

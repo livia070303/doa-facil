@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import axios from "axios";
+/* eslint-disable react/prop-types */
+import  { useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -8,17 +8,14 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useChat } from "../../hooks/useChat";
-import { useNavigate } from "react-router-dom";
 
-const RequestDonationModal = ({productId,productName,idUserLogado,idUserDonor,open,onClose
+const RequestDonationModal = ({ productName, idUserLogado, idUserDonor, open, onClose
 }) => {
   const [additionalMessage, setAdditionalMessage] = useState(
     `Olá! Gostaria de solicitar a doação do produto (${productName}) que você anunciou. Ele será de grande ajuda para mim, e ficaria muito grato(a) se pudesse me ajudar. Caso precise de mais informações sobre como posso recebê-lo ou qualquer outro detalhe, estou à disposição. Agradeço pela consideração e pela generosidade em compartilhar!`
   );
 
   const {handleSendMessage, setMessages, refetch} = useChat();
-
-  const navigate = useNavigate();
 
   const handleSendMessageSend = async () => {
     const data = {
@@ -37,7 +34,7 @@ const RequestDonationModal = ({productId,productName,idUserLogado,idUserDonor,op
     ]);
     await handleSendMessage(data);
     await refetch();
-    navigate('/chat');
+    onClose()
   };
 
   return (

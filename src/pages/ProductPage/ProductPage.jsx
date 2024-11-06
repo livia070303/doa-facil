@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   HeaderAndFooter,
   HeaderAndFooterContainer,
@@ -7,10 +7,7 @@ import { RelatedProducts } from "./Components/RelatedProducts.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import {
-  createFavoritesByUser,
-  deleteFavoritesByUser,
   getDonationById,
-  getFavoritesByUser,
 } from "../../services/donationServices.js";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -40,11 +37,7 @@ export function ProductPage() {
   const handleThumbnailClick = (image) => {
     setMainImage(image);
   };
-
-  // Função para lidar com a seleção da condição do produto
-  const handleConditionChange = (event) => {
-    setProductCondition(event.target.value);
-  };
+ 
 
   function changeFavorite(){
     toggleFavorite(isFavorited, idUser,id); 
@@ -153,43 +146,41 @@ export function ProductPage() {
                 </p>
                 <div className="flex items-center gap-4 md:gap-8">
                   <label className="flex items-center gap-2">
-                    <input
-                      type="radio"
-                      name="condition"
-                      value="novo"
-                      checked={product?.condition === "novo"}
-                      onChange={handleConditionChange}
-                      className="text-gray-800"
-                    />
-                    <span className="text-sm md:text-base text-gray-800">
-                      Novo
-                    </span>
+                  <div className=" flex items-center justify-center gap-4">
+                      <div
+                        className={`w-3 h-3 rounded-full ${
+                          product?.condition === "novo"
+                            ? "bg-red-600"
+                            : "bg-gray-300"
+                        }`}
+                      ></div> 
+                      <span className="text-nowrap">Novo</span>
+                    </div>
                   </label>
                   <label className="flex items-center gap-2">
-                    <input
-                      type="radio"
-                      name="condition"
-                      value="usado"
-                      checked={product?.condition === "usado"}
-                      onChange={handleConditionChange}
-                      className="text-gray-800"
-                    />
-                    <span className="text-sm md:text-base text-gray-800">
-                      Usado
-                    </span>
+                  <div className=" flex items-center justify-center gap-4">
+                      <div
+                        className={`w-3 h-3 rounded-full ${
+                          product?.condition === "usado"
+                            ? "bg-red-600"
+                            : "bg-gray-300"
+                        }`}
+                      ></div> 
+                      <span className="text-nowrap">Usado</span>
+                    </div>
                   </label>
                   <label className="flex items-center gap-2">
-                    <input
-                      type="radio"
-                      name="condition"
-                      value="precisa de reparos"
-                      checked={product?.condition === "precisa de reparos"}
-                      onChange={handleConditionChange}
-                      className="text-gray-800"
-                    />
-                    <span className="text-sm md:text-base text-gray-800">
-                      Com Defeito
-                    </span>
+                    <div className="flex items-center justify-center gap-4">
+                      <div
+                        className={`w-3 h-3 rounded-full ${
+                          product?.condition === "precisa de reparos"
+                            ? "bg-red-600"
+                            : "bg-gray-300"
+                        }`}
+                      ></div> 
+                      <span className="text-nowrap">Com Defeito</span>
+                    </div>
+                    
                   </label>
 
                   {/* Ícone de Favoritar */}
