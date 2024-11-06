@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-function SelectInput({ id, className, options, onChange }) {
-    const [selectedSize, setSelectedSize] = useState(null);
+function SelectInput({ id, className, options, onChange, value }) {
+    const [selectedSize, setSelectedSize] = useState('');
+
+    useEffect(() => {
+        setSelectedSize(value)
+  }, [value]);
 
     const handleSelect = (size) => {
         setSelectedSize(size);

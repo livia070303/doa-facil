@@ -3,8 +3,6 @@ import {
   HeaderAndFooter,
   HeaderAndFooterContainer,
 } from "../../components/Layouts/HeaderAndFooter.jsx";
-import DonationProducts from "../../components/DonationProducts";
-import InterestProducts from "../../components/InterestProducts";
 import { SectionHeader } from "../HomePage/components/SectionHeader.jsx";
 import DonationUserItemDoados from "../UserProfile/components/DonationUserItemDoado.jsx";
 

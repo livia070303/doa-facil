@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Obtendo a URL base da API a partir do ambiente
-const API_URL = import.meta.env.VITE_API_URL ??  'http://localhost:8000';
+const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000';
 
 export const getDonations = async () => {
   try {
@@ -23,9 +23,19 @@ export const getDonationById = async (id) => {
   }
 };
 
+export const updateDonationById = async (id, updateDonationDto) => {
+  try {
+    const response = await axios.put(`${API_URL}/donations/${id}`, updateDonationDto);
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao atualizar doação:', error);
+    throw error;
+  }
+};
+
 export const mostRecentsDonations = async (limit) => {
   try {
-    const response = await axios.get(`${API_URL}/donations/recents`, { params: {limit } });
+    const response = await axios.get(`${API_URL}/donations/recents`, { params: { limit } });
     return response.data;
   } catch (error) {
     console.error('Erro ao buscar doações:', error);
@@ -38,12 +48,10 @@ export const postDonation = async (donationData) => {
     const response = await axios.post(`${API_URL}/donations`, donationData);
     return response.data;
   } catch (error) {
-    alert()
     console.error('Erro ao criar doação:', error);
     throw error;
   }
 };
-
 
 export const getDonationsByCategory = async (category) => {
   try {
@@ -70,11 +78,10 @@ export const getItensDoadosByUser = async (userId) => {
     const response = await axios.get(`${API_URL}/donations/donor/${userId}`);
     return response.data;
   } catch (error) {
-    console.error('Erro ao obter doações favoritas do usuário:', error);
+    console.error('Erro ao obter doações do usuário:', error);
     throw error;
   }
 };
-
 
 export const getFavoritesByUser = async (userId) => {
   try {

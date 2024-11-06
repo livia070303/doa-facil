@@ -4,11 +4,29 @@ import { CircularProgress, Typography, Button } from "@mui/material";
 import { Edit, Delete } from "@mui/icons-material";
 import { deleteDonationById, getItensDoadosByUser } from "../../../services/donationServices";
 import { useUser } from "../../../hooks/useUser";
+import { UpdateProductDialog } from "../../HistoryPage/components/UpdateProduct";
 
 export default function DonationUserItemDoados() {
   const [donations, setDonations] = useState([]);
   const { data } = useUser();
   const idUser = data?.user?._id;
+
+  const [openDialog, setOpenDialog] = useState(false);
+  const [updateProduct, setUpdateProduct] = useState(null);
+  const [updateRefresh, setUpdateRefresh] = useState(null);
+
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
+  const handleEdit = (item) => {
+    setOpenDialog(true);
+    setUpdateProduct(item)
+  };
 
   useEffect(() => {
     const fetchDonationsData = async () => {
@@ -21,11 +39,9 @@ export default function DonationUserItemDoados() {
     };
 
     fetchDonationsData();
-  }, [idUser]);
+  }, [idUser, updateRefresh]);
 
-  const handleEdit = (itemId) => {
-    console.log(`Editar item com ID: ${itemId}`);
-  };
+ 
 
   const handleDelete = async (itemId) => {
     try {
@@ -41,6 +57,7 @@ export default function DonationUserItemDoados() {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
+       <UpdateProductDialog open={openDialog} onClose={handleCloseDialog} item={updateProduct} setRefresh={setUpdateRefresh}/>
       {donations.length === 0 ? (
         <div className="flex flex-col items-center justify-center col-span-full">
           <CircularProgress />
@@ -68,7 +85,7 @@ export default function DonationUserItemDoados() {
                 color="primary"
                 startIcon={<Edit />}
                 className="flex-1"
-                onClick={() => handleEdit(item._id)}
+                onClick={() => handleEdit(item)}
               >
                 Editar
               </Button>

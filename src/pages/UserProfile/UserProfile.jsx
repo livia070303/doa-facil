@@ -97,7 +97,7 @@ export const UserProfile = () => {
                     {/* Foto de Perfil */}
                     <div className="w-24 h-24 rounded-full bg-gray-300 flex-shrink-0">
                       <img
-                        src={data?.user?.fotoPerfil || "/avatardayelle.png"}
+                        src="/avatardayelle.png"
                         alt="Foto de Perfil"
                         className="w-full h-full rounded-full object-cover"
                       />
