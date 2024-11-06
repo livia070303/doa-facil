@@ -79,22 +79,21 @@ export const AuthProvider = ({ children }) => {
   const logoutAccount = useMutation({
     mutationFn: async () => {
       try{
-        await api.get('/logout', {
-          withCredentials: true,
-        })
+        await api.get('/logout')
       }catch(err){
         console.error(err)
         return err.response.data
       }
     },
     onSuccess: () => {
+      setUser(undefined)
+      navigate('/login')
       toast.success('Logout realizado com sucesso')
     }
   })
 
   const handleLogout = () => {
     logoutAccount.mutate()
-    setUser(null)
   }
 
   const { data } = useQuery({
