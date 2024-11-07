@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBars, FaTimes, FaHome, FaBell, FaEnvelope, FaSignOutAlt } from 'react-icons/fa';
+import { FaBars, FaTimes, FaHome, FaHistory, FaEnvelope, FaSignOutAlt } from 'react-icons/fa';
 import { BiSolidDonateHeart } from "react-icons/bi";
 
 const MobileHeader = () => {
@@ -37,6 +37,16 @@ const MobileHeader = () => {
                             <FaHome className="mr-2 text-white" aria-hidden="true" />
                             <span>Inicial</span>
                             </Link>
+                        </li>
+                        <li className="border-t border-azul-escuro hover:bg-azul-médio contrast:border-white">
+                            <Link 
+                            to='/history' 
+                            className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white contrast:text-custom-yellow"
+                            onClick={() => setMenuOpen(false)}
+                            >
+                            <FaHistory className="mr-2 text-white" aria-hidden="true" />
+                            <span>Histórico</span>
+                        </Link>
                         </li>
                         <li className="border-t border-azul-escuro hover:bg-azul-médio contrast:border-white">
                             <Link 
