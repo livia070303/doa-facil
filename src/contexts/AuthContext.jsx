@@ -111,7 +111,7 @@ export const AuthProvider = ({ children }) => {
       }
     },
     staleTime: 1000 * 60 * 60 * 4,
-    enabled: isAuth,
+    enabled: !isAuth,
   })
  
   React.useEffect(() => {
