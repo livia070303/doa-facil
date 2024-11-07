@@ -14,7 +14,6 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = React.useState(true)
   const [user, setUser] = React.useState('')
-  const [isAuth, setIsAuth] = React.useState(false)
  
 
  const loginAccount = useMutation({
@@ -35,7 +34,6 @@ export const AuthProvider = ({ children }) => {
   onSuccess: (data) => {
     queryClient.invalidateQueries({ queryKey: ['user'] })
     setUser(data)
-    setIsAuth(true)
     navigate('/')
     toast.success('Login realizado com sucesso')
   }
@@ -88,10 +86,10 @@ export const AuthProvider = ({ children }) => {
       }
     },
     onSuccess: () => {
-      setIsAuth(false)
       setUser(undefined)
       navigate('/login')
       toast.success('Logout realizado com sucesso')
+      queryClient.invalidateQueries({ queryKey: ['user'] })
     }
   })
 
@@ -111,7 +109,6 @@ export const AuthProvider = ({ children }) => {
       }
     },
     staleTime: 1000 * 60 * 60 * 4,
-    enabled: !isAuth,
   })
  
   React.useEffect(() => {
