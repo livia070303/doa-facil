@@ -4,6 +4,7 @@ import { api } from '../lib/api';
 import { AuthContext } from '../contexts/AuthContext';
 import { ChatContext } from '../contexts/ChatContext';
 import { toast } from 'react-toastify';
+import socket from '../socket';
 
 
 export function useChat() {
@@ -23,8 +24,25 @@ export function useChat() {
       setIsChatListVisible
     } = React.useContext(ChatContext)
 
+    
+
     const { user } = React.useContext(AuthContext)
     const queryKey = ['chats', user]
+
+
+    React.useEffect(() => {
+      socket.emit('joinRoom', user); 
+    
+      socket.on('newMessage', (newMsg) => {
+        console.log('Received new message:', newMsg);
+        setMessages((prev) => [...prev, newMsg]); 
+      });
+    
+      return () => {
+        socket.off('newMessage'); 
+      };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [user]);
 
     const handleChatOpen = () => {
         setIsChatOpen(true)
@@ -50,28 +68,29 @@ export function useChat() {
     });
 
     const sendMessage = useMutation({
-        mutationFn: async (data) => {
-          const { user1, user2, message } = data
+      mutationFn: async (data) => {
+        const { user1, user2, message } = data;       
+        try {
+          const response = await api.post('/chat/send-message', {
+            user1,
+            user2,
+            message
+          });
           
-          try{
-            const response = api.post('/chat/send-message', {
-              user1,
-              user2,
-              message
-            })
-            return response.data
-          }catch(err){
-            console.error(err)
-            return err.response.data
-          }
-        },
-        onSuccess: () => {
-          queryClient.invalidateQueries([queryKey])
-          toast.success('Mensagem enviada com sucesso', {
-            position: 'top-right'
-          })
+          
+          socket.emit('sendMessage',  { user1, user2, message} );
+
+          return response.data;
+        } catch (err) {
+          console.error(err);
+          return err.response.data;
         }
-      })
+      },
+      onSuccess: () => {
+        queryClient.invalidateQueries(['chats', user]);
+        toast.success('Mensagem enviada com sucesso', { position: 'top-right' });
+      }
+    });
 
     /**
      *
@@ -79,8 +98,8 @@ export function useChat() {
      * @param {user2} receiver
      * @param {message} message
      */
-    const handleSendMessage = async (user1, user2, message) => {
-      sendMessage.mutate(user1, user2, message)
+    const handleSendMessage = async ({user1, user2, message}) => {
+      sendMessage.mutate({user1, user2, message})
 
     }
 

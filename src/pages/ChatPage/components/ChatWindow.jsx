@@ -29,12 +29,14 @@ const ChatWindow = ({
     }
   }, [conversation, setMessages]);
 
+  
+
   const handleSendMessage = async () => {
     if (newMessage.trim() === '') return;
 
     const data = {
       user1: currentUserId,
-      user2: conversation.userIdSecond,
+      user2: currentUserId === conversation.userIdFirst ? conversation.userIdSecond : conversation.userIdFirst,
       message: newMessage,
     }
 
