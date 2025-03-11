@@ -34,7 +34,7 @@ export function useChat() {
       socket.emit('joinRoom', user); 
     
       socket.on('newMessage', (newMsg) => {
-        console.log('Received new message:', newMsg);
+        // console.log('Received new message:', newMsg);
         setMessages((prev) => [...prev, newMsg]); 
       });
     
