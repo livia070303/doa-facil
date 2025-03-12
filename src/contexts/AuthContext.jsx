@@ -86,15 +86,15 @@ export const AuthProvider = ({ children }) => {
       }
     },
     onSuccess: () => {
-      setUser(undefined)
-      navigate('/login')
-      toast.success('Logout realizado com sucesso')
+      setUser(null)
       queryClient.invalidateQueries({ queryKey: ['user'] })
+      toast.success('Logout realizado com sucesso')
+      navigate('/login')
     }
   })
 
   const handleLogout = () => {
-    logoutAccount.mutate()
+    logoutAccount.mutateAsync()
   }
 
   const { data } = useQuery({
