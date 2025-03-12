@@ -1,7 +1,5 @@
 import { io } from 'socket.io-client';
-import dotenv from 'dotenv'
 
-dotenv.config()
  
 const SOCKET_URL = import.meta.env.VITE_API_URL;
 
