@@ -13,8 +13,7 @@ export const AuthProvider = ({ children }) => {
   const queryClient = useQueryClient()
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = React.useState(true)
-  const [user, setUser] = React.useState('')
- 
+  const [user, setUser] = React.useState('') 
 
  const loginAccount = useMutation({
   mutationFn: async (credentials) => {

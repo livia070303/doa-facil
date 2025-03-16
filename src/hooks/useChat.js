@@ -31,16 +31,19 @@ export function useChat() {
 
 
     React.useEffect(() => {
-      socket.emit('joinRoom', user); 
-    
-      socket.on('newMessage', (newMsg) => {
-        // console.log('Received new message:', newMsg);
-        setMessages((prev) => [...prev, newMsg]); 
+      if(user){
+        socket.emit('joinRoom', user); 
+        
+        socket.on('newMessage', (newMsg) => {
+          // console.log('Received new message:', newMsg);
+          setMessages((prev) => [...prev, newMsg]); 
+        
       });
     
       return () => {
         socket.off('newMessage'); 
       };
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);
 
@@ -65,6 +68,7 @@ export function useChat() {
         const response = await api.get(`/chat/getLastMessages/${user}`);
         return response.data;
       },
+      enabled: !!user
     });
 
     const sendMessage = useMutation({
