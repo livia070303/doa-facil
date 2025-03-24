@@ -52,7 +52,6 @@ const EditProfileModal = ({ onClose, userData }) => {
     // Fechar o modal
     onClose();
     // Exibir alguma mensagem de sucesso (opcional, ou usar toast).
-    alert("Dados alterados com sucesso!");
   };
 
   return (
