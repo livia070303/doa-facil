@@ -23,6 +23,7 @@ import { UserProvider } from './contexts/UserContext';
 import { ChatProvider } from './contexts/ChatContext';
 import { FavoritesProvider } from './contexts/FavoritesContext';
 import { ToastContainer } from 'react-toastify';
+import  AboutUsPage  from './pages/AboutUsPage/AboutUsPage';
 import 'react-toastify/ReactToastify.css'
 
 
@@ -121,6 +122,7 @@ export function App() {
           
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/aboutus" element={<AboutUsPage/>} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/reset-password" element={<ResetPasswordPage />} />

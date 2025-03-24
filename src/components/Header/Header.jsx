@@ -1,6 +1,7 @@
 // src/components/Header/Header.jsx
 
 import { FaBars, FaHeart, FaHome, FaPlusCircle, FaQuestionCircle, FaSearch, FaTimes, FaUser, FaUserPlus } from "react-icons/fa";  
+import { FaPeopleGroup } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa6";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
@@ -72,6 +73,16 @@ export function Header() {
                 >
                   <FaHome className="mr-2 text-white" aria-hidden="true" />
                   <span>Inicial</span>
+                </Link>
+              </li>
+              <li className="border-t border-azul-escuro hover:bg-azul-médio contrast:border-white">
+                <Link
+                  to="/aboutus"
+                  className="flex items-center px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white contrast:text-custom-yellow"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <FaPeopleGroup className="mr-2 text-white" aria-hidden="true" />
+                  <span>Sobre nós</span>
                 </Link>
               </li>
               <li className="border-t border-azul-escuro hover:bg-azul-médio contrast:border-white">
@@ -179,6 +190,12 @@ export function Header() {
             className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-white p-2 contrast:text-custom-yellow contrast:hover:text-white"
           >
             Inicial
+          </Link>
+          <Link
+            to="/aboutus"
+            className="font-medium font-poppins border-b-2 border-transparent hover:border-azul-claro transition-all duration-200 ease-in-out transform hover:text-white hover:scale-105 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-white p-2 contrast:text-custom-yellow contrast:hover:text-white"
+          >
+            Sobre nós
           </Link>
           <Link
             to="/faq"
