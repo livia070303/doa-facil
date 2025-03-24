@@ -7,6 +7,7 @@ import { Separator } from "../../components/Separator.jsx";
 import { useUser } from "../../hooks/useUser.js";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
 import EditProfileModal from "./components/EditProfileModal";
+import DonationUserItemFavorite from "./components/DonationUserItemFavorite.jsx";
 
 export const UserProfile = () => {
   const { data, isLoading } = useUser();
@@ -158,8 +159,7 @@ export const UserProfile = () => {
                 {/* Favoritos */}
                 <section className="mt-12 mb-8" id="favoritos">
                   <SectionHeader label="Favoritos" title="Itens Favoritos" />
-                  {/* <DonationUserItemFavorite /> */}
-                  {/* Conteúdo dos itens favoritos aqui */}
+                  <DonationUserItemFavorite />
                 </section>
               </main>
             </div>
