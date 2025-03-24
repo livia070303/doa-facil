@@ -1,73 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Sidebar from "./components/Sidebar.jsx";
 import MobileHeader from "./components/MobileHeader.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 import { SectionHeader } from "../HomePage/components/SectionHeader.jsx";
 import { Separator } from "../../components/Separator.jsx";
 import { useUser } from "../../hooks/useUser.js";
-import * as z from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import DonationUserItemFavorite from "./components/DonationUserItemFavorite.jsx";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
-
-const UserProfileSchema = z.object({
-  nome: z.string(),
-  email: z.string(),
-  phone: z.string(),
-  logradouro: z.string(),
-  cidade: z.string(),
-  estado: z.string(),
-  cep: z.string(),
-});
+import EditProfileModal from "./components/EditProfileModal";
 
 export const UserProfile = () => {
-  const { data, isLoading, handleUserUpdate, regionOptions } = useUser();
+  const { data, isLoading } = useUser();
   const { user } = useContext(AuthContext);
 
-  const { register, handleSubmit, reset } = useForm({
-    resolver: zodResolver(UserProfileSchema),
-    defaultValues: {
-      nome: data?.user?.nomeCompleto,
-      email: data?.user?.email,
-      phone: data?.user?.telefone,
-      logradouro: data?.user?.rua,
-      cidade: data?.user?.cidade,
-      estado: data?.estado,
-      cep: data?.user?.CEP,
-    },
-  });
+  // Estado para abrir/fechar o pop-up
+  const [showEditModal, setShowEditModal] = useState(false);
 
-  React.useEffect(() => {
-    if (data) {
-      reset({
-        nome: data?.user?.nomeCompleto,
-        email: data?.user?.email,
-        phone: data?.user?.telefone,
-        logradouro: data?.user?.rua,
-        cidade: data?.user?.cidade,
-        estado: regionOptions.find((region) => region.value === data?.user.estado)?.value,
-        cep: data?.user?.CEP,
-      });
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data, reset]);
+  // Função que abre o modal
+  const handleOpenEditModal = () => {
+    setShowEditModal(true);
+  };
 
-  const submitForm = async (formData) => {
-    const { nome, email, phone, logradouro, cidade, estado, cep } = formData;
-
-    const formattedData = {
-      nomeCompleto: nome,
-      email,
-      telefone: phone,
-      rua: logradouro,
-      cidade,
-      estado,
-      CEP: cep,
-      id: user,
-    };
-
-    handleUserUpdate(formattedData);
+  // Função que fecha o modal
+  const handleCloseEditModal = () => {
+    setShowEditModal(false);
   };
 
   return (
@@ -86,13 +41,9 @@ export const UserProfile = () => {
                 <MobileHeader />
               </div>
 
-              {/* Main Content */}
               <main className="flex-1 bg-gray-100 p-10 contrast:bg-custom-black">
                 {/* Seção de Informações do Usuário */}
-                <form
-                  onSubmit={handleSubmit(submitForm)}
-                  className="flex-1 bg-white p-8 rounded shadow-md w-full max-w-3xl mx-auto"
-                >
+                <div className="bg-white p-8 rounded shadow-md w-full max-w-3xl mx-auto">
                   <div className="flex flex-col sm:flex-row items-center mb-6">
                     {/* Foto de Perfil */}
                     <div className="w-24 h-24 rounded-full bg-gray-300 flex-shrink-0">
@@ -103,13 +54,15 @@ export const UserProfile = () => {
                       />
                     </div>
 
+                    {/* Somente visualização */}
                     <div className="mt-4 sm:mt-0 sm:ml-6 flex-1 w-full">
-                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
+                      <label className="block text-gray-700">
                         Nome
                         <input
                           type="text"
-                          className="mt-1 p-1 block w-full border border-gray-300 rounded-md"
-                          {...register("nome")}
+                          className="mt-1 p-1 block w-full border border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
+                          readOnly
+                          value={data?.user?.nomeCompleto || ""}
                         />
                       </label>
                     </div>
@@ -117,22 +70,24 @@ export const UserProfile = () => {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                     <div>
-                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
+                      <label className="block text-gray-700">
                         Email
                         <input
                           type="email"
-                          className="mt-1 p-1 block w-full border border-gray-300 rounded-md"
-                          {...register("email")}
+                          className="mt-1 p-1 block w-full border border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
+                          readOnly
+                          value={data?.user?.email || ""}
                         />
                       </label>
                     </div>
                     <div>
-                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
+                      <label className="block text-gray-700">
                         Telefone
                         <input
                           type="tel"
-                          className="mt-1 p-1 block w-full border border-gray-300 rounded-md"
-                          {...register("phone")}
+                          className="mt-1 p-1 block w-full border border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
+                          readOnly
+                          value={data?.user?.telefone || ""}
                         />
                       </label>
                     </div>
@@ -140,22 +95,24 @@ export const UserProfile = () => {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                     <div>
-                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
+                      <label className="block text-gray-700">
                         Endereço
                         <input
                           type="text"
-                          className="mt-1 p-1 block w-full border border-gray-300 rounded-md"
-                          {...register("logradouro")}
+                          className="mt-1 p-1 block w-full border border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
+                          readOnly
+                          value={data?.user?.rua || ""}
                         />
                       </label>
                     </div>
                     <div>
-                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
+                      <label className="block text-gray-700">
                         Cidade
                         <input
                           type="text"
-                          className="mt-1 p-1 block w-full border border-gray-300 rounded-md"
-                          {...register("cidade")}
+                          className="mt-1 p-1 block w-full border border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
+                          readOnly
+                          value={data?.user?.cidade || ""}
                         />
                       </label>
                     </div>
@@ -163,54 +120,60 @@ export const UserProfile = () => {
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
                     <div>
-                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
+                      <label className="block text-gray-700">
                         CEP
                         <input
                           type="text"
-                          className="mt-1 p-1 block w-full border border-gray-300 rounded-md"
-                          {...register("cep")}
+                          className="mt-1 p-1 block w-full border border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
+                          readOnly
+                          value={data?.user?.CEP || ""}
                         />
                       </label>
                     </div>
                     <div>
-                      <label className="block text-gray-700 contrast:font-bold contrast:text-custom-black ">
+                      <label className="block text-gray-700">
                         UF
-                        <select
-                          className="mt-1 p-1 block w-full border border-gray-300 rounded-md"
-                          {...register("estado")}
-                        >
-                          {regionOptions.map((region) => (
-                            <option key={region.value} value={region.value}>
-                              {region.label}
-                            </option>
-                          ))}
-                        </select>
+                        <input
+                          type="text"
+                          className="mt-1 p-1 block w-full border border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
+                          readOnly
+                          value={data?.user?.estado || ""}
+                        />
                       </label>
                     </div>
                     <div>
                       <button
-                        type="submit"
-                        className="w-full bg-azul-claro text-white py-2 px-4 rounded-md hover:bg-azul-médio contrast:border contrast:bg-custom-yellow contrast:text-custom-black contrast:border-custom-black contrast:font-bold"
+                        type="button"
+                        className="w-full bg-azul-claro text-white py-2 px-4 rounded-md hover:bg-azul-médio"
+                        onClick={handleOpenEditModal}
                       >
                         Editar Minhas Informações
                       </button>
                     </div>
                   </div>
-                </form>
+                </div>
 
                 <Separator className="my-8 h-0.5 bg-gray-200" />
 
                 {/* Favoritos */}
                 <section className="mt-12 mb-8" id="favoritos">
                   <SectionHeader label="Favoritos" title="Itens Favoritos" />
-                  <DonationUserItemFavorite />
+                  {/* <DonationUserItemFavorite /> */}
+                  {/* Conteúdo dos itens favoritos aqui */}
                 </section>
               </main>
             </div>
           </div>
           <Footer />
+
+          {/* Modal de edição */}
+          {showEditModal && (
+            <EditProfileModal onClose={handleCloseEditModal} userData={data?.user} />
+          )}
         </div>
       )}
     </>
   );
 };
+
+export default UserProfile;
